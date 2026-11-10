@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brain教材ナビ｜Brainで販売中の副業教材カタログ</title>
+<meta name="description" content="Brainで販売されている副業教材を、価格・評価・販売実績（販売者の公開表示）で比較できるカタログサイトです。当サイトはアフィリエイト広告を含みます。">
+<style>
+  :root{
+    --ink:#1c2430; --sub:#5b6572; --line:#dfe3e8; --bg:#f6f7f9;
+    --card:#ffffff; --accent:#0b6e4f; --accent-dark:#095a41;
+    --price:#b3540a; --chip:#eef2f5; --ad:#8a6d00; --ad-bg:#fff6d6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
+       background:var(--bg); color:var(--ink); line-height:1.6; font-size:15px;}
+  .pr-bar{position:sticky; top:0; z-index:10; background:var(--ad-bg); color:var(--ad);
+          text-align:center; font-size:13px; font-weight:700; padding:7px 12px;
+          border-bottom:1px solid #e8d98a;}
+  header.site{background:#12312a; color:#fff; padding:26px 16px 22px;}
+  .wrap{max-width:1080px; margin:0 auto;}
+  header.site h1{font-size:26px; letter-spacing:.02em;}
+  header.site p{color:#cfe0da; font-size:13.5px; margin-top:6px;}
+  main{max-width:1080px; margin:0 auto; padding:18px 14px 40px;}
+  .basis-note{background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
+              border-radius:6px; padding:10px 14px; font-size:13px; color:var(--sub); margin-bottom:16px;}
+  .controls{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin-bottom:6px;}
+  .filters{display:flex; flex-wrap:wrap; gap:8px;}
+  .filters button{border:1px solid var(--line); background:#fff; color:var(--ink);
+                  border-radius:999px; padding:7px 16px; font-size:13.5px; cursor:pointer;}
+  .filters button.active{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:700;}
+  .sortbox{font-size:13.5px; color:var(--sub);}
+  .sortbox select{font-size:13.5px; padding:7px 8px; border:1px solid var(--line); border-radius:6px; background:#fff; color:var(--ink);}
+  .count{font-size:13px; color:var(--sub); margin:8px 0 12px;}
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px;}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:10px;
+        padding:16px; display:flex; flex-direction:column; gap:8px;}
+  .chip{align-self:flex-start; background:var(--chip); color:var(--sub);
+        font-size:12px; border-radius:4px; padding:2px 9px;}
+  .card h2{font-size:16.5px; line-height:1.45;}
+  .seller{font-size:13px; color:var(--sub);}
+  .price-row{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
+  .price{font-size:24px; font-weight:800; color:var(--price);}
+  .price small{font-size:12px; font-weight:400; color:var(--sub);}
+  .rating{font-size:13.5px;}
+  .rating .star{color:#e8a20c; font-weight:700;}
+  .sales{font-size:13.5px; background:#f2f7f4; border-radius:6px; padding:6px 10px;}
+  .sales .src{display:block; font-size:11.5px; color:var(--sub);}
+  .audience{font-size:13.5px; color:var(--sub);}
+  .cta-row{margin-top:auto; padding-top:8px; display:flex; align-items:center; gap:10px;}
+  .cta{display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
+       font-weight:700; font-size:14.5px; padding:11px 20px; border-radius:8px;}
+  .cta:hover{background:var(--accent-dark);}
+  .ad-tag{background:var(--ad-bg); color:var(--ad); font-size:11.5px; font-weight:700;
+          border:1px solid #e8d98a; border-radius:4px; padding:2px 7px;}
+  .error{background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px; color:var(--sub); font-size:14px;}
+  footer.site{border-top:1px solid var(--line); background:#fff; padding:22px 16px 30px;}
+  footer.site .wrap{font-size:12.5px; color:var(--sub);}
+  footer.site p{margin-bottom:6px;}
+  @media (max-width:480px){
+    .grid{grid-template-columns:1fr;}
+    header.site h1{font-size:22px;}
+    .price{font-size:22px;}
+    .controls{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="pr-bar">当サイトはアフィリエイト広告を含みます</div>
+
+<header class="site">
+  <div class="wrap">
+    <h1>Brain教材ナビ</h1>
+    <p>教材プラットフォーム「Brain」で販売されている副業教材を、価格・評価・販売実績で比べられるカタログです。</p>
+  </div>
+</header>
+
+<main>
+  <div class="basis-note" id="basis-note">評価・レビュー件数・販売実績は、すべて各販売者がBrainの商品ページで公開している表示に基づきます。当サイト運営者の実績ではありません。情報は2026年11月11日時点の確認内容です。</div>
+
+  <div class="controls">
+    <div class="filters" id="filters" role="group" aria-label="カテゴリで絞り込む">
+      <button type="button" data-cat="all" class="active">すべて</button>
+      <button type="button" data-cat="note-sns">note・SNS</button>
+      <button type="button" data-cat="uranai">占い</button>
+      <button type="button" data-cat="ebook">電子書籍</button>
+    </div>
+    <label class="sortbox">並び替え
+      <select id="sort">
+        <option value="recommend">おすすめ順</option>
+        <option value="price-asc">価格の安い順</option>
+        <option value="price-desc">価格の高い順</option>
+        <option value="reviews-desc">レビュー数の多い順</option>
+      </select>
+    </label>
+  </div>
+
+  <p class="count" id="count"></p>
+  <div class="grid" id="grid" aria-live="polite"></div>
+  <noscript><p class="error">商品一覧の表示にはJavaScriptが必要です。</p></noscript>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>運営者：あおあし</p>
+    <p>当サイトはアフィリエイト広告を含みます。リンク先で購入が成立すると、運営者に紹介料が入る場合があります。</p>
+    <p>掲載している価格・内容・評価・販売実績は、各販売者がBrainの商品ページで公開している表示（2026年11月11日確認）に基づきます。最新の価格と内容は、必ずリンク先の商品ページでご確認ください。</p>
+    <p>掲載教材の購入・運用によって収益が得られることを保証するものではありません。</p>
+    <p>「Brain」は、教材プラットフォームBrainの名称です。当サイトはBrain公式サイトではありません。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var CATEGORY_LABELS = {"note-sns":"note・SNS", "uranai":"占い", "ebook":"電子書籍"};
+  var state = { cat: "all", sort: "recommend" };
+  var products = [];
+
+  function esc(s){
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+      return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+    });
+  }
+  function yen(n){ return "¥" + Number(n).toLocaleString("ja-JP"); }
+
+  function card(p){
+    var ratingHtml = "";
+    if (p.rating != null && p.reviews != null) {
+      ratingHtml = '<p class="rating"><span class="star">★' + Number(p.rating).toFixed(1) +
+                   '</span>　レビュー ' + Number(p.reviews).toLocaleString("ja-JP") + '件' +
+                   '<span style="color:var(--sub); font-size:11.5px;">（販売者の公開表示）</span></p>';
+    }
+    var salesHtml = "";
+    if (p.salesNote) {
+      salesHtml = '<p class="sales">' + esc(p.salesNote) +
+                  '<span class="src">実績表示：' + esc(p.salesNoteSource || "販売者の公開表示") + '</span></p>';
+    }
+    return '<article class="card">' +
+      '<span class="chip">' + esc(CATEGORY_LABELS[p.category] || p.category) + '</span>' +
+      '<h2>' + esc(p.title) + '</h2>' +
+      '<p class="seller">販売者：' + esc(p.seller) + '（Brain）</p>' +
+      '<p class="price-row"><span class="price">' + yen(p.price) + ' <small>税込</small></span></p>' +
+      ratingHtml + salesHtml +
+      '<p class="audience">こんな人向け：' + esc(p.audience) + '</p>' +
+      '<div class="cta-row"><a class="cta" href="' + esc(p.url) + '" target="_blank" rel="noopener sponsored">Brainで商品を見る</a>' +
+      '<span class="ad-tag">広告</span></div>' +
+      '</article>';
+  }
+
+  function render(){
+    var list = products.filter(function(p){ return state.cat === "all" || p.category === state.cat; });
+    if (state.sort === "price-asc")  list = list.slice().sort(function(a,b){ return a.price - b.price; });
+    if (state.sort === "price-desc") list = list.slice().sort(function(a,b){ return b.price - a.price; });
+    if (state.sort === "reviews-desc") list = list.slice().sort(function(a,b){
+      return (b.reviews == null ? -1 : b.reviews) - (a.reviews == null ? -1 : a.reviews);
+    });
+    document.getElementById("grid").innerHTML = list.map(card).join("");
+    document.getElementById("count").textContent = "全" + list.length + "件";
+  }
+
+  document.getElementById("filters").addEventListener("click", function(e){
+    var btn = e.target.closest("button[data-cat]");
+    if (!btn) return;
+    state.cat = btn.getAttribute("data-cat");
+    var btns = this.querySelectorAll("button[data-cat]");
+    for (var i = 0; i < btns.length; i++) btns[i].classList.toggle("active", btns[i] === btn);
+    render();
+  });
+  document.getElementById("sort").addEventListener("change", function(){
+    state.sort = this.value;
+    render();
+  });
+
+  fetch("products.json", {cache: "no-store"})
+    .then(function(r){ if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+    .then(function(data){
+      products = data.products || [];
+      if (data.note) document.getElementById("basis-note").textContent = data.note + " 情報は2026年11月11日時点の確認内容です。";
+      render();
+    })
+    .catch(function(err){
+      document.getElementById("grid").innerHTML =
+        '<p class="error">商品データを読み込めませんでした（' + esc(err.message) + '）。時間をおいて再読み込みしてください。</p>';
+      document.getElementById("count").textContent = "";
+    });
+})();
+</script>
+</body>
+</html>
