@@ -3,127 +3,93 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brain教材ナビ｜Brainの副業教材5本を「回収に必要な件数」で比べる</title>
-<meta name="description" content="Brainの副業教材5本を、『元を取るのに何件売ればいいか』で比べるサイトです。想定単価を動かすと、回収に必要な販売件数がその場で変わります。当サイトはアフィリエイト広告を含みます。">
+<title>Brain教材ナビ｜元を取るのに何件売ればいいかで比べる</title>
+<meta name="description" content="Brainの副業教材5本を、『元を取るのに何件売ればいいか』だけで比べるサイトです。想定単価を動かすと、必要な件数のマス目がその場で変わります。当サイトはアフィリエイト広告を含みます。">
 <style>
   :root{
     --ink:#1c2430; --sub:#5b6572; --line:#dfe3e8; --bg:#f6f7f9;
-    --card:#ffffff; --accent:#0b6e4f; --accent-dark:#095a41;
-    --price:#b3540a; --chip:#eef2f5; --ad:#8a6d00; --ad-bg:#fff6d6;
+    --accent:#0b6e4f; --accent-dark:#095a41;
+    --price:#b3540a; --ad:#8a6d00; --ad-bg:#fff6d6;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
-       background:var(--bg); color:var(--ink); line-height:1.6; font-size:15px;}
+       background:var(--bg); color:var(--ink); line-height:1.8; font-size:16px;}
   .pr-bar{position:sticky; top:0; z-index:10; background:var(--ad-bg); color:var(--ad);
           text-align:center; font-size:13px; font-weight:700; padding:7px 12px;
           border-bottom:1px solid #e8d98a;}
-  header.site{background:#12312a; color:#fff; padding:24px 16px 22px;}
-  .wrap{max-width:1080px; margin:0 auto;}
-  header.site .brand{font-size:13px; font-weight:700; letter-spacing:.1em; color:#9fc4b8; margin-bottom:8px;}
-  header.site h1{font-size:23px; line-height:1.55; letter-spacing:.01em;}
-  header.site .identity-note{color:#e3efea; font-size:14px; margin-top:10px;}
-  header.site .updated{color:#9fc4b8; font-size:12px; margin-top:6px;}
-  main{max-width:1080px; margin:0 auto; padding:18px 14px 30px;}
-  .panel{background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px 16px 20px;}
-  .panel h2{font-size:19px; line-height:1.5; margin-bottom:2px;}
-  .slider-label{font-size:13.5px; color:var(--sub); margin-top:12px;}
-  .unit-big{font-size:32px; font-weight:800; color:var(--accent-dark); line-height:1.2;}
-  .unit-big small{font-size:14px; font-weight:400; color:var(--sub);}
-  input[type=range]{width:100%; height:38px; accent-color:var(--accent); cursor:pointer;}
-  .slider-scale{display:flex; justify-content:space-between; font-size:12px; color:var(--sub); margin-top:-4px;}
-  .formula{font-size:12.5px; color:var(--sub); margin-top:8px;}
-  .controls{display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:space-between; margin:16px 0 6px;}
-  .filters{display:flex; flex-wrap:wrap; gap:8px;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 18px;}
+
+  /* 顔＋吹き出し */
+  header.site{padding:30px 0 8px;}
+  .brand{font-size:13px; font-weight:700; letter-spacing:.12em; color:var(--sub); margin-bottom:16px;}
+  .face-row{display:flex; gap:16px; align-items:flex-start;}
+  .face{width:84px; height:84px; border-radius:50%; object-fit:cover; flex:none;
+        border:2px solid var(--line); background:#fff;}
+  .bubbles{display:flex; flex-direction:column; gap:12px; flex:1; min-width:0;}
+  .bubble{position:relative; background:#fff; border:1.5px solid var(--ink); border-radius:14px;
+          padding:12px 16px; font-size:16.5px; font-weight:600; line-height:1.7;}
+  .bubble::before{content:""; position:absolute; left:-9px; top:26px; width:16px; height:16px;
+          background:#fff; border-left:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink);
+          transform:rotate(45deg);}
+  .bubble.sub{font-weight:400; font-size:15px; color:var(--sub); border-color:var(--line);}
+  .bubble.sub::before{border-color:var(--line);}
+  .updated{font-size:12.5px; color:var(--sub); margin-top:14px;}
+
+  main{padding-bottom:36px;}
+
+  /* スライダー */
+  .slider-box{background:#fff; border:1px solid var(--line); border-radius:14px;
+              padding:22px 20px 18px; margin-top:22px;}
+  .slider-label{font-size:15px; color:var(--sub);}
+  .unit-big{font-size:40px; font-weight:800; color:var(--accent-dark); line-height:1.25;}
+  .unit-big small{font-size:15px; font-weight:400; color:var(--sub);}
+  input[type=range]{width:100%; height:44px; accent-color:var(--accent); cursor:pointer;}
+  .slider-scale{display:flex; justify-content:space-between; font-size:12.5px; color:var(--sub); margin-top:-6px;}
+  .formula{font-size:13px; color:var(--sub); margin-top:10px;}
+
+  /* 絞り込み */
+  .filters{display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 16px;}
   .filters button{border:1px solid var(--line); background:#fff; color:var(--ink);
-                  border-radius:999px; padding:7px 16px; font-size:13.5px; cursor:pointer;}
+                  border-radius:999px; padding:8px 18px; font-size:15px; cursor:pointer;}
   .filters button.active{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:700;}
-  .count{font-size:13px; color:var(--sub); margin:8px 0 12px;}
-  .cmp-list{display:flex; flex-direction:column; gap:12px;}
-  .cmp{border:1px solid var(--line); border-radius:10px; padding:16px; background:#fff;}
-  .cmp-top{display:flex; align-items:center; gap:12px; flex-wrap:wrap;}
-  .cmp-rank{background:var(--ink); color:#fff; font-size:12.5px; font-weight:700;
-            border-radius:4px; padding:3px 10px;}
-  .cmp-count{display:flex; align-items:baseline; gap:6px;}
-  .cmp-num{font-size:42px; font-weight:800; color:var(--accent-dark); line-height:1;}
-  .cmp-unit{font-size:14px; font-weight:700;}
-  .cmp-barwrap{background:var(--chip); border-radius:999px; height:14px; overflow:hidden; margin:10px 0 12px;}
-  .cmp-bar{background:var(--accent); height:100%; width:0; border-radius:999px; transition:width .3s ease;}
-  .cmp h3{font-size:16.5px; line-height:1.45;}
-  .seller{font-size:13px; color:var(--sub);}
-  .cmp-stats{display:flex; flex-wrap:wrap; gap:10px 26px; margin-top:10px;}
-  .stat{display:flex; flex-direction:column;}
-  .stat-num{font-size:20px; font-weight:800; line-height:1.3;}
-  .stat-num.price{color:var(--price);}
-  .stat-label{font-size:11px; color:var(--sub);}
-  .op-note{font-size:13.5px; background:#f2f7f4; border-left:4px solid var(--accent);
-           border-radius:0 6px 6px 0; padding:8px 12px; margin-top:12px;}
-  .op-label{display:inline-block; background:var(--accent); color:#fff; font-size:11px; font-weight:700;
-            border-radius:4px; padding:1px 7px; margin-right:8px; vertical-align:1px;}
-  .cta-row{margin-top:12px; display:flex; align-items:center; gap:10px;}
+
+  /* 商品カード：テキストは3行だけ */
+  .cmp-list{display:flex; flex-direction:column; gap:18px;}
+  .cmp{background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px 20px;}
+  .cmp-title{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;}
+  .cmp-title h2{font-size:19px; line-height:1.5; flex:1; min-width:220px;}
+  .cmp-price{font-size:26px; font-weight:800; color:var(--price); white-space:nowrap;}
+  .cmp-price small{font-size:13px; font-weight:400; color:var(--sub);}
+  .meter-head{display:flex; align-items:baseline; gap:8px; margin-top:16px;}
+  .meter-num{font-size:52px; font-weight:800; color:var(--accent-dark); line-height:1;}
+  .meter-unit{font-size:16px; font-weight:700;}
+  .meter{display:flex; flex-wrap:wrap; gap:4px; margin-top:12px;}
+  .cell{width:17px; height:17px; border-radius:4px; background:var(--accent);}
+  .cmp-stats{font-size:16px; margin-top:16px;}
+  .cmp-stats b{font-size:21px; font-weight:800;}
+  .cmp-stats .src{font-size:12.5px; color:var(--sub);}
+  .cmp-note{font-size:15.5px; color:var(--ink); margin-top:8px;}
+  .cta-row{margin-top:16px; display:flex; align-items:center; gap:10px;}
   .cta{display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
-       font-weight:700; font-size:14.5px; padding:11px 20px; border-radius:8px;}
+       font-weight:700; font-size:16px; padding:13px 24px; border-radius:10px;}
   .cta:hover{background:var(--accent-dark);}
-  .ad-tag{background:var(--ad-bg); color:var(--ad); font-size:11.5px; font-weight:700;
-          border:1px solid #e8d98a; border-radius:4px; padding:2px 7px;}
-  .basis-note{background:#fff; border:1px solid var(--line); border-left:4px solid var(--accent);
-              border-radius:6px; padding:10px 14px; font-size:13px; color:var(--sub); margin-top:14px;}
-  .error{background:#fff; border:1px solid var(--line); border-radius:8px; padding:20px; color:var(--sub); font-size:14px;}
-  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px;}
-  .card{background:var(--card); border:1px solid var(--line); border-radius:10px;
-        padding:16px; display:flex; flex-direction:column; gap:8px;}
-  .chip{align-self:flex-start; background:var(--chip); color:var(--sub);
-        font-size:12px; border-radius:4px; padding:2px 9px;}
-  .card h3{font-size:16.5px; line-height:1.45;}
-  .price-row{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;}
-  .price{font-size:24px; font-weight:800; color:var(--price);}
-  .price small{font-size:12px; font-weight:400; color:var(--sub);}
-  .rating{font-size:13.5px;}
-  .rating .star{color:#e8a20c; font-weight:700;}
-  .sales{font-size:13.5px; background:#f2f7f4; border-radius:6px; padding:6px 10px;}
-  .sales .src{display:block; font-size:11.5px; color:var(--sub);}
-  .diag{background:#fff; border-top:1px solid var(--line); padding:22px 16px 26px;}
-  .diag h2{font-size:20px; line-height:1.5; margin-bottom:6px;}
-  .diag .lead{font-size:13.5px; color:var(--sub); margin-bottom:14px;}
-  .progress{background:var(--chip); border-radius:999px; height:10px; overflow:hidden;}
-  .progress-bar{background:var(--accent); height:100%; width:0; transition:width .3s ease;}
-  .progress-label{font-size:12px; color:var(--sub); margin:6px 0 14px;}
-  .diag-q{font-size:16px; font-weight:700; margin-bottom:10px;}
-  .diag-opts{display:flex; flex-direction:column; gap:8px;}
-  .diag-opts button{border:1px solid var(--line); background:#fff; color:var(--ink);
-    border-radius:8px; padding:13px 14px; font-size:15px; text-align:left; cursor:pointer; width:100%;}
-  .diag-opts button:hover{border-color:var(--accent);}
-  .diag-opts button.selected{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:700;}
-  .feedback{background:#f2f7f4; border:1px solid #cfe3d8; border-radius:8px; padding:12px 14px; font-size:13.5px; margin-top:14px;}
-  .feedback h3{font-size:13.5px; color:var(--accent-dark); margin-bottom:6px;}
-  .feedback ul{margin:0 0 0 18px;}
-  .feedback li{margin-bottom:4px;}
-  .feedback .src{font-size:11.5px; color:var(--sub); margin-top:6px;}
-  .feedback .formula{font-size:12.5px; color:var(--sub); margin-top:6px;}
-  .diag-next{margin-top:14px; background:var(--accent); color:#fff; border:none; border-radius:8px;
-    padding:12px 22px; font-size:15px; font-weight:700; cursor:pointer;}
-  .diag-next:hover{background:var(--accent-dark);}
-  .diag-cond{font-size:13px; color:var(--sub); margin-bottom:12px;}
-  .role{align-self:flex-start; background:var(--accent); color:#fff; font-size:12px; font-weight:700;
-    border-radius:4px; padding:2px 9px;}
-  .role.sub-role{background:var(--chip); color:var(--sub);}
-  .reason{font-size:13.5px;}
-  .payback{font-size:13px; background:#fdf6ec; border-radius:6px; padding:6px 10px;}
-  .payback .src{display:block; font-size:11.5px; color:var(--sub);}
-  .flag{font-size:11.5px; color:var(--price); font-weight:700;}
-  .supp-note{font-size:12px; color:var(--sub); margin-top:10px;}
-  .diag-restart{margin-top:16px; background:none; border:1px solid var(--line); color:var(--sub);
-    border-radius:8px; padding:9px 18px; font-size:13.5px; cursor:pointer;}
-  footer.site{border-top:1px solid var(--line); background:#fff; padding:22px 16px 30px;}
-  footer.site .wrap{font-size:12.5px; color:var(--sub);}
-  footer.site p{margin-bottom:6px;}
+  .ad-tag{background:var(--ad-bg); color:var(--ad); font-size:12px; font-weight:700;
+          border:1px solid #e8d98a; border-radius:4px; padding:2px 8px;}
+  .basis-note{font-size:13px; color:var(--sub); margin-top:22px; line-height:1.7;}
+  .error{background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px; color:var(--sub); font-size:15px;}
+
+  footer.site{border-top:1px solid var(--line); background:#fff; padding:24px 0 32px;}
+  footer.site p{font-size:12.5px; color:var(--sub); margin-bottom:6px; line-height:1.7;}
+
   @media (max-width:480px){
-    .grid{grid-template-columns:1fr;}
-    header.site h1{font-size:19px;}
-    .unit-big{font-size:27px;}
-    .cmp-num{font-size:34px;}
-    .price{font-size:22px;}
-    .diag h2{font-size:18px;}
-    .diag-opts button{font-size:14.5px;}
+    .face{width:64px; height:64px;}
+    .bubble{font-size:15.5px; padding:10px 13px;}
+    .bubble::before{top:20px;}
+    .unit-big{font-size:33px;}
+    .meter-num{font-size:44px;}
+    .cell{width:15px; height:15px;}
+    .cmp-title h2{font-size:17.5px;}
+    .cmp-price{font-size:23px;}
   }
 </style>
 </head>
@@ -134,51 +100,42 @@
 <header class="site">
   <div class="wrap">
     <p class="brand">Brain教材ナビ</p>
-    <h1>Brainの副業教材5本を、『元を取るのに何件売ればいいか』で比べるサイトです。</h1>
-    <p class="identity-note">運営は会社員のあおあし。紹介で売れた実績はまだ0件です。自分が買う前に調べた内容を、そのまま置いています。</p>
+    <div class="face-row">
+      <img class="face" src="aoashi-icon-goma.png" alt="運営者あおあしのアイコン" width="84" height="84">
+      <div class="bubbles">
+        <p class="bubble">Brainの教材5本を比べています。比べ方は1つだけ。『元を取るのに何件売ればいいか』。</p>
+        <p class="bubble sub">紹介で売れた実績はまだ0件です。自分が買う前に調べた記録です。</p>
+      </div>
+    </div>
     <p class="updated">更新日：2026年11月11日</p>
   </div>
 </header>
 
 <main>
-  <section class="panel" aria-label="回収に必要な販売件数での比較">
-    <h2>回収に必要な販売件数で比べる</h2>
-    <p class="slider-label">あなたの想定単価（1件あたりの販売価格）</p>
-    <p class="unit-big"><span id="unit-val">¥3,000</span> <small>で売る場合</small></p>
-    <input type="range" id="unit-slider" min="1000" max="10000" step="500" value="3000" aria-label="想定単価">
-    <div class="slider-scale"><span>¥1,000</span><span>¥10,000</span></div>
-    <p class="formula">計算式：回収に必要な販売件数 ＝ 教材価格 ÷ 想定単価（切り上げ）。想定単価は仮の金額で、件数は目安です。</p>
+  <div class="wrap">
+    <section class="slider-box" aria-label="想定単価のスライダー">
+      <p class="slider-label">あなたの想定単価（1件あたりの販売価格）</p>
+      <p class="unit-big"><span id="unit-val">¥3,000</span> <small>で売る場合</small></p>
+      <input type="range" id="unit-slider" min="1000" max="10000" step="500" value="3000" aria-label="想定単価">
+      <div class="slider-scale"><span>¥1,000</span><span>¥10,000</span></div>
+      <p class="formula">計算式：必要な件数 ＝ 教材価格 ÷ 想定単価（切り上げ）</p>
+    </section>
 
-    <div class="controls">
-      <div class="filters" id="filters" role="group" aria-label="カテゴリで絞り込む">
-        <button type="button" data-cat="all" class="active">すべて</button>
-        <button type="button" data-cat="note-sns">note・SNS</button>
-        <button type="button" data-cat="uranai">占い</button>
-        <button type="button" data-cat="ebook">電子書籍</button>
-      </div>
+    <div class="filters" id="filters" role="group" aria-label="カテゴリで絞り込む">
+      <button type="button" data-cat="all" class="active">すべて</button>
+      <button type="button" data-cat="note-sns">note・SNS</button>
+      <button type="button" data-cat="uranai">占い</button>
+      <button type="button" data-cat="ebook">電子書籍</button>
     </div>
 
-    <p class="count" id="count"></p>
     <div class="cmp-list" id="cmp-list" aria-live="polite">
       <p class="error">商品データを読み込んでいます…</p>
     </div>
     <noscript><p class="error">商品の表示にはJavaScriptが必要です。</p></noscript>
-  </section>
 
-  <div class="basis-note" id="basis-note">評価・レビュー件数・販売実績は、すべて各販売者がBrainの商品ページで公開している表示に基づきます。当サイト運営者の実績ではありません。情報は2026年11月11日時点の確認内容です。</div>
-</main>
-
-<section class="diag" id="diag">
-  <div class="wrap">
-    <h2>迷ったら3つの質問</h2>
-    <p class="lead">3つの質問に答えると、条件に合う教材を最大3つまで案内します。</p>
-    <div class="progress" aria-hidden="true"><div class="progress-bar" id="diag-bar"></div></div>
-    <p class="progress-label" id="diag-step">質問 1 / 3</p>
-    <div id="diag-body">
-      <p class="error">診断データを読み込んでいます…</p>
-    </div>
+    <p class="basis-note" id="basis-note">評価・レビュー件数・販売実績は、すべて各販売者がBrainの商品ページで公開している表示に基づきます。当サイト運営者の実績ではありません。情報は2026年11月11日時点の確認内容です。</p>
   </div>
-</section>
+</main>
 
 <footer class="site">
   <div class="wrap">
@@ -192,11 +149,10 @@
 
 <script>
 (function(){
-  var CATEGORY_LABELS = {"note-sns":"note・SNS", "uranai":"占い", "ebook":"電子書籍"};
   var state = { cat: "all" };
   var products = [];
   var unitPrice = 3000;
-  var cmpNodes = {};
+  var nodes = {};
 
   function esc(s){
     return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
@@ -204,61 +160,62 @@
     });
   }
   function yen(n){ return "¥" + Number(n).toLocaleString("ja-JP"); }
+  function need(p){ return Math.ceil(p.price / unitPrice); }
 
-  /* ===== 比較（一覧）：想定単価スライダーで回収件数が変わる ===== */
-  function paybackCount(p){ return Math.ceil(p.price / unitPrice); }
+  function statsLine(p){
+    var parts = [];
+    if (p.reviews != null) parts.push("レビュー <b>" + Number(p.reviews).toLocaleString("ja-JP") + "件</b>");
+    if (p.salesNote) parts.push(esc(p.salesNote));
+    if (!parts.length) return "";
+    return '<p class="cmp-stats">' + parts.join("　・　") +
+           ' <span class="src">（販売者公表）</span></p>';
+  }
 
-  function cmpItem(p){
+  function item(p){
     var el = document.createElement("article");
     el.className = "cmp";
-    var reviewsTxt = p.reviews != null ? Number(p.reviews).toLocaleString("ja-JP") + "件" : "表示なし";
-    var salesTxt = p.salesNote ? esc(p.salesNote) : "表示なし";
     el.innerHTML =
-      '<div class="cmp-top"><span class="cmp-rank"></span>' +
-      '<div class="cmp-count"><span class="cmp-num"></span><span class="cmp-unit">件売れば回収</span></div></div>' +
-      '<div class="cmp-barwrap"><div class="cmp-bar"></div></div>' +
-      '<h3>' + esc(p.title) + '</h3>' +
-      '<p class="seller">販売者：' + esc(p.seller) + '（Brain）</p>' +
-      '<div class="cmp-stats">' +
-        '<div class="stat"><span class="stat-num price">' + yen(p.price) + '</span><span class="stat-label">価格（税込）</span></div>' +
-        '<div class="stat"><span class="stat-num">' + reviewsTxt + '</span><span class="stat-label">レビュー件数（販売者公表）</span></div>' +
-        '<div class="stat"><span class="stat-num">' + salesTxt + '</span><span class="stat-label">販売実績（販売者公表）</span></div>' +
-      '</div>' +
-      (p.note ? '<p class="op-note"><span class="op-label">選定理由</span>' + esc(p.note) + '</p>' : '') +
+      '<div class="cmp-title"><h2>' + esc(p.title) + '</h2>' +
+      '<span class="cmp-price">' + yen(p.price) + ' <small>税込</small></span></div>' +
+      '<div class="meter-head"><span class="meter-num"></span><span class="meter-unit">件売れば回収</span></div>' +
+      '<div class="meter" aria-hidden="true"></div>' +
+      statsLine(p) +
+      (p.note ? '<p class="cmp-note">' + esc(p.note) + '</p>' : '') +
       '<div class="cta-row"><a class="cta" href="' + esc(p.url) + '" target="_blank" rel="noopener sponsored">Brainで商品を見る</a>' +
       '<span class="ad-tag">広告</span></div>';
-    cmpNodes[p.id] = el;
+    nodes[p.id] = {
+      el: el,
+      num: el.querySelector(".meter-num"),
+      meter: el.querySelector(".meter")
+    };
     return el;
   }
 
-  function buildCompare(){
+  function build(){
     var list = document.getElementById("cmp-list");
     list.innerHTML = "";
-    products.forEach(function(p){ list.appendChild(cmpItem(p)); });
-    updateCompare();
+    products.forEach(function(p){ list.appendChild(item(p)); });
+    update();
   }
 
-  function updateCompare(){
+  function update(){
     document.getElementById("unit-val").textContent = yen(unitPrice);
     var list = document.getElementById("cmp-list");
-    var counts = {};
-    products.forEach(function(p){ counts[p.id] = paybackCount(p); });
     var visible = products.filter(function(p){ return state.cat === "all" || p.category === state.cat; });
-    visible.sort(function(a, b){ return (counts[a.id] - counts[b.id]) || (a.price - b.price); });
-    var max = 1;
-    visible.forEach(function(p){ if (counts[p.id] > max) max = counts[p.id]; });
+    visible.sort(function(a, b){ return (need(a) - need(b)) || (a.price - b.price); });
     var onScreen = {};
-    visible.forEach(function(p, i){
-      var el = cmpNodes[p.id];
-      el.style.display = "";
-      el.querySelector(".cmp-rank").textContent = "回収件数 " + (i + 1) + "位";
-      el.querySelector(".cmp-num").textContent = counts[p.id];
-      el.querySelector(".cmp-bar").style.width = Math.max(4, Math.round(counts[p.id] / max * 100)) + "%";
-      list.appendChild(el);
+    visible.forEach(function(p){
+      var n = need(p);
+      var node = nodes[p.id];
+      node.el.style.display = "";
+      node.num.textContent = n;
+      var cells = "";
+      for (var i = 0; i < n; i++) cells += '<span class="cell"></span>';
+      node.meter.innerHTML = cells;
+      list.appendChild(node.el);
       onScreen[p.id] = true;
     });
-    products.forEach(function(p){ if (!onScreen[p.id]) cmpNodes[p.id].style.display = "none"; });
-    document.getElementById("count").textContent = "全" + visible.length + "件（回収に必要な販売件数の少ない順）";
+    products.forEach(function(p){ if (!onScreen[p.id]) nodes[p.id].el.style.display = "none"; });
   }
 
   document.getElementById("filters").addEventListener("click", function(e){
@@ -267,11 +224,11 @@
     state.cat = btn.getAttribute("data-cat");
     var btns = this.querySelectorAll("button[data-cat]");
     for (var i = 0; i < btns.length; i++) btns[i].classList.toggle("active", btns[i] === btn);
-    updateCompare();
+    update();
   });
   document.getElementById("unit-slider").addEventListener("input", function(){
     unitPrice = parseInt(this.value, 10);
-    updateCompare();
+    update();
   });
 
   fetch("products.json", {cache: "no-store"})
@@ -279,260 +236,12 @@
     .then(function(data){
       products = data.products || [];
       if (data.note) document.getElementById("basis-note").textContent = data.note + " 情報は2026年11月11日時点の確認内容です。";
-      buildCompare();
-      initDiag();
+      build();
     })
     .catch(function(err){
       document.getElementById("cmp-list").innerHTML =
         '<p class="error">商品データを読み込めませんでした（' + esc(err.message) + '）。時間をおいて再読み込みしてください。</p>';
-      document.getElementById("count").textContent = "";
-      document.getElementById("diag-body").innerHTML =
-        '<p class="error">診断データを読み込めませんでした。時間をおいて再読み込みしてください。</p>';
-      document.getElementById("diag-step").textContent = "";
     });
-
-  /* ===== 診断（下部）：3つの質問 ===== */
-  var GENRES = [
-    { key: "note-sns", label: "SNS（Threads/note）" },
-    { key: "uranai",   label: "占い" },
-    { key: "ebook",    label: "Kindle出版" }
-  ];
-  var BUDGETS = [
-    { key: 5000,     label: "5,000円まで" },
-    { key: 10000,    label: "10,000円まで" },
-    { key: 40000,    label: "40,000円まで" },
-    { key: Infinity, label: "上限なし" }
-  ];
-  var EXPS = [
-    { key: "none", label: "まだない" },
-    { key: "some", label: "ある" }
-  ];
-  var UNITS = [1000, 3000, 5000];
-  var diag = { genre: null, budget: null, exp: null };
-
-  function genreLabel(key){
-    for (var i = 0; i < GENRES.length; i++) if (GENRES[i].key === key) return GENRES[i].label;
-    return key;
-  }
-  function budgetLabel(key){
-    for (var i = 0; i < BUDGETS.length; i++) if (BUDGETS[i].key === key) return BUDGETS[i].label;
-    return "";
-  }
-  function reviewsOf(p){ return p.reviews == null ? -1 : p.reviews; }
-
-  /* 回収件数：教材価格 ÷ 想定単価（切り上げ）。式と入力をそのまま文字列にする */
-  function paybackText(price){
-    var parts = UNITS.map(function(u){
-      return "÷ 想定単価 " + yen(u) + " ＝ 約" + Math.ceil(price / u) + "件";
-    });
-    return "教材価格 " + yen(price) + " " + parts.join(" ／ ");
-  }
-  /* 販売者公表の実績（部数・レビュー件数）。salesNote は esc 済みで返す */
-  function salesFacts(p){
-    var facts = [];
-    if (p.reviews != null) {
-      facts.push("レビュー" + Number(p.reviews).toLocaleString("ja-JP") + "件" +
-                 (p.rating != null ? "（★" + Number(p.rating).toFixed(1) + "）" : ""));
-    }
-    if (p.salesNote) facts.push(esc(p.salesNote));
-    return facts;
-  }
-  function setProgress(pct, label){
-    document.getElementById("diag-bar").style.width = pct + "%";
-    document.getElementById("diag-step").textContent = label;
-  }
-  function questionHtml(num, text){
-    return '<p class="diag-q">質問' + num + '．' + esc(text) + '</p>';
-  }
-  function optionsHtml(items, attr){
-    return '<div class="diag-opts">' + items.map(function(it){
-      return '<button type="button" data-' + attr + '="1">' + esc(it.label) + '</button>';
-    }).join("") + '</div>';
-  }
-  function markSelected(scope, btn){
-    var btns = scope.querySelectorAll(".diag-opts button");
-    for (var i = 0; i < btns.length; i++) btns[i].classList.toggle("selected", btns[i] === btn);
-  }
-  function wireOptions(body, attr, items, onPick){
-    var btns = body.querySelectorAll("button[data-" + attr + "]");
-    for (var i = 0; i < btns.length; i++){
-      (function(btn, item){
-        btn.addEventListener("click", function(){
-          markSelected(body, btn);
-          onPick(item);
-        });
-      })(btns[i], items[i]);
-    }
-  }
-
-  function renderQ1(){
-    setProgress(0, "質問 1 / 3");
-    var body = document.getElementById("diag-body");
-    body.innerHTML = questionHtml(1, "何を売りたいですか") + optionsHtml(GENRES, "genre") + '<div id="diag-fb"></div>';
-    wireOptions(body, "genre", GENRES, function(item){
-      diag.genre = item.key;
-      showGenreFeedback();
-    });
-  }
-  function showGenreFeedback(){
-    setProgress(33, "質問 1 / 3 に回答済み");
-    var list = products.filter(function(p){ return p.category === diag.genre; });
-    var items = list.map(function(p){
-      var facts = salesFacts(p);
-      return "<li>「" + esc(p.title) + "」：" + (facts.length ? facts.join("、") : "実績表示なし") + "</li>";
-    }).join("");
-    document.getElementById("diag-fb").innerHTML =
-      '<div class="feedback"><h3>' + esc(genreLabel(diag.genre)) + 'の掲載商品の実績（販売者公表）</h3><ul>' + items + '</ul>' +
-      '<p class="src">出典：各販売者がBrainの商品ページで公開している表示です（販売者公表値）。当サイト運営者の実績ではありません。</p></div>' +
-      '<button type="button" class="diag-next" id="diag-to2">次の質問へ</button>';
-    document.getElementById("diag-to2").addEventListener("click", renderQ2);
-  }
-
-  function renderQ2(){
-    setProgress(33, "質問 2 / 3");
-    var body = document.getElementById("diag-body");
-    body.innerHTML = questionHtml(2, "予算はどれくらいですか") + optionsHtml(BUDGETS, "budget") + '<div id="diag-fb"></div>';
-    wireOptions(body, "budget", BUDGETS, function(item){
-      diag.budget = item.key;
-      showBudgetFeedback();
-    });
-  }
-  function showBudgetFeedback(){
-    setProgress(67, "質問 2 / 3 に回答済み");
-    var within = products.filter(function(p){ return p.price <= diag.budget; });
-    within.sort(function(a, b){
-      var ga = a.category === diag.genre ? 0 : 1, gb = b.category === diag.genre ? 0 : 1;
-      return (ga - gb) || (a.price - b.price);
-    });
-    var top = within.slice(0, 3);
-    var html;
-    if (top.length){
-      var items = top.map(function(p){
-        return "<li>「" + esc(p.title) + "」：" + esc(paybackText(p.price)) + "</li>";
-      }).join("");
-      html = '<div class="feedback"><h3>予算 ' + esc(budgetLabel(diag.budget)) + ' の商品で計算すると</h3><ul>' + items + '</ul>' +
-        '<p class="formula">計算式：教材価格 ÷ 想定単価（1,000円／3,000円／5,000円）。想定単価は仮に置いた金額で、実際の単価は自分で決めるものです。件数は切り上げた目安で、売上を保証するものではありません。</p></div>';
-    } else {
-      html = '<div class="feedback"><h3>予算に合う商品はありませんでした</h3><p>結果の画面では、近い選択肢を案内します。</p></div>';
-    }
-    document.getElementById("diag-fb").innerHTML =
-      html + '<button type="button" class="diag-next" id="diag-to3">次の質問へ</button>';
-    document.getElementById("diag-to3").addEventListener("click", renderQ3);
-  }
-
-  function renderQ3(){
-    setProgress(67, "質問 3 / 3");
-    var body = document.getElementById("diag-body");
-    body.innerHTML = questionHtml(3, "何かを売った経験はありますか") + optionsHtml(EXPS, "exp");
-    wireOptions(body, "exp", EXPS, function(item){
-      diag.exp = item.key;
-      renderResults();
-    });
-  }
-
-  /* 条件に合う商品を最大3件選ぶ。足りない分は他ジャンル等から補い、補った理由をフラグで返す */
-  function choosePicks(){
-    var picked = [];
-    function used(id){ return picked.some(function(x){ return x.p.id === id; }); }
-    products.filter(function(p){ return p.category === diag.genre && p.price <= diag.budget; })
-      .forEach(function(p){ if (picked.length < 3) picked.push({ p: p, cross: false, over: false }); });
-    if (picked.length < 3){
-      var rest = products.filter(function(p){ return !used(p.id); });
-      rest.sort(function(a, b){
-        function rank(p){
-          var inBudget = p.price <= diag.budget;
-          if (p.category !== diag.genre && inBudget) return 0; /* 他ジャンル・予算内を優先 */
-          if (p.category === diag.genre && !inBudget) return 1; /* 同ジャンル・予算超過 */
-          return 2;                                            /* 他ジャンル・予算超過 */
-        }
-        return (rank(a) - rank(b)) || (a.price - b.price);
-      });
-      rest.forEach(function(p){
-        if (picked.length < 3) picked.push({ p: p, cross: p.category !== diag.genre, over: p.price > diag.budget });
-      });
-    }
-    return picked;
-  }
-  function assignRoles(picks){
-    var honmei = picks.slice().sort(function(a, b){
-      return (reviewsOf(b.p) - reviewsOf(a.p)) || (a.p.price - b.p.price);
-    })[0];
-    honmei.role = "本命";
-    var rest = picks.filter(function(x){ return x !== honmei; });
-    var cheap = null, high = null;
-    if (rest.length){
-      cheap = rest.slice().sort(function(a, b){ return a.p.price - b.p.price; })[0];
-      cheap.role = "安く始める案";
-      var rest2 = rest.filter(function(x){ return x !== cheap; });
-      if (rest2.length){
-        high = rest2.slice().sort(function(a, b){ return b.p.price - a.p.price; })[0];
-        high.role = "高単価案";
-      }
-    }
-    var lead = (diag.exp === "none" && cheap) ? cheap : honmei;
-    var order = [lead];
-    [honmei, cheap, high].forEach(function(x){ if (x && x !== lead) order.push(x); });
-    return order;
-  }
-  function reasonFor(item, picks){
-    var p = item.p;
-    var prices = picks.map(function(x){ return x.p.price; });
-    var isMin = p.price === Math.min.apply(null, prices);
-    var isMax = p.price === Math.max.apply(null, prices);
-    if (item.role === "本命"){
-      if (p.reviews != null) return "候補の中でレビュー件数が最も多い商品です（" + Number(p.reviews).toLocaleString("ja-JP") + "件、販売者公表）。";
-      if (p.salesNote) return "このジャンルで掲載中の商品です。販売部数は販売者公表で「" + p.salesNote + "」と表示されています。";
-      return "このジャンルで掲載中の商品です。";
-    }
-    if (item.role === "安く始める案"){
-      return (isMin ? "候補の中で最も安い " : "価格を抑えた ") + yen(p.price) + " です。お金をかけずに、まず始めるための案です。";
-    }
-    if (isMax) return "候補の中で最も高い " + yen(p.price) + " です。価格が高い分、買う前に商品ページで内容をよく確認してください。";
-    return "価格は " + yen(p.price) + " です。買う前に商品ページで内容をよく確認してください。";
-  }
-  function resultCard(item, idx, picks){
-    var p = item.p;
-    var facts = salesFacts(p);
-    var flags = "";
-    if (item.cross) flags += '<p class="flag">※他ジャンルの近い選択肢です</p>';
-    if (item.over)  flags += '<p class="flag">※選んだ予算の上限を超えています</p>';
-    return '<article class="card">' +
-      '<span class="role' + (idx === 0 ? "" : " sub-role") + '">' + esc(item.role) + '</span>' +
-      '<span class="chip">' + esc(CATEGORY_LABELS[p.category] || p.category) + '</span>' +
-      '<h3>' + esc(p.title) + '</h3>' +
-      '<p class="seller">販売者：' + esc(p.seller) + '（Brain）</p>' +
-      '<p class="price-row"><span class="price">' + yen(p.price) + ' <small>税込</small></span></p>' +
-      '<p class="reason">' + esc(reasonFor(item, picks)) + '</p>' +
-      '<p class="payback">元を取るのに必要な販売件数（目安）：' + esc(paybackText(p.price)) +
-      '<span class="src">計算式：教材価格 ÷ 想定単価。想定単価は仮の金額で、件数は目安です。</span></p>' +
-      (facts.length ? '<p class="sales">' + facts.join("、") + '<span class="src">実績表示：販売者の公開表示（販売者公表値）</span></p>' : "") +
-      flags +
-      '<div class="cta-row"><a class="cta" href="' + esc(p.url) + '" target="_blank" rel="noopener sponsored">Brainで商品を見る</a>' +
-      '<span class="ad-tag">広告</span></div>' +
-      '</article>';
-  }
-  function renderResults(){
-    setProgress(100, "結果");
-    var picks = assignRoles(choosePicks());
-    var anyCross = picks.some(function(x){ return x.cross; });
-    var anyOver  = picks.some(function(x){ return x.over; });
-    var cond = "条件：" + genreLabel(diag.genre) + " ／ 予算 " + budgetLabel(diag.budget) +
-               " ／ 販売経験 " + (diag.exp === "none" ? "まだない" : "ある");
-    var notes = "";
-    if (anyCross) notes += '<p class="supp-note">※選んだジャンルの条件に合う商品が3つ未満のため、近い選択肢として他ジャンルの商品を含めています。</p>';
-    if (anyOver)  notes += '<p class="supp-note">※一部の商品は、選んだ予算の上限を超えています。各カードに表示しています。</p>';
-    document.getElementById("diag-body").innerHTML =
-      '<p class="diag-q">あなたへの提案（' + picks.length + '案）</p>' +
-      '<p class="diag-cond">' + esc(cond) + '</p>' +
-      '<div class="grid">' + picks.map(resultCard).join("") + '</div>' +
-      notes +
-      '<button type="button" class="diag-restart" id="diag-restart">最初からやり直す</button>';
-    document.getElementById("diag-restart").addEventListener("click", function(){
-      diag = { genre: null, budget: null, exp: null };
-      renderQ1();
-    });
-  }
-  function initDiag(){ renderQ1(); }
 })();
 </script>
 </body>
