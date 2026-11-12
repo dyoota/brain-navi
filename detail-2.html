@@ -108,6 +108,58 @@
   .back-b a{text-decoration:underline; text-underline-offset:3px;}
   footer.site{margin-top:28px; font-size:11px; color:var(--ink2); line-height:1.6;}
 
+  /* v13: 線画アイコン（UIの意味表示だけ。塗りなし・線1.5px固定・角丸・墨色） */
+  .ic{display:inline-block; flex:none; width:1.15em; height:1.15em; vertical-align:-.2em;
+       fill:none; stroke:var(--ink); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round;}
+  .ic path, .ic circle{vector-effect:non-scaling-stroke;}
+  .h{display:flex; align-items:center; gap:8px;}
+  .h .ic{width:24px; height:24px;}
+  .step-l{display:flex; align-items:center; gap:5px;}
+  .step-l .ic{width:15px; height:15px;}
+  .buy{display:flex; align-items:center; justify-content:center; gap:8px;}
+  .buy .ic{width:20px; height:20px;}
+  .back{display:inline-flex; align-items:center; gap:4px;}
+  .back .ic{width:16px; height:16px;}
+  .back-b a{display:inline-flex; align-items:center; gap:6px;}
+  .back-b .ic{width:18px; height:18px;}
+
+  /* v13: 口コミ（JS無効時は通常セクション、JS有効時はモーダル） */
+  .rv-open{display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:16px;
+       padding:12px 16px; background:var(--paper2); color:var(--ink); border:1.5px solid var(--ink); border-radius:6px;
+       font:inherit; font-size:15.5px; font-weight:800; line-height:1.4; text-decoration:none; cursor:pointer;
+       transition:transform .16s var(--press), background-color .16s var(--press); -webkit-tap-highlight-color:transparent;}
+  .rv-open .ic{width:20px; height:20px;}
+  @media (hover:hover){ .rv-open:hover{background:#fff; transform:scale(.98);} }
+  .rv-open:active{transform:scale(.98);}
+  .rv-open:focus-visible, .rv-x:focus-visible{outline:3px solid var(--aka); outline-offset:3px;}
+  .rv-list{list-style:none;}
+  .rv{background:var(--paper2); border:1.5px solid var(--line); border-radius:6px; padding:14px 16px;}
+  .rv + .rv{margin-top:12px;}
+  .rv-star{color:var(--aka); font-size:14px; font-weight:800; letter-spacing:.06em; line-height:1.4;}
+  .rv-t{font-family:var(--mincho); font-weight:700; font-size:17px; line-height:1.5; margin-top:4px; overflow-wrap:anywhere;}
+  .rv-b{font-size:15px; line-height:1.8; margin-top:6px; overflow-wrap:anywhere;}
+  .rv-m{display:flex; flex-wrap:wrap; gap:0 12px; margin-top:8px; font-size:12.5px; color:var(--ink2);}
+  .rv-n{font-weight:700; overflow-wrap:anywhere;}
+  .rv-src{font-size:12px; color:var(--ink2); margin-top:14px; line-height:1.6;}
+
+  dialog.rv-dlg{margin:auto; padding:0; border:2px solid var(--ink); border-radius:8px; background:var(--paper); color:var(--ink);
+       width:min(640px, calc(100vw - 24px)); max-height:calc(100dvh - 32px); overflow:hidden;
+       box-shadow:0 10px 40px rgba(46,36,23,.25); opacity:0; transition:opacity .25s ease;}
+  dialog.rv-dlg.on{opacity:1;}
+  dialog.rv-dlg::backdrop{background:rgba(46,36,23,.5); opacity:0; transition:opacity .25s ease;}
+  dialog.rv-dlg.on::backdrop{opacity:1;}
+  .rv-in{display:flex; flex-direction:column; max-height:calc(100dvh - 36px);}
+  .rv-hd{display:flex; align-items:center; gap:8px; padding:12px 12px 12px 18px; border-bottom:1.5px solid var(--line);}
+  .rv-hd h2{font-family:var(--mincho); font-weight:700; font-size:18px; line-height:1.4; display:flex; align-items:center; gap:8px; min-width:0;}
+  .rv-hd h2 .ic{width:22px; height:22px;}
+  .rv-x{margin-left:auto; flex:none; width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+       background:none; border:0; border-radius:50%; cursor:pointer; color:var(--ink);}
+  .rv-x .ic{width:24px; height:24px;}
+  @media (hover:hover){ .rv-x:hover{background:rgba(201,185,143,.3);} }
+  .rv-body{overflow-y:auto; overscroll-behavior:contain; padding:16px 16px 20px;}
+  html.rv-lock, html.rv-lock body{overflow:hidden;}
+  @media (prefers-reduced-motion: reduce){ dialog.rv-dlg, dialog.rv-dlg::backdrop, .rv-open{transition:none;} }
+
   .motion [data-reveal]{visibility:hidden;}
   @media (prefers-reduced-motion: reduce){ .buy{transition:none;} }
 
@@ -131,7 +183,7 @@
 <header class="site">
   <a class="brand" href="index.html">あおあしのBrain査定</a>
   <span class="stamp-seal" aria-label="査定済">査定済</span>
-  <a class="back" href="index.html#list">一覧へ戻る</a>
+  <a class="back" href="index.html#list"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></svg>一覧へ戻る</a>
 </header>
 
 <main class="wrap" data-detail="2" data-product-id="3">
@@ -142,44 +194,90 @@
   </section>
 
   <section class="blk">
-    <h2 class="h" data-reveal><span class="h-b">【</span>これは何か<span class="h-b">】</span></h2>
+    <h2 class="h" data-reveal><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6.5C10 5 7 4.6 3.5 5v13c3.5-.4 6.5 0 8.5 1.5 2-1.5 5-1.9 8.5-1.5V5C17 4.6 14 5 12 6.5z"/><path d="M12 6.5v13"/></svg><span class="h-b">【</span>これは何か<span class="h-b">】</span></h2>
     <p class="lead" data-reveal>誕生日占いの鑑定書を商品として設計し、AIで鑑定文を作って仕上げる教材。</p>
   </section>
 
   <section class="blk">
-    <h2 class="h" data-reveal><span class="h-b">【</span>なぜ俺が勧めるか<span class="h-b">】</span></h2>
-    <p class="why" data-reveal>レビュー436件は5本中2位。著者の関連3作は累計2,700部以上（公式ページ表記）。</p>
+    <h2 class="h" data-reveal><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span class="h-b">【</span>なぜ俺が勧めるか<span class="h-b">】</span></h2>
+    <p class="why" data-reveal>レビュー437件は5本中2位。著者の関連3作は累計2,700部以上（公式ページ表記）。</p>
     <p class="why" data-reveal>手順が「鑑定書設計書を作る→専用プロンプトで鑑定書を作る（実演10パターン）→デザイン」と工程で書かれ、Canva表紙20パターンとA4鑑定書10パターン＋プロンプトが特典に付く。使う道具がAIのチャット画面とCanvaで済むので、始めるまでの距離が短い。</p>
     <p class="basis" data-reveal>この査定は、Brain公式ページで公開されている目次・説明・数字を読んで出したもの。中身を使った感想ではない。</p>
   </section>
 
   <section class="blk">
-    <h2 class="h" data-reveal><span class="h-b">【</span>買った後の手順<span class="h-b">】</span></h2>
-    <ol class="steps"><li class="step" data-reveal><span class="step-n" aria-hidden="true">1</span><div class="step-b"><p class="step-l">STEP 1</p><h3 class="step-t">AIと商品を整理する</h3><p class="step-d">あなたはChatGPTなどのチャット画面を開き、誰に向けた鑑定書か・その人の悩み・切り口・鑑定項目・世界観を、AIと対話して整理する。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">2</span><div class="step-b"><p class="step-l">STEP 2</p><h3 class="step-t">鑑定書設計書を作る</h3><p class="step-d">あなたは整理した内容を「鑑定書設計書」としてまとめる。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">3</span><div class="step-b"><p class="step-l">STEP 3</p><h3 class="step-t">プロンプトで鑑定文を作る</h3><p class="step-d">あなたは教材の専用プロンプト（テキスト形式）をチャット画面に貼る。AIが鑑定文を返してくる。実演10パターンを見本に進める。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">4</span><div class="step-b"><p class="step-l">STEP 4</p><h3 class="step-t">表紙を選ぶ</h3><p class="step-d">あなたは特典のCanva表紙デザイン20パターンから1つを選び、鑑定書の表紙を作る。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">5</span><div class="step-b"><p class="step-l">STEP 5</p><h3 class="step-t">A4の鑑定書に仕上げる</h3><p class="step-d">あなたは特典のA4鑑定書10パターン（264通りの鑑定に対応）とプロンプトで、鑑定書を仕上げる。</p></div></li></ol>
+    <h2 class="h" data-reveal><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 3c1.6 0 2.5 1.9 2.5 4.3S9 11 7.5 11 5 9.7 5 7.3 5.9 3 7.5 3z"/><path d="M5.6 13.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/><path d="M16.5 8c1.6 0 2.5 1.9 2.5 4.3S18 16 16.5 16 14 14.7 14 12.3 14.9 8 16.5 8z"/><path d="M14.6 18.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/></svg><span class="h-b">【</span>買った後の手順<span class="h-b">】</span></h2>
+    <ol class="steps"><li class="step" data-reveal><span class="step-n" aria-hidden="true">1</span><div class="step-b"><p class="step-l"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 3c1.6 0 2.5 1.9 2.5 4.3S9 11 7.5 11 5 9.7 5 7.3 5.9 3 7.5 3z"/><path d="M5.6 13.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/><path d="M16.5 8c1.6 0 2.5 1.9 2.5 4.3S18 16 16.5 16 14 14.7 14 12.3 14.9 8 16.5 8z"/><path d="M14.6 18.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/></svg>STEP 1</p><h3 class="step-t">AIと商品を整理する</h3><p class="step-d">あなたはChatGPTなどのチャット画面を開き、誰に向けた鑑定書か・その人の悩み・切り口・鑑定項目・世界観を、AIと対話して整理する。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">2</span><div class="step-b"><p class="step-l"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 3c1.6 0 2.5 1.9 2.5 4.3S9 11 7.5 11 5 9.7 5 7.3 5.9 3 7.5 3z"/><path d="M5.6 13.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/><path d="M16.5 8c1.6 0 2.5 1.9 2.5 4.3S18 16 16.5 16 14 14.7 14 12.3 14.9 8 16.5 8z"/><path d="M14.6 18.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/></svg>STEP 2</p><h3 class="step-t">鑑定書設計書を作る</h3><p class="step-d">あなたは整理した内容を「鑑定書設計書」としてまとめる。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">3</span><div class="step-b"><p class="step-l"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 3c1.6 0 2.5 1.9 2.5 4.3S9 11 7.5 11 5 9.7 5 7.3 5.9 3 7.5 3z"/><path d="M5.6 13.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/><path d="M16.5 8c1.6 0 2.5 1.9 2.5 4.3S18 16 16.5 16 14 14.7 14 12.3 14.9 8 16.5 8z"/><path d="M14.6 18.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/></svg>STEP 3</p><h3 class="step-t">プロンプトで鑑定文を作る</h3><p class="step-d">あなたは教材の専用プロンプト（テキスト形式）をチャット画面に貼る。AIが鑑定文を返してくる。実演10パターンを見本に進める。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">4</span><div class="step-b"><p class="step-l"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 3c1.6 0 2.5 1.9 2.5 4.3S9 11 7.5 11 5 9.7 5 7.3 5.9 3 7.5 3z"/><path d="M5.6 13.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/><path d="M16.5 8c1.6 0 2.5 1.9 2.5 4.3S18 16 16.5 16 14 14.7 14 12.3 14.9 8 16.5 8z"/><path d="M14.6 18.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/></svg>STEP 4</p><h3 class="step-t">表紙を選ぶ</h3><p class="step-d">あなたは特典のCanva表紙デザイン20パターンから1つを選び、鑑定書の表紙を作る。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">5</span><div class="step-b"><p class="step-l"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.5 3c1.6 0 2.5 1.9 2.5 4.3S9 11 7.5 11 5 9.7 5 7.3 5.9 3 7.5 3z"/><path d="M5.6 13.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/><path d="M16.5 8c1.6 0 2.5 1.9 2.5 4.3S18 16 16.5 16 14 14.7 14 12.3 14.9 8 16.5 8z"/><path d="M14.6 18.5h3.8v1.3a1.9 1.9 0 0 1-3.8 0z"/></svg>STEP 5</p><h3 class="step-t">A4の鑑定書に仕上げる</h3><p class="step-d">あなたは特典のA4鑑定書10パターン（264通りの鑑定に対応）とプロンプトで、鑑定書を仕上げる。</p></div></li></ol>
     
-    <div class="cta" data-reveal><a class="buy b1" data-buy href="https://brain-market.com/u/yknetdiviner/a/b0kTO4cTMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored">Brainでこの教材を見る →</a></div>
+    <div class="cta" data-reveal><a class="buy b1" data-buy href="https://brain-market.com/u/yknetdiviner/a/b0kTO4cTMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored"><span>Brainでこの教材を見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4.5h5.5V10M19.5 4.5L11 13"/><path d="M17 13.5v4a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4"/></svg></a></div>
   </section>
 
   <section class="blk">
-    <h2 class="h" data-reveal><span class="h-b">【</span>その先<span class="h-b">】</span></h2>
+    <h2 class="h" data-reveal><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg><span class="h-b">【</span>その先<span class="h-b">】</span></h2>
     <p class="after" data-reveal>著者は、顔出し・名前出しなし、スキマ時間で、初期費用なし、特別なAI操作なしで鑑定書を作れると説明している。</p>
     <p class="after" data-reveal>手に入るのは、鑑定書を商品として作れる手順と型。売れることを約束するものではない。</p>
   </section>
 
   <section class="blk">
-    <h2 class="h" data-reveal><span class="h-b">【</span>実績の数字<span class="h-b">】</span></h2>
-    <div class="stats" data-reveal><div class="st"><span class="st-k">レビュー</span><span class="st-n" data-field="reviews">436</span><span class="st-u">件</span><span class="st-src">Brain公式ページの表示</span></div><div class="st"><span class="st-k">関連3作で累計</span><span class="st-n" data-field="salesNote">2,700</span><span class="st-u">部以上</span><span class="st-src">Brain公式ページの表示</span></div><div class="st"><span class="st-k">価格</span><span class="st-n" data-field="price">¥4,980</span><span class="st-u"></span></div></div>
+    <h2 class="h" data-reveal><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.9z"/></svg><span class="h-b">【</span>実績の数字<span class="h-b">】</span></h2>
+    <div class="stats" data-reveal><div class="st"><span class="st-k">レビュー</span><span class="st-n" data-field="reviews">437</span><span class="st-u">件</span><span class="st-src">Brain公式ページの表示</span></div><div class="st"><span class="st-k">関連3作で累計</span><span class="st-n" data-field="salesNote">2,700</span><span class="st-u">部以上</span><span class="st-src">Brain公式ページの表示</span></div><div class="st"><span class="st-k">価格</span><span class="st-n" data-field="price">¥4,980</span><span class="st-u"></span></div></div>
+    <a class="rv-open" href="#reviews" data-reveal><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 4.5h13a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H11l-4.5 3.5v-3.5h-1a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><path d="M8 9h8M8 12.5h5"/></svg><span>口コミを見る（新着5件）</span></a>
     <p class="src">数字はBrain各商品ページの公表値（2026年11月13日確認）。当サイト運営者の実績ではない。</p>
   </section>
 
+  <section class="blk" id="reviews">
+    <h2 class="h" data-dlg-title="&lt;svg class=&quot;ic&quot; viewBox=&quot;0 0 24 24&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;&lt;path d=&quot;M5.5 4.5h13a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H11l-4.5 3.5v-3.5h-1a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z&quot;/&gt;&lt;path d=&quot;M8 9h8M8 12.5h5&quot;/&gt;&lt;/svg&gt;&lt;span&gt;口コミ（新着5件）&lt;/span&gt;"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 4.5h13a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H11l-4.5 3.5v-3.5h-1a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/><path d="M8 9h8M8 12.5h5"/></svg><span class="h-b">【</span>口コミ（新着5件）<span class="h-b">】</span></h2>
+    <ol class="rv-list" data-reviews-of="detail-2"><li class="rv"><p class="rv-star" aria-label="評価5">★★★★★ 5</p><h3 class="rv-t">占い副業を考えている方はぜひ！</h3><p class="rv-b">占い副業を勉強を始め、こちらにたどり着きました。とても有益すぎる内容 これは占い副業を考えている方には必ず読んでおいてほしい内容です。そして、この内容でお値段もお手軽すぎる…ありがたすぎます…</p><p class="rv-m"><span class="rv-n">あすか</span><time class="rv-d" datetime="2026-11-12">2026-11-12</time></p></li><li class="rv"><p class="rv-star" aria-label="評価5">★★★★★ 5</p><h3 class="rv-t">占い教材探し、これで卒業できそうです！</h3><p class="rv-b">YUKIさんの教材は以前にも購入したことがあり、今回の教材もずっと気になっていました。実際に購入してみて、もう占い関連の教材はこれ以上買わなくてもいいかも！と思えるほどの充実した内容でした。この教材のおかげで、できることや挑戦してみたいことが一気に増えて、何から手をつけようかと困ってしまうほどです。これから一つずつ形にしていくのが楽しみです！今回も素晴らしい教材をありがとうございました(^^)</p><p class="rv-m"><span class="rv-n">susu</span><time class="rv-d" datetime="2026-11-07">2026-11-07</time></p></li><li class="rv"><p class="rv-star" aria-label="評価5">★★★★★ 5</p><h3 class="rv-t">新しい可能性を感じられる教材でした。</h3><p class="rv-b">実際に自分の生年月日で鑑定してみて、あれほど詳細な内容が出てくるとは思っていなかったので、とても驚きました。私自身、これまで学んできた占術がありますが、それだけでここまで具体的な鑑定書を作るのは難しいと感じていました。今回の鑑定内容を、自分が学んできた占術と照らし合わせながら読んでいくと、片方だけでは「ん？」と思うような部分も、もう一方の視点を加えることで納得できることが多く、とても興味深かったです。ひとつの占術だけでなく、複数の視点から自分を知ることができるのも面白いところだと思います。鑑定だけでなく、いろいろな応用ができそうなので、これから自分なりに試しながら活用していきたいと思います。</p><p class="rv-m"><span class="rv-n">icchan</span><time class="rv-d" datetime="2026-11-06">2026-11-06</time></p></li><li class="rv"><p class="rv-star" aria-label="評価5">★★★★★ 5</p><h3 class="rv-t">コスパがいいと思います。</h3><p class="rv-b">なけなしで思い切って購入しました。占い系は何個か購入しましたが、頭がパンクしそうな程のボリューム感と安全に占い販売できるノウハウでした。安心してこちらにそって調べながらやっていきたいと思いました。他の教材も購入したい。</p><p class="rv-m"><span class="rv-n">白黒</span><time class="rv-d" datetime="2026-11-05">2026-11-05</time></p></li><li class="rv"><p class="rv-star" aria-label="評価5">★★★★★ 5</p><h3 class="rv-t">おすすめです。</h3><p class="rv-b">時間がない、どう進めていったら良いのか分からない、そんな人におすすめの教材です。プロンプトもしっかりしているため、ここまで楽に出来てしまうのか！という驚きでいっぱいです。流石としか言いようがありませんね。</p><p class="rv-m"><span class="rv-n">けーご</span><time class="rv-d" datetime="2026-10-18">2026-10-18</time></p></li></ol>
+    <p class="rv-src">Brainの商品ページに公開されている購入者レビューから、新着順に5件（2026-11-13確認）</p>
+  </section>
   <section class="blk last">
-    <div class="cta" data-reveal><a class="buy b2" data-buy href="https://brain-market.com/u/yknetdiviner/a/b0kTO4cTMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored">Brainでこの教材を見る →</a></div>
+    <div class="cta" data-reveal><a class="buy b2" data-buy href="https://brain-market.com/u/yknetdiviner/a/b0kTO4cTMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored"><span>Brainでこの教材を見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4.5h5.5V10M19.5 4.5L11 13"/><path d="M17 13.5v4a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4"/></svg></a></div>
     <p class="disc"><span class="d1">アフィリエイト広告を含む</span><br><span class="d2">俺の紹介で売れた実績は、まだ0件だ。</span></p>
-    <p class="back-b"><a href="index.html#list">← 一覧へ戻る</a></p>
+    <p class="back-b"><a href="index.html#list"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></svg><span>一覧へ戻る</span></a></p>
     <footer class="site">運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません</footer>
   </section>
 </main>
 
+<script>
+// v13 口コミ：JS有効時だけ、下部の口コミセクションをモーダル（dialog）に移す。JS無効ならセクションのまま読める
+(function(){
+  var sec = document.getElementById("reviews"), btn = document.querySelector(".rv-open");
+  if (!sec || !btn || typeof HTMLDialogElement !== "function") return;
+  var FADE = 250;
+  var dlg = document.createElement("dialog");
+  dlg.className = "rv-dlg"; dlg.setAttribute("aria-labelledby", "rv-ttl");
+  dlg.innerHTML = '<div class="rv-in"><div class="rv-hd"><h2 id="rv-ttl"></h2>' +
+    '<button type="button" class="rv-x" aria-label="閉じる"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="rv-body"></div></div>';
+  var h = sec.querySelector(".h");
+  dlg.querySelector("#rv-ttl").innerHTML = h.getAttribute("data-dlg-title");
+  var body = dlg.querySelector(".rv-body");
+  sec.querySelectorAll(".rv-list, .rv-src").forEach(function(el){ body.appendChild(el); });
+  sec.parentNode.removeChild(sec);
+  document.body.appendChild(dlg);
+  btn.setAttribute("aria-haspopup", "dialog");
+  var timer = null;
+  function open(e){
+    if (e) e.preventDefault();
+    clearTimeout(timer); dlg.classList.remove("on");
+    if (!dlg.open) dlg.showModal();
+    document.documentElement.classList.add("rv-lock");
+    body.scrollTop = 0;
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ dlg.classList.add("on"); }); });
+  }
+  function close(){
+    if (!dlg.open) return;
+    dlg.classList.remove("on");
+    clearTimeout(timer);
+    timer = setTimeout(function(){ dlg.close(); }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : FADE);
+  }
+  dlg.addEventListener("close", function(){ document.documentElement.classList.remove("rv-lock"); btn.focus({preventScroll: true}); });
+  btn.addEventListener("click", open);
+  dlg.querySelector(".rv-x").addEventListener("click", close);
+  dlg.addEventListener("cancel", function(e){ e.preventDefault(); close(); });          // Esc
+  dlg.addEventListener("click", function(e){ if (e.target === dlg) close(); });          // 背景（::backdrop）
+  window.__rv = {open: open, close: close, dlg: dlg};
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
 <script>
