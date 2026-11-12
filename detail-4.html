@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>シャドウAIタロット鑑定自動化パッケージ｜あおあしのBrain査定</title>
+<meta name="description" content="シャドウAIタロット鑑定自動化パッケージ（¥35,000）を、Brain公式ページの公開情報から査定。何をする教材か、買った後の手順、実績の数字。当サイトはアフィリエイト広告を含みます。">
+<link rel="icon" href="aoashi-icon-goma.png">
+<script>
+  // 隠すのは「JSが動き、reduced-motion でない」ときだけ。GSAP が 2.5 秒で起動しなければ隠しを解除する
+  (function(){
+    var d = document.documentElement;
+    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    d.classList.add("motion");
+    window.__motionFailsafe = setTimeout(function(){ d.classList.remove("motion"); window.__motionTimedOut = true; }, 2500);
+  })();
+</script>
+<style>
+  :root{
+    --paper:#f4ecd9; --paper2:#fffdf4; --ink:#2e2417; --ink2:#6b5b3e;
+    --line:#c9b98f; --aka:#b3352b; --aka-d:#8f271e; --price:#b3540a;
+    --ki:#f5c518; --ki-d:#e0b000;
+    --mincho:"Hiragino Mincho ProN","Hiragino Mincho Pro","YuMincho","Yu Mincho","MS PMincho","Noto Serif JP","Noto Serif CJK JP",serif;
+    --gothic:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Noto Sans CJK JP",sans-serif;
+    --press:cubic-bezier(.23,1,.32,1);
+    --pad:22px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:var(--gothic); background:var(--paper); color:var(--ink);
+       line-height:1.8; font-size:16px; overflow-x:hidden;}
+  a{color:inherit;}
+
+  header.site{position:sticky; top:0; z-index:20; height:52px;
+       display:flex; align-items:center; gap:10px; padding:0 var(--pad);
+       background:rgba(244,236,217,.92); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
+       border-bottom:1px solid rgba(201,185,143,.5);}
+  .brand{font-family:var(--mincho); font-weight:700; font-size:14px; text-decoration:none; min-width:0;
+       white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .stamp-seal{flex:none; width:34px; height:34px; border:2.5px double var(--aka); border-radius:50%;
+       color:var(--aka); font-family:var(--mincho); font-weight:700; font-size:9.5px; line-height:1;
+       display:flex; align-items:center; justify-content:center; transform:rotate(9deg);}
+  .back{margin-left:auto; flex:none; font-size:13px; font-weight:700; white-space:nowrap;
+       text-decoration:underline; text-underline-offset:3px;}
+
+  .wrap{max-width:680px; margin:0 auto; padding:0 var(--pad) 56px;}
+
+  .head{padding:40px 0 8px;}
+  .rank{display:flex; align-items:baseline; gap:4px; font-family:var(--mincho); font-weight:700; color:var(--aka);}
+  .rank-n{font-size:56px; line-height:1;}
+  .rank-u{font-size:22px;}
+  .rank-k{margin-left:10px; font-family:var(--gothic); font-size:12.5px; color:var(--ink2); font-weight:700;}
+  .title{font-family:var(--mincho); font-weight:700; line-height:1.32; letter-spacing:-.01em; margin-top:10px;
+       font-size:clamp(26px, 7.4vw, 44px); word-break:keep-all; overflow-wrap:anywhere; text-wrap:balance;}
+  .price-tag{display:inline-flex; align-items:center; gap:10px; background:#fff;
+       border:2px solid var(--ink); padding:2px 14px 2px 10px; margin-top:20px;
+       font-family:var(--mincho); font-size:28px; font-weight:700; color:var(--price); line-height:1.4;
+       transform:rotate(-1.5deg); box-shadow:2px 2px 0 rgba(46,36,23,.15);}
+  .price-tag .hole{width:10px; height:10px; border-radius:50%; flex:none; border:2px solid var(--ink); background:var(--paper);}
+
+  .blk{padding-top:52px;}
+  .h{font-family:var(--mincho); font-weight:700; font-size:22px; line-height:1.4; margin-bottom:14px;}
+  .h-b{color:var(--aka);}
+  .lead{font-size:16px; font-weight:700;}
+  .why + .why{margin-top:12px;}
+  .basis{margin-top:14px; font-size:13.5px; color:var(--ink2); border-left:3px solid var(--line); padding-left:10px; line-height:1.7;}
+
+  /* 縦のタイムライン */
+  .steps{list-style:none; position:relative; margin-top:6px;}
+  .steps::before{content:""; position:absolute; left:27px; top:28px; bottom:28px; width:2px; background:var(--line);}
+  .step{position:relative; display:grid; grid-template-columns:56px 1fr; gap:16px; padding:14px 0;}
+  .step-n{position:relative; z-index:1; width:56px; height:56px; border-radius:50%;
+       background:var(--paper); border:2.5px solid var(--aka); color:var(--aka);
+       font-family:var(--mincho); font-weight:700; font-size:30px; line-height:1;
+       display:flex; align-items:center; justify-content:center;}
+  .step-b{min-width:0; padding-top:2px;}
+  .step-l{font-size:11.5px; font-weight:800; letter-spacing:.12em; color:var(--aka-d); line-height:1.4;}
+  .step-t{font-family:var(--mincho); font-weight:700; font-size:19px; line-height:1.45; margin-top:2px;}
+  .step-d{font-size:15.5px; margin-top:4px; line-height:1.75;}
+  .step-note{margin-top:10px; font-size:13.5px; color:var(--ink2); background:var(--paper2);
+       border:1.5px dashed var(--line); padding:10px 12px; line-height:1.7;}
+
+  .cta{margin-top:26px; text-align:center;}
+  .buy{display:block; width:100%; max-width:440px; margin:0 auto; text-align:center; background:var(--ki); color:var(--ink);
+       text-decoration:none; font-weight:800; font-size:18px; line-height:1.4; padding:17px 20px;
+       border-radius:6px; border:2px solid var(--ink); box-shadow:0 3px 0 var(--ink);
+       transition:transform .16s var(--press), box-shadow .16s var(--press), background-color .16s var(--press);
+       -webkit-tap-highlight-color:transparent;}
+  @media (hover:hover){ .buy:hover{background:var(--ki-d); transform:scale(.98); box-shadow:0 1.5px 0 var(--ink);} }
+  .buy:active{background:var(--ki-d); transform:scale(.98) translateY(1px); box-shadow:0 0 0 var(--ink);}
+  .buy:focus-visible, .back:focus-visible, .back-b a:focus-visible, .brand:focus-visible{outline:3px solid var(--aka); outline-offset:3px;}
+
+  .after + .after{margin-top:10px;}
+
+  .stats{border-top:1.5px solid var(--ink);}
+  .st{display:flex; flex-wrap:wrap; align-items:baseline; gap:0 6px; padding:12px 2px; border-bottom:1px solid var(--line);
+       font-family:var(--mincho); font-weight:700; color:var(--aka-d);}
+  .st-k{font-size:14px; color:var(--ink2); min-width:0;}
+  .st-n{font-size:34px; line-height:1.2; font-variant-numeric:tabular-nums; margin-left:auto;}
+  .st-u{font-size:15px;}
+  .st-src{flex-basis:100%; font-family:var(--gothic); font-weight:400; font-size:11.5px; color:var(--ink2); text-align:right; line-height:1.5;}
+  .st-note{padding:12px 2px; border-bottom:1px solid var(--line); font-size:14px;}
+  .src{font-size:12px; color:var(--ink2); margin-top:10px; line-height:1.6;}
+
+  .last{padding-top:40px;}
+  .disc{margin-top:28px; font-weight:700; font-size:14px; line-height:1.7;}
+  .disc .d2{color:var(--aka-d);}
+  .back-b{margin-top:16px; font-size:15px; font-weight:700;}
+  .back-b a{text-decoration:underline; text-underline-offset:3px;}
+  footer.site{margin-top:28px; font-size:11px; color:var(--ink2); line-height:1.6;}
+
+  .motion [data-reveal]{visibility:hidden;}
+  @media (prefers-reduced-motion: reduce){ .buy{transition:none;} }
+
+  @media (min-width:760px){
+    :root{--pad:40px;}
+    header.site{height:58px;}
+    .brand{font-size:16px;}
+    .stamp-seal{width:40px; height:40px; font-size:11px;}
+    .head{padding-top:64px;}
+    .rank-n{font-size:72px;}
+    .price-tag{font-size:32px;}
+    .h{font-size:25px;}
+    .lead{font-size:18px;}
+    .step-t{font-size:21px;}
+    .buy{font-size:19px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a class="brand" href="index.html">あおあしのBrain査定</a>
+  <span class="stamp-seal" aria-label="査定済">査定済</span>
+  <a class="back" href="index.html#list">一覧へ戻る</a>
+</header>
+
+<main class="wrap" data-detail="4" data-product-id="4">
+  <section class="head">
+    <p class="rank" data-reveal><span class="rank-n">4</span><span class="rank-u">位</span><span class="rank-k">レビュー件数順</span></p>
+    <h1 class="title" data-reveal data-field="title">シャドウ<wbr>AI<wbr>タロット<wbr>鑑定自動化<wbr>パッケージ</h1>
+    <p data-reveal><span class="price-tag" data-field="price"><span class="hole"></span>¥35,000</span></p>
+  </section>
+
+  <section class="blk">
+    <h2 class="h" data-reveal><span class="h-b">【</span>これは何か<span class="h-b">】</span></h2>
+    <p class="lead" data-reveal>Gemini（AI Studio）で動くタロット鑑定文の自動生成ツールと、その仕上げ方。</p>
+  </section>
+
+  <section class="blk">
+    <h2 class="h" data-reveal><span class="h-b">【</span>なぜ俺が勧めるか<span class="h-b">】</span></h2>
+    <p class="why" data-reveal>レビュー137件。ツールに読み込ませた資料は9万5千字以上、鑑定文ができるまでの実測サンプル（44秒・37秒・42秒・56秒）まで公開されていて、中身を数字で確かめられる。</p>
+    <p class="why" data-reveal>そのうえで著者は「最後は人の目での精査が必要」と書き、購入前に別マニュアルで納得してから買うよう自分から求めている。35,000円と高い教材でこの姿勢なのは、査定でプラスに数えた。</p>
+    <p class="basis" data-reveal>この査定は、Brain公式ページで公開されている目次・説明・数字を読んで出したもの。中身を使った感想ではない。</p>
+  </section>
+
+  <section class="blk">
+    <h2 class="h" data-reveal><span class="h-b">【</span>買った後の手順<span class="h-b">】</span></h2>
+    <ol class="steps"><li class="step" data-reveal><span class="step-n" aria-hidden="true">1</span><div class="step-b"><p class="step-l">STEP 1</p><h3 class="step-t">ツールを開く</h3><p class="step-d">あなたはGemini（AI Studio）でパッケージのツールを開く。スマホでも使える。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">2</span><div class="step-b"><p class="step-l">STEP 2</p><h3 class="step-t">コピペで入れる</h3><p class="step-d">あなたは鑑定に使う内容をコピペで入れる。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">3</span><div class="step-b"><p class="step-l">STEP 3</p><h3 class="step-t">鑑定文が返ってくる</h3><p class="step-d">数十秒で鑑定文が返ってくる。公式の実測サンプルは37〜56秒。</p></div></li><li class="step" data-reveal><span class="step-n" aria-hidden="true">4</span><div class="step-b"><p class="step-l">STEP 4</p><h3 class="step-t">自分の目で仕上げる</h3><p class="step-d">あなたは返ってきた鑑定文を自分の目で読み、仕上げ方のプロセスに沿って精査する。</p></div></li></ol>
+    <p class="step-note" data-reveal>著者は、購入前に別マニュアルで中身を確かめ、納得してから買うよう求めている。Brainのページでそれを確認してから判断してほしい。</p>
+    <div class="cta" data-reveal><a class="buy b1" data-buy href="https://brain-market.com/u/yknetdiviner/a/b5UzMxAjMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored">Brainでこの教材を見る →</a></div>
+  </section>
+
+  <section class="blk">
+    <h2 class="h" data-reveal><span class="h-b">【</span>その先<span class="h-b">】</span></h2>
+    <p class="after" data-reveal>著者は、コピペで鑑定文が完成し、スマホでも作業できると説明している。</p>
+    <p class="after" data-reveal>同時に、最後は人の目での精査が必要だとも明記している。全部を自動で終わらせる道具ではない。</p>
+  </section>
+
+  <section class="blk">
+    <h2 class="h" data-reveal><span class="h-b">【</span>実績の数字<span class="h-b">】</span></h2>
+    <div class="stats" data-reveal><div class="st"><span class="st-k">レビュー</span><span class="st-n" data-field="reviews">137</span><span class="st-u">件</span><span class="st-src">Brain公式ページの表示</span></div><div class="st"><span class="st-k">価格</span><span class="st-n" data-field="price">¥35,000</span><span class="st-u"></span></div></div>
+    <p class="src">数字はBrain各商品ページの公表値（2026年11月13日確認）。当サイト運営者の実績ではない。</p>
+  </section>
+
+  <section class="blk last">
+    <div class="cta" data-reveal><a class="buy b2" data-buy href="https://brain-market.com/u/yknetdiviner/a/b5UzMxAjMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored">Brainでこの教材を見る →</a></div>
+    <p class="disc"><span class="d1">アフィリエイト広告を含む</span><br><span class="d2">俺の紹介で売れた実績は、まだ0件だ。</span></p>
+    <p class="back-b"><a href="index.html#list">← 一覧へ戻る</a></p>
+    <footer class="site">運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません</footer>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var d = document.documentElement;
+  function unhide(){ clearTimeout(window.__motionFailsafe); d.classList.remove("motion"); }
+  if (!(window.gsap && window.ScrollTrigger) || window.__motionTimedOut) { unhide(); return; }
+  gsap.registerPlugin(ScrollTrigger);
+  var mm = gsap.matchMedia();
+  mm.add("(prefers-reduced-motion: no-preference)", function(){
+    // 見出し・本文：軽く下から出るだけ
+    gsap.utils.toArray("[data-reveal]:not(.step)").forEach(function(el){
+      gsap.from(el, {autoAlpha: 0, y: 14, duration: 0.5, ease: "power2.out",
+        scrollTrigger: {trigger: el, start: "top 90%", once: true}});
+    });
+    // STEP：スクロールで1つずつ。番号が先、本文が少し遅れて
+    gsap.utils.toArray(".step").forEach(function(el){
+      var tl = gsap.timeline({scrollTrigger: {trigger: el, start: "top 82%", once: true}});
+      tl.from(el.querySelector(".step-n"), {autoAlpha: 0, scale: 0.6, duration: 0.45, ease: "back.out(1.7)"})
+        .from(el.querySelector(".step-b"), {autoAlpha: 0, x: 18, duration: 0.45, ease: "power2.out"}, "-=0.2");
+    });
+    unhide();
+    // 印刷時は全部見せる
+    window.addEventListener("beforeprint", function(){ ScrollTrigger.getAll().forEach(function(t){ if (t.animation) t.animation.progress(1); }); });
+  });
+  unhide();
+})();
+</script>
+</body>
+</html>
