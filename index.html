@@ -3,8 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>あおあしのBrain査定｜何件売れば元が取れるか</title>
-<meta name="description" content="Brain教材5本を『何件売れば元が取れるか』で査定。当サイトはアフィリエイト広告を含みます。">
+<title>あおあしのBrain査定｜売れてる教材をレビューの多い順に</title>
+<meta name="description" content="Brainで売れている教材5本を、レビュー件数の多い順に並べたリスト。数字はBrain各商品ページの公表値。当サイトはアフィリエイト広告を含みます。">
+<link rel="icon" href="aoashi-icon-goma.png">
 <style>
   :root{
     --paper:#f4ecd9; --paper2:#fffdf4; --ink:#2e2417; --ink2:#6b5b3e;
@@ -19,87 +20,69 @@
        background-image:linear-gradient(rgba(46,36,23,.05) 1px, transparent 1px);
        background-size:100% 30px;}
   a{color:inherit;}
-  .wrap{max-width:640px; margin:0 auto; padding:0 18px;}
+  .wrap{max-width:640px; margin:0 auto; padding:0 16px;}
 
   .pr-bar{background:var(--ad-bg); color:var(--ad); text-align:center;
-          font-size:11.5px; font-weight:700; padding:4px 12px; border-bottom:1px solid #e8d98a;}
+          font-size:11px; font-weight:700; padding:3px 12px; border-bottom:1px solid #e8d98a;}
 
   /* ヘッダー */
-  header.site{padding:16px 0 0;}
-  .mast{display:flex; gap:12px; align-items:center;}
-  .face{width:52px; height:52px; border-radius:50%; object-fit:cover; flex:none;
+  header.site{padding:12px 0 0;}
+  .mast{display:flex; gap:10px; align-items:center;}
+  .face{width:46px; height:46px; border-radius:50%; object-fit:cover; flex:none;
         border:2px solid var(--paper2); box-shadow:0 0 0 1.5px var(--line); background:#fff;}
-  .site-title{flex:1; min-width:0; font-family:var(--mincho); font-size:23px; font-weight:700; line-height:1.25;}
-  .stamp-seal{flex:none; width:54px; height:54px; border:3px double var(--aka); border-radius:50%;
-        color:var(--aka); font-family:var(--mincho); font-weight:700; font-size:14px; line-height:1;
+  .site-title{flex:1; min-width:0; font-family:var(--mincho); font-size:22px; font-weight:700; line-height:1.25;}
+  .stamp-seal{flex:none; width:50px; height:50px; border:3px double var(--aka); border-radius:50%;
+        color:var(--aka); font-family:var(--mincho); font-weight:700; font-size:13px; line-height:1;
         display:flex; align-items:center; justify-content:center;
         transform:rotate(9deg); background:rgba(255,253,244,.65);}
+  .lead{font-family:var(--mincho); font-size:14px; letter-spacing:-.02em; font-weight:700; margin-top:10px; line-height:1.5;}
+  .disclose{font-size:13px; font-weight:700; color:var(--aka-d); margin-top:4px;}
 
-  /* 1位ヒーローチケット */
-  .hero{background:var(--paper2); border:1.5px dashed var(--ink2); border-radius:8px;
-        padding:18px 18px 20px; margin-top:16px; position:relative;}
-  .hero-top{display:flex; gap:12px; align-items:center;}
-  .hero-rank{font-family:var(--mincho); font-weight:700; line-height:.85; flex:none;
-        font-size:112px; color:var(--paper2); -webkit-text-stroke:2.5px var(--aka);}
-  @supports not (-webkit-text-stroke:1px black){ .hero-rank,.row-rank{color:var(--aka);} }
-  .hero-title{font-family:var(--mincho); font-size:20px; font-weight:700; line-height:1.45; min-width:0;}
-  .price-tag{display:inline-flex; align-items:center; gap:10px; background:#fff;
-        border:2px solid var(--ink); padding:4px 14px 4px 10px; margin-top:16px;
-        font-family:var(--mincho); font-size:28px; font-weight:700; color:var(--price);
+  /* リスト（型B） */
+  .list{list-style:none; margin-top:12px;}
+  .item{background:var(--paper2); border:1.5px dashed var(--ink2); border-radius:8px;
+        padding:14px 16px 16px; margin-bottom:14px;}
+  .item-top{display:flex; gap:12px; align-items:center;}
+  .rank{font-family:var(--mincho); font-weight:700; line-height:.85; flex:none;
+        font-size:84px; color:var(--paper2); -webkit-text-stroke:2.2px var(--aka);
+        min-width:52px; text-align:center;}
+  @supports not (-webkit-text-stroke:1px black){ .rank{color:var(--aka);} }
+  .item-title{font-family:var(--mincho); font-size:19px; font-weight:700; line-height:1.4; min-width:0;
+        overflow-wrap:anywhere;}
+  .price-tag{display:inline-flex; align-items:center; gap:9px; background:#fff;
+        border:2px solid var(--ink); padding:2px 12px 2px 9px; margin-top:12px;
+        font-family:var(--mincho); font-size:26px; font-weight:700; color:var(--price);
         transform:rotate(-1deg); box-shadow:2px 2px 0 rgba(46,36,23,.15);}
-  .price-tag .hole{width:10px; height:10px; border-radius:50%; flex:none;
+  .price-tag .hole{width:9px; height:9px; border-radius:50%; flex:none;
         border:2px solid var(--ink); background:var(--paper);}
-  .hero-need{display:flex; align-items:baseline; gap:6px; margin-top:12px;
-        padding-top:10px; border-top:1.5px dashed var(--line);}
-  .hero-need .n{font-family:var(--mincho); font-size:96px; font-weight:700; color:var(--aka-d); line-height:1;}
-  .hero-need .u{font-family:var(--mincho); font-size:24px; font-weight:700;}
+  .stats{display:flex; flex-wrap:wrap; gap:4px 18px; align-items:baseline;
+        margin-top:10px; padding-top:8px; border-top:1.5px dashed var(--line);}
+  .stat{font-family:var(--mincho); font-weight:700; color:var(--aka-d); line-height:1.15;}
+  .stat .k{font-size:14px; color:var(--ink2); margin-right:2px;}
+  .stat .n{font-size:38px;}
+  .stat .u{font-size:17px; margin-left:1px;}
+  .stat.sub{font-size:16px; color:var(--ink);}
+  .stat.none{font-family:var(--gothic); font-size:12.5px; color:var(--ink2);}
+  .hitokoto{font-size:14.5px; color:var(--ink2); margin-top:6px;}
   .buy{display:block; text-align:center; background:var(--ki); color:var(--ink);
-        text-decoration:none; font-weight:800; font-size:18px; padding:15px 16px; margin-top:14px;
+        text-decoration:none; font-weight:800; font-size:17px; padding:12px 16px; margin-top:12px;
         border-radius:6px; border:2px solid var(--ink); box-shadow:0 3px 0 var(--ink);}
   .buy:hover{background:var(--ki-d);}
   .buy:active{transform:translateY(2px); box-shadow:0 1px 0 var(--ink);}
 
-  .disclose{font-family:var(--mincho); font-size:15px; font-weight:700; text-align:center;
-        margin:14px 0 0; color:var(--aka-d);}
-
-  /* 2〜5位 */
-  .rows-head{font-family:var(--mincho); font-size:18px; font-weight:700; margin:34px 0 6px;
-        display:inline-block; border-bottom:3px solid var(--aka); padding-bottom:2px;}
-  .rows{list-style:none; border-top:1.5px solid var(--ink2);}
-  .row{display:flex; align-items:center; gap:12px; padding:14px 2px;
-        border-bottom:1px solid var(--line);}
-  .row-rank{font-family:var(--mincho); font-size:44px; font-weight:700; line-height:1; flex:none;
-        width:34px; text-align:center; color:var(--paper2); -webkit-text-stroke:1.5px var(--aka);}
-  .row-main{flex:1; min-width:0;}
-  .row-title{font-family:var(--mincho); font-size:15px; font-weight:700; line-height:1.4;}
-  .row-nums{display:flex; align-items:baseline; gap:12px; margin-top:3px; flex-wrap:wrap;}
-  .row-price{font-family:var(--mincho); font-size:17px; font-weight:700; color:var(--price);}
-  .row-need{font-family:var(--mincho); font-size:20px; font-weight:700; color:var(--aka-d);}
-  .row-need.none{font-family:var(--gothic); font-size:12.5px; font-weight:700; color:var(--ink2);}
-  .row-buy{flex:none; background:var(--ki); color:var(--ink); text-decoration:none;
-        font-weight:800; font-size:13.5px; padding:8px 11px; border-radius:5px;
-        border:1.5px solid var(--ink); box-shadow:0 2px 0 var(--ink); white-space:nowrap;}
-  .row-buy:hover{background:var(--ki-d);}
-
-  /* 査定の根拠 */
-  .basis{margin-top:40px; border-top:1px solid var(--line); padding-top:12px;
-        font-size:12.5px; color:var(--ink2); line-height:1.7;}
-  .basis summary{cursor:pointer; font-family:var(--mincho); font-weight:700; font-size:14px; color:var(--ink);}
-  .basis ul{margin:8px 0 0 18px;}
-  .basis li{margin:4px 0;}
-  .basis a{color:var(--aka);}
-  .srcs{list-style:none; margin-left:0 !important;}
-  footer.site{padding:22px 0 30px; font-size:11px; color:var(--ink2); text-align:center;}
+  .src{font-size:11.5px; color:var(--ink2); margin-top:8px; text-align:center;}
+  footer.site{padding:10px 0 28px; font-size:11px; color:var(--ink2); text-align:center;}
 
   .error{background:var(--paper2); border:1.5px dashed var(--ink2); border-radius:6px;
-        padding:16px; color:var(--ink2); font-size:14px; margin-top:16px;}
+        padding:16px; color:var(--ink2); font-size:14px; margin-top:12px;}
 
   @media (min-width:700px){
-    .hero{padding:24px 28px 26px;}
-    .hero-rank{font-size:140px;}
-    .hero-title{font-size:24px;}
-    .hero-need .n{font-size:112px;}
-    .buy{display:inline-block; padding:15px 40px;}
+    header.site{padding-top:20px;}
+    .item{padding:20px 26px 22px;}
+    .rank{font-size:120px; min-width:76px;}
+    .item-title{font-size:23px;}
+    .stat .n{font-size:46px;}
+    .buy{display:inline-block; padding:13px 40px;}
   }
 </style>
 </head>
@@ -110,103 +93,88 @@
 <header class="site">
   <div class="wrap">
     <div class="mast">
-      <img class="face" src="aoashi-icon-goma.png" alt="あおあし" width="52" height="52">
+      <img class="face" src="aoashi-icon-goma.png" alt="あおあし" width="46" height="46">
       <h1 class="site-title">あおあしのBrain査定</h1>
       <span class="stamp-seal">査定済</span>
     </div>
+    <p class="lead">Brainで売れてる教材を、レビューの多い順に並べた。</p>
+    <p class="disclose">俺の紹介で売れた実績は、まだ0件だ。</p>
   </div>
 </header>
 
 <main>
   <div class="wrap">
-    <div id="hero" aria-live="polite"><p class="error">読み込み中…</p></div>
+    <ol class="list" id="list" aria-live="polite"><li class="error">読み込み中…</li></ol>
     <noscript><p class="error">表示にはJavaScriptが必要です。</p></noscript>
-
-    <p class="disclose">俺の紹介で売れた実績は、まだ0件だ。</p>
-
-    <h2 class="rows-head">2〜5位</h2>
-    <ol class="rows" id="rows"></ol>
-
-    <details class="basis">
-      <summary>査定の根拠</summary>
-      <ul>
-        <li>件数＝教材価格÷その教材で売れるようになる物の単価（切り上げ）。単価は公表相場の下限を使い、手数料は引いていない。</li>
-        <li>2026年11月13日に5本すべての販売ページを確認したが、単価を金額で明記した教材は1本もなかった。だから単価は市場の公表相場から置いている。</li>
-        <li>出典：
-          <ul class="srcs">
-            <li><a href="https://coconala.com/blogs/1792075/837376" target="_blank" rel="noopener">ココナラ公式案内：メッセージ鑑定 1件1,500円〜</a></li>
-            <li><a href="https://coconala.com/blogs/1792075/837376" target="_blank" rel="noopener">ココナラ公式案内：タロット鑑定 1件1,500円〜</a></li>
-            <li>note株式会社 有料記事分析（2026年1月公表）：実用ノウハウ系の売れている記事 平均1,842円</li>
-            <li><a href="https://kdp.amazon.co.jp/ja_JP/help/topic/G200634500" target="_blank" rel="noopener">Amazon KDP公式：ロイヤリティ35%／70%</a></li>
-          </ul>
-        </li>
-      </ul>
-    </details>
+    <p class="src">数字はBrain各商品ページの公表値（2026年11月13日確認）。</p>
   </div>
 </main>
 
 <footer class="site">
-  <div class="wrap">運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません｜最新の価格はリンク先で確認</div>
+  <div class="wrap">運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません</div>
 </footer>
 
 <script>
 (function(){
+  // ひとこと（products.json に無い表示文。id で対応）
+  var HITOKOTO = {
+    2: "AIで占い鑑定を売る手順",
+    3: "AIで誕生日占いの鑑定書を作って売る",
+    1: "Threadsとnoteで売る仕組み",
+    4: "AIタロット鑑定を自動化して売る",
+    5: "AIでKindle本を作って売る"
+  };
+
   function esc(s){
     return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
       return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
     });
   }
-  function yen(n){ return "¥" + Number(n).toLocaleString("ja-JP"); }
-  function needOf(p){ return p.unitPrice ? Math.ceil(p.price / p.unitPrice) : null; }
-  function link(p, cls, label){
-    return '<a class="' + cls + '" href="' + esc(p.url) + '" target="_blank" rel="noopener sponsored">' + label + '</a>';
+  function num(n){ return Number(n).toLocaleString("ja-JP"); }
+
+  // salesNote の最初の「数字＋部」を大きく見せる（例：累計600部突破 → 累計 [600]部 突破）
+  function salesHtml(s){
+    var m = String(s).match(/^(.*?)([\d,]+)(部)(.*)$/);
+    if (!m) return '<span class="stat sub">' + esc(s) + '</span>';
+    return '<span class="stat">' +
+      (m[1] ? '<span class="k">' + esc(m[1]) + '</span>' : '') +
+      '<span class="n">' + esc(m[2]) + '</span><span class="u">' + esc(m[3] + m[4]) + '</span></span>';
   }
 
-  function hero(p){
-    var need = needOf(p);
-    return '<article class="hero">' +
-      '<div class="hero-top"><span class="hero-rank" aria-label="1位">1</span>' +
-      '<h2 class="hero-title">' + esc(p.title) + '</h2></div>' +
-      '<span class="price-tag"><span class="hole"></span>' + yen(p.price) + '</span>' +
-      (need !== null
-        ? '<p class="hero-need"><span class="n">' + need + '</span><span class="u">件で元が取れる</span></p>'
-        : '<p class="hero-need"><span class="u">件数は出さない</span></p>') +
-      link(p, "buy", "販売ページで見る →") +
-      '</article>';
-  }
+  function item(p, rank){
+    var stats = '';
+    if (p.reviews != null) {
+      stats += '<span class="stat"><span class="k">レビュー</span><span class="n">' + num(p.reviews) +
+               '</span><span class="u">件</span></span>';
+    }
+    if (p.salesNote) stats += salesHtml(p.salesNote);
+    if (p.reviews == null) stats += '<span class="stat none">（レビュー表示なし）</span>';
 
-  function row(p, rank){
-    var need = needOf(p);
-    return '<li class="row">' +
-      '<span class="row-rank" aria-label="' + rank + '位">' + rank + '</span>' +
-      '<div class="row-main"><h3 class="row-title">' + esc(p.title) + '</h3>' +
-      '<p class="row-nums"><span class="row-price">' + yen(p.price) + '</span>' +
-      (need !== null
-        ? '<span class="row-need">' + need + '件</span>'
-        : '<span class="row-need none">件数は出さない</span>') +
-      '</p></div>' +
-      link(p, "row-buy", "見る →") +
+    return '<li class="item">' +
+      '<div class="item-top"><span class="rank" aria-label="' + rank + '位">' + rank + '</span>' +
+      '<h2 class="item-title">' + esc(p.title) + '</h2></div>' +
+      '<span class="price-tag"><span class="hole"></span>¥' + num(p.price) + '</span>' +
+      '<p class="stats">' + stats + '</p>' +
+      (HITOKOTO[p.id] ? '<p class="hitokoto">' + esc(HITOKOTO[p.id]) + '</p>' : '') +
+      '<a class="buy" href="' + esc(p.url) + '" target="_blank" rel="noopener sponsored">Brainで見る →</a>' +
       '</li>';
   }
 
   fetch("products.json", {cache: "no-store"})
     .then(function(r){ if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
     .then(function(data){
+      // レビュー件数の降順。レビュー表示なしは末尾。
       var ps = (data.products || []).slice().sort(function(a, b){
-        var na = needOf(a), nb = needOf(b);
-        if (na === null && nb === null) return a.price - b.price;
-        if (na === null) return 1;
-        if (nb === null) return -1;
-        return (na - nb) || (a.price - b.price);
+        var ra = a.reviews == null ? -1 : a.reviews, rb = b.reviews == null ? -1 : b.reviews;
+        return rb - ra;
       });
       if (!ps.length) throw new Error("商品データなし");
-      document.getElementById("hero").innerHTML = hero(ps[0]);
-      document.getElementById("rows").innerHTML =
-        ps.slice(1).map(function(p, i){ return row(p, i + 2); }).join("");
+      document.getElementById("list").innerHTML =
+        ps.map(function(p, i){ return item(p, i + 1); }).join("");
     })
     .catch(function(err){
-      document.getElementById("hero").innerHTML =
-        '<p class="error">読み込めませんでした（' + esc(err.message) + '）。再読み込みしてください。</p>';
+      document.getElementById("list").innerHTML =
+        '<li class="error">読み込めませんでした（' + esc(err.message) + '）。再読み込みしてください。</li>';
     });
 })();
 </script>
