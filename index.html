@@ -6,6 +6,13 @@
 <title>あおあしのBrain査定｜売れてる教材をレビューの多い順に</title>
 <meta name="description" content="Brainで売れている教材5本を、レビュー件数の多い順に並べたリスト。数字はBrain各商品ページの公表値。当サイトはアフィリエイト広告を含みます。">
 <link rel="icon" href="aoashi-icon-goma.png">
+<script>
+  // 動きは「JSが動き、IntersectionObserverがあり、reduced-motionでない」ときだけ有効にする
+  (function(){
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduce && "IntersectionObserver" in window) document.documentElement.classList.add("anim");
+  })();
+</script>
 <style>
   :root{
     --paper:#f4ecd9; --paper2:#fffdf4; --ink:#2e2417; --ink2:#6b5b3e;
@@ -76,6 +83,40 @@
   .error{background:var(--paper2); border:1.5px dashed var(--ink2); border-radius:6px;
         padding:16px; color:var(--ink2); font-size:14px; margin-top:12px;}
 
+  /* v9: レビュー件数バー（458件=100%） */
+  .bar{display:block; height:12px; margin-top:8px; background:rgba(201,185,143,.28);
+        border:1.5px solid var(--line); border-radius:2px; overflow:hidden;}
+  .bar-fill{display:block; height:100%; width:var(--w); background:var(--aka);
+        box-shadow:inset 0 -2px 0 var(--aka-d);}
+  /* カウントアップ中に幅が揺れない数字（JSで最終値の幅を min-width に固定） */
+  .stat .n{display:inline-block; text-align:right; font-variant-numeric:tabular-nums;}
+
+  /* v9: 動き。.anim は JS が付ける（JS無効・reduced-motion 時は何も隠さない） */
+  .anim .item{opacity:0; transform:translateY(26px);
+        transition:opacity .6s ease-out, transform .6s ease-out;}
+  .anim .item.on{opacity:1; transform:none;}
+  .anim .item .bar-fill{width:0; transition:width 1s ease-out .15s;}
+  .anim .item.on .bar-fill{width:var(--w);}
+  .anim .stamp-seal{animation:stampIn .55s cubic-bezier(.2,.7,.3,1.2) .7s both;}
+  @keyframes stampIn{
+    0%{opacity:0; transform:rotate(9deg) scale(2.4);}
+    65%{opacity:1; transform:rotate(9deg) scale(.9);}
+    100%{opacity:1; transform:rotate(9deg) scale(1);}
+  }
+  .lead .ch{display:inline-block;}
+  .anim .lead .ch{animation:chIn .4s ease-out both; animation-delay:calc(var(--i) * 35ms + .1s);}
+  @keyframes chIn{ from{opacity:0; transform:translate(-.35em,.15em);} to{opacity:1; transform:none;} }
+  @media (prefers-reduced-motion: reduce){
+    .anim .item, .anim .item .bar-fill, .anim .stamp-seal, .anim .lead .ch{
+      opacity:1 !important; transform:none; transition:none !important; animation:none !important;}
+    .anim .item .bar-fill{width:var(--w);}
+    .anim .stamp-seal{transform:rotate(9deg);}
+  }
+  @media print{
+    .anim .item{opacity:1 !important; transform:none !important;}
+    .anim .item .bar-fill{width:var(--w) !important;}
+  }
+
   @media (min-width:700px){
     header.site{padding-top:20px;}
     .item{padding:20px 26px 22px;}
@@ -138,13 +179,17 @@
     if (!m) return '<span class="stat sub">' + esc(s) + '</span>';
     return '<span class="stat">' +
       (m[1] ? '<span class="k">' + esc(m[1]) + '</span>' : '') +
-      '<span class="n">' + esc(m[2]) + '</span><span class="u">' + esc(m[3] + m[4]) + '</span></span>';
+      '<span class="n" data-count>' + esc(m[2]) + '</span><span class="u">' + esc(m[3] + m[4]) + '</span></span>';
   }
 
-  function item(p, rank){
-    var stats = '';
+  function item(p, rank, maxReviews){
+    var stats = '', bar = '';
     if (p.reviews != null) {
-      stats += '<span class="stat"><span class="k">レビュー</span><span class="n">' + num(p.reviews) +
+      // 図形のみ（文章なし）。最大レビュー件数（458件）を100%とした相対幅
+      var w = maxReviews > 0 ? (p.reviews / maxReviews * 100) : 0;
+      bar = '<span class="bar" aria-hidden="true" data-reviews="' + p.reviews + '">' +
+            '<span class="bar-fill" style="--w:' + w.toFixed(3) + '%"></span></span>';
+      stats += '<span class="stat"><span class="k">レビュー</span><span class="n" data-count>' + num(p.reviews) +
                '</span><span class="u">件</span></span>';
     }
     if (p.salesNote) stats += salesHtml(p.salesNote);
@@ -154,10 +199,68 @@
       '<div class="item-top"><span class="rank" aria-label="' + rank + '位">' + rank + '</span>' +
       '<h2 class="item-title">' + esc(p.title) + '</h2></div>' +
       '<span class="price-tag"><span class="hole"></span>¥' + num(p.price) + '</span>' +
-      '<p class="stats">' + stats + '</p>' +
+      '<p class="stats">' + stats + '</p>' + bar +
       (HITOKOTO[p.id] ? '<p class="hitokoto">' + esc(HITOKOTO[p.id]) + '</p>' : '') +
       '<a class="buy" href="' + esc(p.url) + '" target="_blank" rel="noopener sponsored">Brainで見る →</a>' +
       '</li>';
+  }
+
+  var ANIM = document.documentElement.classList.contains("anim");
+
+  // ヘッダー直下の1行を1文字ずつ span に分ける（文字列は変えない）
+  (function(){
+    if (!ANIM) return;
+    var lead = document.querySelector(".lead");
+    var chars = Array.from(lead.textContent);
+    lead.innerHTML = chars.map(function(c, i){
+      return '<span class="ch" style="--i:' + i + '">' + esc(c) + '</span>';
+    }).join("");
+  })();
+
+  // 0 から最終値までカウントアップ。最後は元の表示文字列そのものに戻す
+  function countUp(el){
+    var finalText = el.textContent;
+    var target = parseInt(finalText.replace(/,/g, ""), 10);
+    if (!isFinite(target) || target <= 0) return;
+    var dur = 1000, t0 = null;
+    el.textContent = "0";
+    function step(ts){
+      if (t0 === null) t0 = ts;
+      var k = Math.min(1, (ts - t0) / dur);
+      var e = 1 - Math.pow(1 - k, 3); // ease-out
+      el.textContent = k < 1 ? num(Math.round(target * e)) : finalText;
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function setupMotion(list){
+    // 数字の表示幅を最終値の幅で固定（em 単位なので画面幅でフォントが変わっても崩れない）
+    list.querySelectorAll("[data-count]").forEach(function(el){
+      var fs = parseFloat(getComputedStyle(el).fontSize) || 16;
+      el.style.minWidth = (el.getBoundingClientRect().width / fs).toFixed(3) + "em";
+    });
+    if (!ANIM) return;
+
+    function show(li){
+      if (li.classList.contains("on")) return;
+      li.classList.add("on");
+      li.querySelectorAll("[data-count]").forEach(countUp);
+    }
+    var items = list.querySelectorAll(".item");
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){ show(en.target); io.unobserve(en.target); }
+      });
+    }, {threshold: 0.15, rootMargin: "0px 0px -8% 0px"});
+    items.forEach(function(li, i){
+      if (i === 0) {
+        // 1位は読み込み直後に出す（transition を効かせるため1フレーム置く）
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ show(li); }); });
+      } else {
+        io.observe(li);
+      }
+    });
   }
 
   fetch("products.json", {cache: "no-store"})
@@ -169,8 +272,10 @@
         return rb - ra;
       });
       if (!ps.length) throw new Error("商品データなし");
-      document.getElementById("list").innerHTML =
-        ps.map(function(p, i){ return item(p, i + 1); }).join("");
+      var maxReviews = ps.reduce(function(m, p){ return p.reviews != null && p.reviews > m ? p.reviews : m; }, 0);
+      var list = document.getElementById("list");
+      list.innerHTML = ps.map(function(p, i){ return item(p, i + 1, maxReviews); }).join("");
+      setupMotion(list);
     })
     .catch(function(err){
       document.getElementById("list").innerHTML =
