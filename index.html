@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>あおあしのBrain査定｜何件売れば元が取れるかで比べる</title>
-<meta name="description" content="俺（あおあし）が、買う側の数字だけでBrainの教材5本を査定するサイト。物差しは1つだけ、『何件売れば元が取れるか』。想定単価を動かすと回収件数がその場で変わります。当サイトはアフィリエイト広告を含みます。">
+<meta name="description" content="俺（あおあし）が、買う側の数字だけでBrainの教材5本を査定するサイト。物差しは1つだけ、『何件売れば元が取れるか』。単価は各教材が教える売り物の値段で、根拠と出典を1本ずつ書いた。当サイトはアフィリエイト広告を含みます。">
 <style>
   :root{
     --paper:#f4ecd9; --paper2:#fffdf4; --ink:#2e2417; --ink2:#6b5b3e;
@@ -46,17 +46,6 @@
   .cond{background:var(--paper2); border:1.5px dashed var(--ink2); border-radius:6px;
         padding:22px 20px 18px; margin-top:24px;}
   .cond-label{font-family:var(--mincho); font-size:15px; font-weight:700; letter-spacing:.12em; color:var(--ink2);}
-  .unit-big{font-family:var(--mincho); font-size:42px; font-weight:700; line-height:1.3; margin-top:6px;}
-  .unit-big small{font-size:15px; font-weight:400; color:var(--ink2); font-family:var(--gothic);}
-  input[type=range]{-webkit-appearance:none; appearance:none; width:100%; height:44px;
-        background:transparent; cursor:pointer;}
-  input[type=range]::-webkit-slider-runnable-track{height:6px; background:var(--line); border-radius:3px;}
-  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:26px; height:26px; border-radius:50%;
-        background:var(--aka); border:3px solid var(--paper2); box-shadow:0 0 0 1.5px var(--aka-d); margin-top:-10px;}
-  input[type=range]::-moz-range-track{height:6px; background:var(--line); border-radius:3px;}
-  input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%;
-        background:var(--aka); border:3px solid var(--paper2); box-shadow:0 0 0 1.5px var(--aka-d);}
-  .slider-scale{display:flex; justify-content:space-between; font-size:12.5px; color:var(--ink2); margin-top:-6px;}
   .define{font-size:13.5px; color:var(--ink); margin-top:12px; line-height:1.75;}
   .formula{font-size:13px; color:var(--ink2); margin-top:6px;}
 
@@ -96,28 +85,6 @@
   .need-num{font-family:var(--mincho); font-size:54px; font-weight:700; color:var(--aka-d); line-height:1;}
   .need-unit{font-size:13px; font-weight:700; line-height:1.45;}
 
-  /* 回収ロード */
-  .road{padding-top:26px;}
-  .road-track{position:relative; display:flex; align-items:center; gap:6px;}
-  .road-track::before{content:""; position:absolute; left:0; right:0; top:50%;
-        height:2px; background:var(--line); transform:translateY(-50%);}
-  .road-start{position:relative; z-index:1; flex:none; font-size:11.5px; font-weight:700;
-        background:var(--ink); color:var(--paper2); border-radius:3px; padding:2px 7px;}
-  .road-dots{position:relative; z-index:1; display:flex; align-items:center; gap:2px;
-        flex:0 1 auto; min-width:0;}
-  .ms{flex:none; width:9px; height:9px; border-radius:50%;
-        background:var(--paper2); border:2px solid var(--ink2);}
-  .road-dots.dense1{gap:1px;}
-  .road-dots.dense1 .ms{width:6px; height:6px;}
-  .road-dots.dense2{gap:1px;}
-  .road-dots.dense2 .ms{width:4px; height:4px; border-width:1.5px;}
-  .org{position:relative; flex:none; width:19px; height:19px; border-radius:50%;
-        background:var(--aka); border:2px solid var(--aka-d);}
-  .org .flag{position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%);
-        font-size:11px; font-weight:700; color:var(--aka); white-space:nowrap;}
-  .org .flag::after{content:""; position:absolute; top:100%; left:50%; transform:translateX(-50%);
-        border:4px solid transparent; border-top-color:var(--aka);}
-  .road-ext{position:relative; z-index:1; flex:0 0 40px; border-top:3px dashed var(--aka);}
   .profit{font-size:15px; margin-top:12px;}
   .profit b{color:var(--aka-d); font-size:17px;}
   .stats{font-size:15.5px; margin-top:14px;}
@@ -138,6 +105,31 @@
   .error{background:var(--paper2); border:1.5px dashed var(--ink2); border-radius:6px;
         padding:20px; color:var(--ink2); font-size:15px; margin-top:22px;}
 
+  /* v6：物差しのルール／売り物と単価／回収件数の計算 */
+  .rules{margin:10px 0 0 20px; font-size:14.5px; line-height:1.8;}
+  .rules li{margin:5px 0;}
+  .teach{margin-top:16px; padding-top:14px; border-top:1.5px dashed var(--line);}
+  .teach-label{font-size:12px; font-weight:700; letter-spacing:.12em; color:var(--ink2);}
+  .teach-body{font-size:16.5px; font-weight:700; margin-top:2px; line-height:1.6;}
+  .unit-line{display:flex; align-items:baseline; flex-wrap:wrap; gap:8px; margin-top:6px;}
+  .unit-line .u-lbl{font-size:13px; color:var(--ink2);}
+  .unit-line .u-amt{font-family:var(--mincho); font-size:28px; font-weight:700;}
+  .unit-line .u-per{font-size:13.5px; color:var(--ink2);}
+  .basis-badge{font-size:12px; font-weight:700; border:1.5px solid var(--ink); border-radius:20px;
+        padding:0 9px; background:var(--paper);}
+  .src-note{font-size:13px; color:var(--ink2); line-height:1.75; margin-top:8px;}
+  .src-note a{color:var(--aka);}
+  .need-block{display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+        margin-top:16px; padding-top:14px; border-top:1.5px dashed var(--line);}
+  .need-block .need-num{font-family:var(--mincho); font-size:54px; font-weight:700;
+        color:var(--aka-d); line-height:1;}
+  .need-block .need-unit{font-size:13px; font-weight:700; line-height:1.45;}
+  .need-formula{font-size:13.5px; color:var(--ink2); width:100%; margin-top:2px;}
+  .need-formula b{color:var(--ink); font-family:var(--mincho); font-weight:700;}
+  .nocount{margin-top:16px; padding-top:14px; border-top:1.5px dashed var(--line);}
+  .nocount .nc-cap{font-family:var(--mincho); font-size:20px; font-weight:700;}
+  .nocount p{font-size:14.5px; margin-top:6px; line-height:1.8;}
+
   footer.site{border-top:1px solid var(--line); background:var(--paper2); padding:24px 0 32px;}
   footer.site p{font-size:12.5px; color:var(--ink2); margin-bottom:6px; line-height:1.7;}
 
@@ -147,14 +139,12 @@
     .site-title{font-size:26px;}
     .stamp-seal{width:60px; height:60px; font-size:13px;}
     .lead{font-size:17.5px;}
-    .unit-big{font-size:33px;}
     .rank-num{font-size:52px;}
     .rank-side{font-size:13px; margin-top:8px;}
     .stamp{font-size:12.5px; padding:4px 7px; margin-top:6px;}
     .t-main h2{font-size:16.5px;}
     .price-tag{font-size:25px;}
-    .need-num{font-size:42px;}
-    .road-ext{flex-basis:24px;}
+    .need-block .need-num{font-size:42px;}
     .ticket{padding:18px 14px 16px;}
     .cond{padding:18px 14px 14px;}
   }
@@ -176,25 +166,30 @@
     </div>
     <p class="lead">俺は買う前に、Brainの教材を全部『何件売れば元が取れるか』で査定している。物差しは、それ1本だけだ。</p>
     <p class="disclose">俺の紹介で売れた実績は、まだ0件だ。だから査定は、売る側ではなく買う側の数字だけでやる。</p>
-    <p class="updated">更新日：2026年11月11日／運営者：あおあし</p>
+    <p class="updated">更新日：2026年11月13日／運営者：あおあし</p>
   </div>
 </header>
 
 <main>
   <div class="wrap">
-    <section class="cond" aria-label="査定の条件">
-      <p class="cond-label">査定の条件 ― 自分の商品を1件いくらで売るか</p>
-      <p class="unit-big"><span id="unit-val">¥3,000</span> <small>で売る場合</small></p>
-      <input type="range" id="unit-slider" min="1000" max="10000" step="500" value="3000" aria-label="想定単価">
-      <div class="slider-scale"><span>¥1,000</span><span>¥10,000</span></div>
-      <p class="define">「件数」は、俺がこの教材を買ったとして、自分の商品を想定単価で売って元を取るのに必要な件数だ。紹介報酬の計算ではない。</p>
-      <p class="formula">計算式：必要な件数 ＝ 教材価格 ÷ 想定単価（切り上げ）</p>
+    <section class="cond" aria-label="査定の物差し">
+      <p class="cond-label">査定の物差し ― 件数の出し方</p>
+      <p class="define">「件数」は、その教材を買った人が、教わる売り物を単価で売って元を取るのに必要な件数だ。紹介報酬の計算ではない。単価は教材ごとに違う。各カードに、売り物・単価・根拠をセットで書いた。</p>
+      <ul class="rules">
+        <li>教材の販売ページに価格例があればそれを使う。なければ、公表されている相場データ（note公式の分析、ココナラ公式の料金目安）から置き、「推定（相場）」と出典を書く。</li>
+        <li>相場に幅があるものは、いちばん安い側で置く。楽な数字で件数を少なく見せないため。</li>
+        <li>単価の根拠が置けない教材は、件数を出さない。無理に数字を作らない。</li>
+        <li>計算は販売価格ベースで、手数料は引いていない。</li>
+      </ul>
+      <p class="formula">計算式：回収件数 ＝ 教材価格 ÷ 売り物の単価（切り上げ）</p>
+      <p class="define">2026年11月13日に5本すべての販売ページ（無料で読める範囲）を実際に確認したが、買った人が売る物の単価を金額で明記した教材は1本もなかった。だから、このサイトで使う単価は、全部、市場の実勢（公表されている相場データ）から置いている。</p>
+      <p class="define">前の版には「単価を自分で動かすスライダー」があった。誰の単価か決まらない数字を動かしても査定にはならないので、外した。</p>
     </section>
 
     <div class="rank-head">
       <h2>査定ランキング</h2>
     </div>
-    <p class="rank-note">順位は「¥3,000で売る場合に、何件で元が取れるか」の少ない順で固定している。上の条件を変えると各カードの件数は変わるが、順位は動かさない。</p>
+    <p class="rank-note">順位は回収件数の少ない順（同数なら価格の安い順）。件数は各教材の単価で計算した固定値で、訪問者が動かすものではない。件数を出していない教材は最後に置く。</p>
 
     <div class="cmp-list" id="cmp-list" aria-live="polite">
       <p class="error">商品データを読み込んでいます…</p>
@@ -209,7 +204,7 @@
   <div class="wrap">
     <p>運営者：あおあし</p>
     <p>当サイトはアフィリエイト広告を含みます。リンク先で購入が成立すると、運営者に紹介料が入る場合があります。</p>
-    <p>掲載している価格・内容・評価・販売実績は、各販売者がBrainの商品ページで公開している表示（2026年11月11日確認）に基づきます。最新の価格と内容は、必ずリンク先の商品ページでご確認ください。</p>
+    <p>掲載している価格・内容・評価・販売実績は、各販売者がBrainの商品ページで公開している表示（2026年11月11日確認）に基づきます。回収件数の単価の根拠（相場データ）は、2026年11月13日に各出典で確認しました。最新の価格と内容は、必ずリンク先の商品ページでご確認ください。</p>
     <p>掲載教材の購入・運用によって収益が得られることを保証するものではありません。</p>
     <p>「Brain」は、教材プラットフォームBrainの名称です。当サイトはBrain公式サイトではありません。</p>
   </div>
@@ -217,10 +212,7 @@
 
 <script>
 (function(){
-  var unitPrice = 3000;
   var products = [];
-  var nodes = {};
-  var STAMPS = ["まずこれ", "堅い", "堅い", "上級者向け", "高額・本気向け"];
 
   function esc(s){
     return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
@@ -228,7 +220,7 @@
     });
   }
   function yen(n){ return "¥" + Number(n).toLocaleString("ja-JP"); }
-  function needAt(p, unit){ return Math.ceil(p.price / unit); }
+  function needOf(p){ return p.unitPrice ? Math.ceil(p.price / p.unitPrice) : null; }
 
   function statsLine(p){
     var parts = [];
@@ -240,33 +232,55 @@
            ' <span class="src">（販売者がBrain商品ページで公表している数字）</span></p>';
   }
 
+  function teachBlock(p){
+    var h = '<div class="teach">' +
+      '<p class="teach-label">この教材で売れるようになる物</p>' +
+      '<p class="teach-body">' + esc(p.teaches) + '</p>';
+    if (p.unitPrice){
+      h += '<p class="unit-line"><span class="u-lbl">その単価</span>' +
+        '<span class="u-amt">' + yen(p.unitPrice) + '</span>' +
+        '<span class="u-per">／' + esc(p.unitLabel) + '</span>' +
+        '<span class="basis-badge">' + esc(p.unitBasis) + '</span></p>';
+    }
+    h += '<p class="src-note">単価の根拠：' + esc(p.unitSource) +
+      (p.unitSourceUrl ? ' <a href="' + esc(p.unitSourceUrl) + '" target="_blank" rel="noopener">出典を見る</a>' : '') +
+      '</p>' +
+      '<p class="src-note">販売ページの確認：この教材の販売ページには、買った人が売る物の単価の明記がなかった（2026年11月13日に、5本すべての販売ページを確認済み）。</p></div>';
+    return h;
+  }
+
   function item(p, rank){
+    var need = needOf(p);
     var el = document.createElement("article");
     el.className = "ticket";
-    el.innerHTML =
+    var h =
       '<div class="t-head">' +
         '<div class="rank"><span class="rank-side">第</span><span class="rank-num">' + rank + '</span><span class="rank-side">位</span></div>' +
         '<div class="t-main"><h2>' + esc(p.title) + '</h2>' +
         '<p class="seller">販売者：' + esc(p.seller) + '</p></div>' +
-        '<span class="stamp">' + STAMPS[rank - 1] + '</span>' +
+        '<span class="stamp">' + esc(p.stamp) + '</span>' +
       '</div>' +
       '<div class="price-row">' +
         '<span class="price-tag"><span class="hole"></span>' + yen(p.price) + ' <small>税込</small></span>' +
-        '<p class="need"><span class="need-num"></span><span class="need-unit">件売れば<br>元が取れる</span></p>' +
       '</div>' +
-      '<div class="road"><div class="road-track">' +
-        '<span class="road-start">購入</span><span class="road-dots"></span><span class="road-ext"></span>' +
-      '</div></div>' +
-      '<p class="profit">原点を超えたら、1件ごとに <b class="profit-amt"></b> が利益になる。</p>' +
-      statsLine(p) +
+      teachBlock(p);
+    if (need !== null){
+      var raw = p.price / p.unitPrice;
+      var f = (Math.abs(raw - Math.round(raw)) < 1e-9)
+        ? yen(p.price) + ' ÷ ' + yen(p.unitPrice) + ' ＝ ' + Math.round(raw) + '件'
+        : yen(p.price) + ' ÷ ' + yen(p.unitPrice) + ' ＝ ' + raw.toFixed(2) + ' → 切り上げて ' + need + '件';
+      h += '<div class="need-block"><span class="need-num">' + need + '</span>' +
+        '<span class="need-unit">件売れば<br>元が取れる</span>' +
+        '<p class="need-formula">計算：<b>' + f + '</b></p></div>' +
+        '<p class="profit">原点を超えたら、1件ごとに <b>' + yen(p.unitPrice) + '</b> が利益になる。</p>';
+    } else {
+      h += '<div class="nocount"><p class="nc-cap">回収件数：出さない</p><p>' + esc(p.noCountNote) + '</p></div>';
+    }
+    h += statsLine(p) +
       (p.note ? '<p class="comment"><span class="comment-label">あおあしの査定</span>' + esc(p.note) + '</p>' : '') +
       '<div class="cta-row"><a class="cta" href="' + esc(p.url) + '" target="_blank" rel="noopener sponsored">Brainで商品を見る</a>' +
       '<span class="ad-tag">広告</span></div>';
-    nodes[p.id] = {
-      num: el.querySelector(".need-num"),
-      dots: el.querySelector(".road-dots"),
-      profit: el.querySelector(".profit-amt")
-    };
+    el.innerHTML = h;
     return el;
   }
 
@@ -274,34 +288,17 @@
     var list = document.getElementById("cmp-list");
     list.innerHTML = "";
     products.forEach(function(p, i){ list.appendChild(item(p, i + 1)); });
-    update();
   }
-
-  function update(){
-    document.getElementById("unit-val").textContent = yen(unitPrice);
-    products.forEach(function(p){
-      var n = needAt(p, unitPrice);
-      var node = nodes[p.id];
-      node.num.textContent = n;
-      node.dots.className = "road-dots" + (n >= 35 ? " dense2" : (n >= 23 ? " dense1" : ""));
-      var html = "";
-      for (var i = 0; i < n - 1; i++) html += '<span class="ms"></span>';
-      html += '<span class="org"><span class="flag">原点</span></span>';
-      node.dots.innerHTML = html;
-      node.profit.textContent = yen(unitPrice);
-    });
-  }
-
-  document.getElementById("unit-slider").addEventListener("input", function(){
-    unitPrice = parseInt(this.value, 10);
-    update();
-  });
 
   fetch("products.json", {cache: "no-store"})
     .then(function(r){ if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
     .then(function(data){
       products = (data.products || []).slice().sort(function(a, b){
-        return (needAt(a, 3000) - needAt(b, 3000)) || (a.price - b.price);
+        var na = needOf(a), nb = needOf(b);
+        if (na === null && nb === null) return a.price - b.price;
+        if (na === null) return 1;
+        if (nb === null) return -1;
+        return (na - nb) || (a.price - b.price);
       });
       if (data.note){
         var d = String(data.updated || "").split("-");
