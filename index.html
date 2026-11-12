@@ -3,93 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brain教材ナビ｜元を取るのに何件売ればいいかで比べる</title>
-<meta name="description" content="Brainの副業教材5本を、『元を取るのに何件売ればいいか』だけで比べるサイトです。想定単価を動かすと、必要な件数のマス目がその場で変わります。当サイトはアフィリエイト広告を含みます。">
+<title>あおあしのBrain査定｜何件売れば元が取れるかで比べる</title>
+<meta name="description" content="俺（あおあし）が、買う側の数字だけでBrainの教材5本を査定するサイト。物差しは1つだけ、『何件売れば元が取れるか』。想定単価を動かすと回収件数がその場で変わります。当サイトはアフィリエイト広告を含みます。">
 <style>
   :root{
-    --ink:#1c2430; --sub:#5b6572; --line:#dfe3e8; --bg:#f6f7f9;
-    --accent:#0b6e4f; --accent-dark:#095a41;
-    --price:#b3540a; --ad:#8a6d00; --ad-bg:#fff6d6;
+    --paper:#f4ecd9; --paper2:#fffdf4; --ink:#2e2417; --ink2:#6b5b3e;
+    --line:#c9b98f; --aka:#b3352b; --aka-d:#8f271e; --price:#b3540a;
+    --ad:#8a6d00; --ad-bg:#fff6d6;
+    --mincho:"Hiragino Mincho ProN","Hiragino Mincho Pro","YuMincho","Yu Mincho","MS PMincho",serif;
+    --gothic:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
   }
   *{box-sizing:border-box; margin:0; padding:0;}
-  body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",sans-serif;
-       background:var(--bg); color:var(--ink); line-height:1.8; font-size:16px;}
+  body{font-family:var(--gothic); background:var(--paper); color:var(--ink);
+       line-height:1.8; font-size:16px;
+       background-image:linear-gradient(rgba(46,36,23,.05) 1px, transparent 1px);
+       background-size:100% 30px;}
   .pr-bar{position:sticky; top:0; z-index:10; background:var(--ad-bg); color:var(--ad);
           text-align:center; font-size:13px; font-weight:700; padding:7px 12px;
           border-bottom:1px solid #e8d98a;}
   .wrap{max-width:760px; margin:0 auto; padding:0 18px;}
 
-  /* 顔＋吹き出し */
-  header.site{padding:30px 0 8px;}
-  .brand{font-size:13px; font-weight:700; letter-spacing:.12em; color:var(--sub); margin-bottom:16px;}
-  .face-row{display:flex; gap:16px; align-items:flex-start;}
-  .face{width:84px; height:84px; border-radius:50%; object-fit:cover; flex:none;
-        border:2px solid var(--line); background:#fff;}
-  .bubbles{display:flex; flex-direction:column; gap:12px; flex:1; min-width:0;}
-  .bubble{position:relative; background:#fff; border:1.5px solid var(--ink); border-radius:14px;
-          padding:12px 16px; font-size:16.5px; font-weight:600; line-height:1.7;}
-  .bubble::before{content:""; position:absolute; left:-9px; top:26px; width:16px; height:16px;
-          background:#fff; border-left:1.5px solid var(--ink); border-bottom:1.5px solid var(--ink);
-          transform:rotate(45deg);}
-  .bubble.sub{font-weight:400; font-size:15px; color:var(--sub); border-color:var(--line);}
-  .bubble.sub::before{border-color:var(--line);}
-  .updated{font-size:12.5px; color:var(--sub); margin-top:14px;}
+  /* マストヘッド：一人称の査定人 */
+  header.site{padding:34px 0 4px;}
+  .mast{display:flex; gap:18px; align-items:center;}
+  .face{width:104px; height:104px; border-radius:50%; object-fit:cover; flex:none;
+        border:3px solid var(--paper2); box-shadow:0 0 0 2px var(--line); background:#fff;}
+  .mast-text{flex:1; min-width:0;}
+  .site-kicker{font-size:12.5px; font-weight:700; letter-spacing:.28em; color:var(--ink2);}
+  .site-title{font-family:var(--mincho); font-size:34px; font-weight:700; line-height:1.3; margin-top:4px;}
+  .stamp-seal{flex:none; width:76px; height:76px; border:3.5px double var(--aka); border-radius:50%;
+        color:var(--aka); font-family:var(--mincho); font-weight:700; font-size:16px; line-height:1.2;
+        display:flex; align-items:center; justify-content:center; text-align:center;
+        transform:rotate(9deg); background:rgba(255,253,244,.65);}
+  .lead{font-family:var(--mincho); font-size:20px; font-weight:700; line-height:1.75; margin-top:22px;}
+  .disclose{font-size:15px; color:var(--ink); margin-top:12px; padding-left:12px;
+        border-left:4px solid var(--aka); line-height:1.75;}
+  .updated{font-size:12.5px; color:var(--ink2); margin-top:14px;}
 
   main{padding-bottom:36px;}
 
-  /* スライダー */
-  .slider-box{background:#fff; border:1px solid var(--line); border-radius:14px;
-              padding:22px 20px 18px; margin-top:22px;}
-  .slider-label{font-size:15px; color:var(--sub);}
-  .unit-big{font-size:40px; font-weight:800; color:var(--accent-dark); line-height:1.25;}
-  .unit-big small{font-size:15px; font-weight:400; color:var(--sub);}
-  input[type=range]{width:100%; height:44px; accent-color:var(--accent); cursor:pointer;}
-  .slider-scale{display:flex; justify-content:space-between; font-size:12.5px; color:var(--sub); margin-top:-6px;}
-  .formula{font-size:13px; color:var(--sub); margin-top:10px;}
+  /* 査定の条件（チケット） */
+  .cond{background:var(--paper2); border:1.5px dashed var(--ink2); border-radius:6px;
+        padding:22px 20px 18px; margin-top:24px;}
+  .cond-label{font-family:var(--mincho); font-size:15px; font-weight:700; letter-spacing:.12em; color:var(--ink2);}
+  .unit-big{font-family:var(--mincho); font-size:42px; font-weight:700; line-height:1.3; margin-top:6px;}
+  .unit-big small{font-size:15px; font-weight:400; color:var(--ink2); font-family:var(--gothic);}
+  input[type=range]{-webkit-appearance:none; appearance:none; width:100%; height:44px;
+        background:transparent; cursor:pointer;}
+  input[type=range]::-webkit-slider-runnable-track{height:6px; background:var(--line); border-radius:3px;}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; width:26px; height:26px; border-radius:50%;
+        background:var(--aka); border:3px solid var(--paper2); box-shadow:0 0 0 1.5px var(--aka-d); margin-top:-10px;}
+  input[type=range]::-moz-range-track{height:6px; background:var(--line); border-radius:3px;}
+  input[type=range]::-moz-range-thumb{width:20px; height:20px; border-radius:50%;
+        background:var(--aka); border:3px solid var(--paper2); box-shadow:0 0 0 1.5px var(--aka-d);}
+  .slider-scale{display:flex; justify-content:space-between; font-size:12.5px; color:var(--ink2); margin-top:-6px;}
+  .define{font-size:13.5px; color:var(--ink); margin-top:12px; line-height:1.75;}
+  .formula{font-size:13px; color:var(--ink2); margin-top:6px;}
 
-  /* 絞り込み */
-  .filters{display:flex; flex-wrap:wrap; gap:8px; margin:26px 0 16px;}
-  .filters button{border:1px solid var(--line); background:#fff; color:var(--ink);
-                  border-radius:999px; padding:8px 18px; font-size:15px; cursor:pointer;}
-  .filters button.active{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:700;}
+  /* ランキング見出し */
+  .rank-head{margin:36px 0 4px;}
+  .rank-head h2{font-family:var(--mincho); font-size:26px; font-weight:700;
+        display:inline-block; border-bottom:3px solid var(--aka); padding-bottom:3px;}
+  .rank-note{font-size:13.5px; color:var(--ink2); line-height:1.75;}
 
-  /* 商品カード：テキストは3行だけ */
-  .cmp-list{display:flex; flex-direction:column; gap:18px;}
-  .cmp{background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px 20px;}
-  .cmp-title{display:flex; align-items:baseline; gap:14px; flex-wrap:wrap;}
-  .cmp-title h2{font-size:19px; line-height:1.5; flex:1; min-width:220px;}
-  .cmp-price{font-size:26px; font-weight:800; color:var(--price); white-space:nowrap;}
-  .cmp-price small{font-size:13px; font-weight:400; color:var(--sub);}
-  .meter-head{display:flex; align-items:baseline; gap:8px; margin-top:16px;}
-  .meter-num{font-size:52px; font-weight:800; color:var(--accent-dark); line-height:1;}
-  .meter-unit{font-size:16px; font-weight:700;}
-  .meter{display:flex; flex-wrap:wrap; gap:4px; margin-top:12px;}
-  .cell{width:17px; height:17px; border-radius:4px; background:var(--accent);}
-  .cmp-stats{font-size:16px; margin-top:16px;}
-  .cmp-stats b{font-size:21px; font-weight:800;}
-  .cmp-stats .src{font-size:12.5px; color:var(--sub);}
-  .cmp-note{font-size:15.5px; color:var(--ink); margin-top:8px;}
-  .cta-row{margin-top:16px; display:flex; align-items:center; gap:10px;}
-  .cta{display:inline-block; background:var(--accent); color:#fff; text-decoration:none;
-       font-weight:700; font-size:16px; padding:13px 24px; border-radius:10px;}
-  .cta:hover{background:var(--accent-dark);}
+  /* 査定チケット（商品カード） */
+  .cmp-list{display:flex; flex-direction:column;}
+  .ticket{background:var(--paper2); border:1.5px dashed var(--ink2); border-radius:6px;
+        padding:22px 20px 20px; margin-top:22px;}
+  .t-head{display:flex; gap:14px; align-items:flex-start;}
+  .rank{display:flex; align-items:flex-start; line-height:1; flex:none;}
+  .rank-side{font-family:var(--mincho); font-size:15px; font-weight:700; margin-top:12px;}
+  .rank-num{font-family:var(--mincho); font-size:76px; font-weight:700; line-height:.95;
+        color:var(--paper2); -webkit-text-stroke:2px var(--aka);}
+  @supports not (-webkit-text-stroke:1px black){ .rank-num{color:var(--aka);} }
+  .t-main{flex:1; min-width:0;}
+  .t-main h2{font-family:var(--mincho); font-size:19px; line-height:1.55;}
+  .seller{font-size:13px; color:var(--ink2); margin-top:4px;}
+  .stamp{flex:none; border:3px double var(--aka); color:var(--aka); border-radius:6px;
+        font-family:var(--mincho); font-weight:700; font-size:15px; letter-spacing:.05em;
+        padding:5px 10px; transform:rotate(-6deg); margin-top:10px;
+        background:rgba(255,253,244,.9); white-space:nowrap;}
+  .price-row{display:flex; align-items:center; justify-content:space-between; gap:14px;
+        flex-wrap:wrap; margin-top:18px;}
+  .price-tag{display:inline-flex; align-items:center; gap:10px; background:#fff;
+        border:2px solid var(--ink); padding:6px 16px 6px 12px;
+        font-family:var(--mincho); font-size:32px; font-weight:700; color:var(--price);
+        transform:rotate(-1deg); box-shadow:2px 2px 0 rgba(46,36,23,.15);}
+  .price-tag .hole{width:11px; height:11px; border-radius:50%; flex:none;
+        border:2px solid var(--ink); background:var(--paper);}
+  .price-tag small{font-size:13px; font-weight:400; color:var(--ink2); font-family:var(--gothic);}
+  .need{display:flex; align-items:center; gap:9px;}
+  .need-num{font-family:var(--mincho); font-size:54px; font-weight:700; color:var(--aka-d); line-height:1;}
+  .need-unit{font-size:13px; font-weight:700; line-height:1.45;}
+
+  /* 回収ロード */
+  .road{padding-top:26px;}
+  .road-track{position:relative; display:flex; align-items:center; gap:6px;}
+  .road-track::before{content:""; position:absolute; left:0; right:0; top:50%;
+        height:2px; background:var(--line); transform:translateY(-50%);}
+  .road-start{position:relative; z-index:1; flex:none; font-size:11.5px; font-weight:700;
+        background:var(--ink); color:var(--paper2); border-radius:3px; padding:2px 7px;}
+  .road-dots{position:relative; z-index:1; display:flex; align-items:center; gap:2px;
+        flex:0 1 auto; min-width:0;}
+  .ms{flex:none; width:9px; height:9px; border-radius:50%;
+        background:var(--paper2); border:2px solid var(--ink2);}
+  .road-dots.dense1{gap:1px;}
+  .road-dots.dense1 .ms{width:6px; height:6px;}
+  .road-dots.dense2{gap:1px;}
+  .road-dots.dense2 .ms{width:4px; height:4px; border-width:1.5px;}
+  .org{position:relative; flex:none; width:19px; height:19px; border-radius:50%;
+        background:var(--aka); border:2px solid var(--aka-d);}
+  .org .flag{position:absolute; bottom:calc(100% + 6px); left:50%; transform:translateX(-50%);
+        font-size:11px; font-weight:700; color:var(--aka); white-space:nowrap;}
+  .org .flag::after{content:""; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+        border:4px solid transparent; border-top-color:var(--aka);}
+  .road-ext{position:relative; z-index:1; flex:0 0 40px; border-top:3px dashed var(--aka);}
+  .profit{font-size:15px; margin-top:12px;}
+  .profit b{color:var(--aka-d); font-size:17px;}
+  .stats{font-size:15.5px; margin-top:14px;}
+  .stats b{font-size:20px; font-weight:800;}
+  .stats .src{font-size:12px; color:var(--ink2);}
+  .comment{font-size:15px; margin-top:10px; background:#fbf5e1;
+        border-left:4px solid var(--aka); padding:10px 12px; line-height:1.75;}
+  .comment-label{display:block; font-size:12px; font-weight:700; color:var(--aka);
+        letter-spacing:.12em; margin-bottom:2px;}
+  .cta-row{margin-top:18px; padding-top:16px; border-top:1.5px dashed var(--line);
+        display:flex; align-items:center; gap:10px;}
+  .cta{display:inline-block; background:var(--aka); color:#fff; text-decoration:none;
+        font-weight:700; font-size:16px; padding:13px 24px; border-radius:4px;}
+  .cta:hover{background:var(--aka-d);}
   .ad-tag{background:var(--ad-bg); color:var(--ad); font-size:12px; font-weight:700;
-          border:1px solid #e8d98a; border-radius:4px; padding:2px 8px;}
-  .basis-note{font-size:13px; color:var(--sub); margin-top:22px; line-height:1.7;}
-  .error{background:#fff; border:1px solid var(--line); border-radius:10px; padding:20px; color:var(--sub); font-size:15px;}
+        border:1px solid #e8d98a; border-radius:4px; padding:2px 8px;}
+  .basis-note{font-size:13px; color:var(--ink2); margin-top:24px; line-height:1.7;}
+  .error{background:var(--paper2); border:1.5px dashed var(--ink2); border-radius:6px;
+        padding:20px; color:var(--ink2); font-size:15px; margin-top:22px;}
 
-  footer.site{border-top:1px solid var(--line); background:#fff; padding:24px 0 32px;}
-  footer.site p{font-size:12.5px; color:var(--sub); margin-bottom:6px; line-height:1.7;}
+  footer.site{border-top:1px solid var(--line); background:var(--paper2); padding:24px 0 32px;}
+  footer.site p{font-size:12.5px; color:var(--ink2); margin-bottom:6px; line-height:1.7;}
 
   @media (max-width:480px){
-    .face{width:64px; height:64px;}
-    .bubble{font-size:15.5px; padding:10px 13px;}
-    .bubble::before{top:20px;}
+    .face{width:76px; height:76px;}
+    .site-kicker{font-size:11px; letter-spacing:.08em; white-space:nowrap;}
+    .site-title{font-size:26px;}
+    .stamp-seal{width:60px; height:60px; font-size:13px;}
+    .lead{font-size:17.5px;}
     .unit-big{font-size:33px;}
-    .meter-num{font-size:44px;}
-    .cell{width:15px; height:15px;}
-    .cmp-title h2{font-size:17.5px;}
-    .cmp-price{font-size:23px;}
+    .rank-num{font-size:52px;}
+    .rank-side{font-size:13px; margin-top:8px;}
+    .stamp{font-size:12.5px; padding:4px 7px; margin-top:6px;}
+    .t-main h2{font-size:16.5px;}
+    .price-tag{font-size:25px;}
+    .need-num{font-size:42px;}
+    .road-ext{flex-basis:24px;}
+    .ticket{padding:18px 14px 16px;}
+    .cond{padding:18px 14px 14px;}
   }
 </style>
 </head>
@@ -99,34 +166,35 @@
 
 <header class="site">
   <div class="wrap">
-    <p class="brand">Brain教材ナビ</p>
-    <div class="face-row">
-      <img class="face" src="aoashi-icon-goma.png" alt="運営者あおあしのアイコン" width="84" height="84">
-      <div class="bubbles">
-        <p class="bubble">Brainの教材5本を比べています。比べ方は1つだけ。『元を取るのに何件売ればいいか』。</p>
-        <p class="bubble sub">紹介で売れた実績はまだ0件です。自分が買う前に調べた記録です。</p>
+    <div class="mast">
+      <img class="face" src="aoashi-icon-goma.png" alt="運営者あおあしのアイコン" width="104" height="104">
+      <div class="mast-text">
+        <p class="site-kicker">Brain教材の査定メディア</p>
+        <h1 class="site-title">あおあしのBrain査定</h1>
       </div>
+      <span class="stamp-seal"><span>査定<br>済</span></span>
     </div>
-    <p class="updated">更新日：2026年11月11日</p>
+    <p class="lead">俺は買う前に、Brainの教材を全部『何件売れば元が取れるか』で査定している。物差しは、それ1本だけだ。</p>
+    <p class="disclose">俺の紹介で売れた実績は、まだ0件だ。だから査定は、売る側ではなく買う側の数字だけでやる。</p>
+    <p class="updated">更新日：2026年11月11日／運営者：あおあし</p>
   </div>
 </header>
 
 <main>
   <div class="wrap">
-    <section class="slider-box" aria-label="想定単価のスライダー">
-      <p class="slider-label">あなたの想定単価（1件あたりの販売価格）</p>
+    <section class="cond" aria-label="査定の条件">
+      <p class="cond-label">査定の条件 ― 自分の商品を1件いくらで売るか</p>
       <p class="unit-big"><span id="unit-val">¥3,000</span> <small>で売る場合</small></p>
       <input type="range" id="unit-slider" min="1000" max="10000" step="500" value="3000" aria-label="想定単価">
       <div class="slider-scale"><span>¥1,000</span><span>¥10,000</span></div>
+      <p class="define">「件数」は、俺がこの教材を買ったとして、自分の商品を想定単価で売って元を取るのに必要な件数だ。紹介報酬の計算ではない。</p>
       <p class="formula">計算式：必要な件数 ＝ 教材価格 ÷ 想定単価（切り上げ）</p>
     </section>
 
-    <div class="filters" id="filters" role="group" aria-label="カテゴリで絞り込む">
-      <button type="button" data-cat="all" class="active">すべて</button>
-      <button type="button" data-cat="note-sns">note・SNS</button>
-      <button type="button" data-cat="uranai">占い</button>
-      <button type="button" data-cat="ebook">電子書籍</button>
+    <div class="rank-head">
+      <h2>査定ランキング</h2>
     </div>
+    <p class="rank-note">順位は「¥3,000で売る場合に、何件で元が取れるか」の少ない順で固定している。上の条件を変えると各カードの件数は変わるが、順位は動かさない。</p>
 
     <div class="cmp-list" id="cmp-list" aria-live="polite">
       <p class="error">商品データを読み込んでいます…</p>
@@ -149,10 +217,10 @@
 
 <script>
 (function(){
-  var state = { cat: "all" };
-  var products = [];
   var unitPrice = 3000;
+  var products = [];
   var nodes = {};
+  var STAMPS = ["まずこれ", "堅い", "堅い", "上級者向け", "高額・本気向け"];
 
   function esc(s){
     return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
@@ -160,33 +228,44 @@
     });
   }
   function yen(n){ return "¥" + Number(n).toLocaleString("ja-JP"); }
-  function need(p){ return Math.ceil(p.price / unitPrice); }
+  function needAt(p, unit){ return Math.ceil(p.price / unit); }
 
   function statsLine(p){
     var parts = [];
+    if (p.rating != null) parts.push("評価 <b>" + Number(p.rating).toFixed(1) + "</b>");
     if (p.reviews != null) parts.push("レビュー <b>" + Number(p.reviews).toLocaleString("ja-JP") + "件</b>");
     if (p.salesNote) parts.push(esc(p.salesNote));
     if (!parts.length) return "";
-    return '<p class="cmp-stats">' + parts.join("　・　") +
-           ' <span class="src">（販売者公表）</span></p>';
+    return '<p class="stats">' + parts.join("　・　") +
+           ' <span class="src">（販売者がBrain商品ページで公表している数字）</span></p>';
   }
 
-  function item(p){
+  function item(p, rank){
     var el = document.createElement("article");
-    el.className = "cmp";
+    el.className = "ticket";
     el.innerHTML =
-      '<div class="cmp-title"><h2>' + esc(p.title) + '</h2>' +
-      '<span class="cmp-price">' + yen(p.price) + ' <small>税込</small></span></div>' +
-      '<div class="meter-head"><span class="meter-num"></span><span class="meter-unit">件売れば回収</span></div>' +
-      '<div class="meter" aria-hidden="true"></div>' +
+      '<div class="t-head">' +
+        '<div class="rank"><span class="rank-side">第</span><span class="rank-num">' + rank + '</span><span class="rank-side">位</span></div>' +
+        '<div class="t-main"><h2>' + esc(p.title) + '</h2>' +
+        '<p class="seller">販売者：' + esc(p.seller) + '</p></div>' +
+        '<span class="stamp">' + STAMPS[rank - 1] + '</span>' +
+      '</div>' +
+      '<div class="price-row">' +
+        '<span class="price-tag"><span class="hole"></span>' + yen(p.price) + ' <small>税込</small></span>' +
+        '<p class="need"><span class="need-num"></span><span class="need-unit">件売れば<br>元が取れる</span></p>' +
+      '</div>' +
+      '<div class="road"><div class="road-track">' +
+        '<span class="road-start">購入</span><span class="road-dots"></span><span class="road-ext"></span>' +
+      '</div></div>' +
+      '<p class="profit">原点を超えたら、1件ごとに <b class="profit-amt"></b> が利益になる。</p>' +
       statsLine(p) +
-      (p.note ? '<p class="cmp-note">' + esc(p.note) + '</p>' : '') +
+      (p.note ? '<p class="comment"><span class="comment-label">あおあしの査定</span>' + esc(p.note) + '</p>' : '') +
       '<div class="cta-row"><a class="cta" href="' + esc(p.url) + '" target="_blank" rel="noopener sponsored">Brainで商品を見る</a>' +
       '<span class="ad-tag">広告</span></div>';
     nodes[p.id] = {
-      el: el,
-      num: el.querySelector(".meter-num"),
-      meter: el.querySelector(".meter")
+      num: el.querySelector(".need-num"),
+      dots: el.querySelector(".road-dots"),
+      profit: el.querySelector(".profit-amt")
     };
     return el;
   }
@@ -194,38 +273,25 @@
   function build(){
     var list = document.getElementById("cmp-list");
     list.innerHTML = "";
-    products.forEach(function(p){ list.appendChild(item(p)); });
+    products.forEach(function(p, i){ list.appendChild(item(p, i + 1)); });
     update();
   }
 
   function update(){
     document.getElementById("unit-val").textContent = yen(unitPrice);
-    var list = document.getElementById("cmp-list");
-    var visible = products.filter(function(p){ return state.cat === "all" || p.category === state.cat; });
-    visible.sort(function(a, b){ return (need(a) - need(b)) || (a.price - b.price); });
-    var onScreen = {};
-    visible.forEach(function(p){
-      var n = need(p);
+    products.forEach(function(p){
+      var n = needAt(p, unitPrice);
       var node = nodes[p.id];
-      node.el.style.display = "";
       node.num.textContent = n;
-      var cells = "";
-      for (var i = 0; i < n; i++) cells += '<span class="cell"></span>';
-      node.meter.innerHTML = cells;
-      list.appendChild(node.el);
-      onScreen[p.id] = true;
+      node.dots.className = "road-dots" + (n >= 35 ? " dense2" : (n >= 23 ? " dense1" : ""));
+      var html = "";
+      for (var i = 0; i < n - 1; i++) html += '<span class="ms"></span>';
+      html += '<span class="org"><span class="flag">原点</span></span>';
+      node.dots.innerHTML = html;
+      node.profit.textContent = yen(unitPrice);
     });
-    products.forEach(function(p){ if (!onScreen[p.id]) nodes[p.id].el.style.display = "none"; });
   }
 
-  document.getElementById("filters").addEventListener("click", function(e){
-    var btn = e.target.closest("button[data-cat]");
-    if (!btn) return;
-    state.cat = btn.getAttribute("data-cat");
-    var btns = this.querySelectorAll("button[data-cat]");
-    for (var i = 0; i < btns.length; i++) btns[i].classList.toggle("active", btns[i] === btn);
-    update();
-  });
   document.getElementById("unit-slider").addEventListener("input", function(){
     unitPrice = parseInt(this.value, 10);
     update();
@@ -234,8 +300,14 @@
   fetch("products.json", {cache: "no-store"})
     .then(function(r){ if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
     .then(function(data){
-      products = data.products || [];
-      if (data.note) document.getElementById("basis-note").textContent = data.note + " 情報は2026年11月11日時点の確認内容です。";
+      products = (data.products || []).slice().sort(function(a, b){
+        return (needAt(a, 3000) - needAt(b, 3000)) || (a.price - b.price);
+      });
+      if (data.note){
+        var d = String(data.updated || "").split("-");
+        var dstr = (d.length === 3) ? d[0] + "年" + Number(d[1]) + "月" + Number(d[2]) + "日" : String(data.updated || "");
+        document.getElementById("basis-note").textContent = data.note + " 情報は" + dstr + "時点の確認内容です。";
+      }
       build();
     })
     .catch(function(err){
