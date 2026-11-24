@@ -30,9 +30,73 @@
   h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
   h3 { font-size: clamp(1.18rem, 2.5vw, 1.55rem); }
   h4 { font-size: 1.15rem; margin: 0; }
-  .connection, .head { padding-block: clamp(2rem, 6vw, 4rem) 1.5rem; }
-  .connection p { max-width: 44rem; }
-  .portrait { border-radius: 50%; border: 1px solid var(--line); display: block; }
+  .scene-guide { padding-block: clamp(2rem, 6vw, 4rem) 1.5rem; text-align: center; }
+  .portrait {
+    display: block;
+    width: clamp(5rem, 16vw, 8rem);
+    height: auto;
+    margin-inline: auto;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    transform-origin: center bottom;
+    animation: goma-wave 2.8s ease-in-out infinite;
+  }
+  .speech {
+    position: relative;
+    width: fit-content;
+    margin: 1rem auto;
+    padding: .75rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: .9rem;
+    background: var(--card);
+  }
+  .speech::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: .75rem;
+    height: .75rem;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+    background: var(--card);
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .speech h1 { margin: 0; }
+  .speech p { margin: .35rem 0 0; }
+  .scene-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .65rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .scene-links a {
+    display: block;
+    padding: .45rem .85rem;
+    border: 1px solid var(--line);
+    border-radius: .4rem;
+    background: var(--card);
+    font-weight: 700;
+  }
+  .scroll-cue { display: inline-block; margin-top: .65rem; padding: .25rem .75rem; font-size: 1.4rem; text-decoration: none; }
+  .scroll-cue span { display: block; animation: scroll-bob 1.8s ease-in-out infinite; }
+  .about-shelf { border-top: 1px solid var(--line); padding-block: 1rem 1.5rem; }
+  .about-shelf h2 { font-size: 1.2rem; }
+  .about-shelf p { max-width: 44rem; }
+  @keyframes goma-wave {
+    0%, 45%, 100% { transform: translateY(0) rotate(0); }
+    12%, 33% { transform: translateY(-.25rem) rotate(-7deg); }
+    23% { transform: translateY(-.4rem) rotate(7deg); }
+  }
+  @keyframes scroll-bob {
+    50% { transform: translateY(.25rem); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .portrait, .scroll-cue span { animation: none; }
+  }
   .shelf, .blk { padding-block: 1rem; border-top: 1px solid var(--line); }
   .shelf > h2 { color: var(--accent); }
   .scene { margin-block: 2rem; }
@@ -52,17 +116,24 @@
 <header class="site-header">
   <div class="wrap header-inner">
     <p><a href="#top">あおあしのBrain教材ナビ</a></p>
-    <p class="meta"><a href="#list">教材一覧へ</a></p>
+    <p class="disclosure">アフィリエイト広告を含む</p>
   </div>
 </header>
 <main class="wrap" id="top">
-  <section class="connection" aria-labelledby="intro">
-    <p class="disclosure">※アフィリエイトリンクを含みます</p>
-    <img class="portrait" src="aoashi-icon-goma.png" width="64" height="64" alt="">
-    <h1 id="intro">Brain教材ナビ</h1>
-    <p>あおあしです。建設業の会社員で、事務職として企画業務を担当している。その席から始めたAI副業を、数字も失敗も含めて、過程ごと公開している。</p>
-    <p>その過程の延長で作ったのが、自分が今まさに詰まっている所から教材を探すための棚。</p>
-    <p>俺はここで紹介する教材を買っていない。購入者向けの本文も未読。Brainの販売ページで公開されている中身の記載を読んで、その詰まりに中身が合っているかで選んだ。レビュー数や価格では選んでいない。</p>
+  <section class="scene-guide" aria-labelledby="intro">
+    <img class="portrait" src="aoashi-icon-goma.png" width="1080" height="1080" alt="ゴマ">
+    <div class="speech">
+      <h1 id="intro">どこで詰まってる？</h1>
+      <p>いまの詰まりから選べるように置いてある</p>
+    </div>
+    <nav aria-label="場面から選ぶ">
+      <ul class="scene-links" role="list">
+        <li><a href="#shelf-a">A. AIとnoteの詰まり</a></li>
+        <li><a href="#shelf-b">B. 発信を収益に変える詰まり</a></li>
+        <li><a href="#shelf-c">C. 占いの詰まり</a></li>
+      </ul>
+    </nav>
+    <a class="scroll-cue" href="#shelf-a" aria-label="教材一覧へ"><span aria-hidden="true">↓</span></a>
   </section>
   <div id="list">
   <section class="shelf" aria-labelledby="shelf-a">
@@ -191,8 +262,14 @@
     </section>
   </section>
   </div>
+  <section class="about-shelf" aria-labelledby="about-shelf">
+    <h2 id="about-shelf">この棚を作ったのは</h2>
+    <p>あおあし。建設業の会社員で、事務職として企画を担当している。その席から始めたAI副業の数字や失敗を、過程ごと公開してきた。その延長で、いま詰まっている場面から教材を探せる棚を作った。</p>
+    <p>紹介する教材は未購入で、購入者向けの本文も未読。Brainの販売ページに公開されている説明を読み、場面の詰まりに合うかで選んだ。</p>
+    <p><strong>俺の紹介で売れた実績は、まだ0件だ。</strong></p>
+  </section>
 <footer class="site-footer">
-  <p><strong>俺の紹介で売れた実績は、まだ0件だ。</strong></p>
+  <p class="disclosure">※アフィリエイトリンクを含みます</p>
   <p>価格・評価・レビュー件数はBrain各商品ページの表示（2026年11月24日確認）。</p>
   <p>売り切れた2本は棚から外してある。</p>
   <p>運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません</p>
