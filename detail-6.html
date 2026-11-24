@@ -2,297 +2,84 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>インスタのアカウント設計から収益化までの全ノウハウ｜あおあしのBrain査定</title>
-<meta name="description" content="インスタのアカウント設計から収益化までの全ノウハウ（¥39,800）を、Brain公式ページの公開数字（評価・レビュー件数）から査定。選定理由と実績の数字。当サイトはアフィリエイト広告を含みます。">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>インスタのアカウント設計から収益化までの全ノウハウ｜あおあしのBrain教材ナビ</title>
+<meta name="description" content="インスタのアカウント設計から収益化までの全ノウハウの選定理由と、Brain販売ページの記載に基づく教材概要。アフィリエイト広告を含みます。">
 <link rel="icon" href="aoashi-icon-goma.png">
-<script>
-  // 隠すのは「JSが動き、reduced-motion でない」ときだけ。GSAP が 2.5 秒で起動しなければ隠しを解除する
-  (function(){
-    var d = document.documentElement;
-    if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    d.classList.add("motion");
-    window.__motionFailsafe = setTimeout(function(){ d.classList.remove("motion"); window.__motionTimedOut = true; }, 2500);
-  })();
-</script>
 <style>
-  :root{
-    --paper:#f4ecd9; --paper2:#fffdf4; --ink:#2e2417; --ink2:#6b5b3e;
-    --line:#c9b98f; --aka:#b3352b; --aka-d:#8f271e; --price:#b3540a;
-    --ki:#f5c518; --ki-d:#e0b000;
-    --mincho:"Hiragino Mincho ProN","Hiragino Mincho Pro","YuMincho","Yu Mincho","MS PMincho","Noto Serif JP","Noto Serif CJK JP",serif;
-    --gothic:"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP","Noto Sans CJK JP",sans-serif;
-    --press:cubic-bezier(.23,1,.32,1);
-    --pad:22px;
+  :root {
+    --paper: #f4ecd9;
+    --card: #fffdf4;
+    --ink: #2e2417;
+    --muted: #6b5b3e;
+    --line: #c9b98f;
+    --accent: #8f271e;
+    --mincho: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif CJK JP", serif;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  body{font-family:var(--gothic); background:var(--paper); color:var(--ink);
-       line-height:1.8; font-size:16px; overflow-x:hidden;}
-  a{color:inherit;}
-
-  header.site{position:sticky; top:0; z-index:20; height:52px;
-       display:flex; align-items:center; gap:10px; padding:0 var(--pad);
-       background:rgba(244,236,217,.92); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);
-       border-bottom:1px solid rgba(201,185,143,.5);}
-  .brand{font-family:var(--mincho); font-weight:700; font-size:14px; text-decoration:none; min-width:0;
-       white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
-  .stamp-seal{flex:none; width:34px; height:34px; border:2.5px double var(--aka); border-radius:50%;
-       color:var(--aka); font-family:var(--mincho); font-weight:700; font-size:9.5px; line-height:1;
-       display:flex; align-items:center; justify-content:center; transform:rotate(9deg);}
-  .back{margin-left:auto; flex:none; font-size:13px; font-weight:700; white-space:nowrap;
-       text-decoration:underline; text-underline-offset:3px;}
-
-  .wrap{max-width:680px; margin:0 auto; padding:0 var(--pad) 56px;}
-
-  .head{padding:40px 0 8px;}
-  .rank{display:flex; align-items:baseline; gap:4px; font-family:var(--mincho); font-weight:700; color:var(--aka);}
-  .rank-n{font-size:56px; line-height:1;}
-  .rank-u{font-size:22px;}
-  .rank-k{margin-left:10px; font-family:var(--gothic); font-size:12.5px; color:var(--ink2); font-weight:700;}
-  .title{font-family:var(--mincho); font-weight:700; line-height:1.32; letter-spacing:-.01em; margin-top:10px;
-       font-size:clamp(26px, 7.4vw, 44px); word-break:keep-all; overflow-wrap:anywhere; text-wrap:balance;}
-  .price-tag{display:inline-flex; align-items:center; gap:10px; background:#fff;
-       border:2px solid var(--ink); padding:2px 14px 2px 10px; margin-top:20px;
-       font-family:var(--mincho); font-size:28px; font-weight:700; color:var(--price); line-height:1.4;
-       transform:rotate(-1.5deg); box-shadow:2px 2px 0 rgba(46,36,23,.15);}
-  .price-tag .hole{width:10px; height:10px; border-radius:50%; flex:none; border:2px solid var(--ink); background:var(--paper);}
-
-  .blk{padding-top:52px;}
-  .h{font-family:var(--mincho); font-weight:700; font-size:22px; line-height:1.4; margin-bottom:14px;}
-  .h-b{color:var(--aka);}
-  .lead{font-size:16px; font-weight:700;}
-  .why + .why{margin-top:12px;}
-  .basis{margin-top:14px; font-size:13.5px; color:var(--ink2); border-left:3px solid var(--line); padding-left:10px; line-height:1.7;}
-
-  /* 縦のタイムライン */
-  .steps{list-style:none; position:relative; margin-top:6px;}
-  .steps::before{content:""; position:absolute; left:27px; top:28px; bottom:28px; width:2px; background:var(--line);}
-  .step{position:relative; display:grid; grid-template-columns:56px 1fr; gap:16px; padding:14px 0;}
-  .step-n{position:relative; z-index:1; width:56px; height:56px; border-radius:50%;
-       background:var(--paper); border:2.5px solid var(--aka); color:var(--aka);
-       font-family:var(--mincho); font-weight:700; font-size:30px; line-height:1;
-       display:flex; align-items:center; justify-content:center;}
-  .step-b{min-width:0; padding-top:2px;}
-  .step-l{font-size:11.5px; font-weight:800; letter-spacing:.12em; color:var(--aka-d); line-height:1.4;}
-  .step-t{font-family:var(--mincho); font-weight:700; font-size:19px; line-height:1.45; margin-top:2px;}
-  .step-d{font-size:15.5px; margin-top:4px; line-height:1.75;}
-  .step-note{margin-top:10px; font-size:13.5px; color:var(--ink2); background:var(--paper2);
-       border:1.5px dashed var(--line); padding:10px 12px; line-height:1.7;}
-
-  .cta{margin-top:26px; text-align:center;}
-  .buy{display:block; width:100%; max-width:440px; margin:0 auto; text-align:center; background:var(--ki); color:var(--ink);
-       text-decoration:none; font-weight:800; font-size:18px; line-height:1.4; padding:17px 20px;
-       border-radius:6px; border:2px solid var(--ink); box-shadow:0 3px 0 var(--ink);
-       transition:transform .16s var(--press), box-shadow .16s var(--press), background-color .16s var(--press);
-       -webkit-tap-highlight-color:transparent;}
-  @media (hover:hover){ .buy:hover{background:var(--ki-d); transform:scale(.98); box-shadow:0 1.5px 0 var(--ink);} }
-  .buy:active{background:var(--ki-d); transform:scale(.98) translateY(1px); box-shadow:0 0 0 var(--ink);}
-  .buy:focus-visible, .back:focus-visible, .back-b a:focus-visible, .brand:focus-visible{outline:3px solid var(--aka); outline-offset:3px;}
-
-  .after + .after{margin-top:10px;}
-
-  .stats{border-top:1.5px solid var(--ink);}
-  .st{display:flex; flex-wrap:wrap; align-items:baseline; gap:0 6px; padding:12px 2px; border-bottom:1px solid var(--line);
-       font-family:var(--mincho); font-weight:700; color:var(--aka-d);}
-  .st-k{font-size:14px; color:var(--ink2); min-width:0;}
-  .st-n{font-size:34px; line-height:1.2; font-variant-numeric:tabular-nums; margin-left:auto;}
-  .st-u{font-size:15px;}
-  .st-src{flex-basis:100%; font-family:var(--gothic); font-weight:400; font-size:11.5px; color:var(--ink2); text-align:right; line-height:1.5;}
-  .st-note{padding:12px 2px; border-bottom:1px solid var(--line); font-size:14px;}
-  .src{font-size:12px; color:var(--ink2); margin-top:10px; line-height:1.6;}
-
-  .last{padding-top:40px;}
-  .disc{margin-top:28px; font-weight:700; font-size:14px; line-height:1.7;}
-  .disc .d2{color:var(--aka-d);}
-  .back-b{margin-top:16px; font-size:15px; font-weight:700;}
-  .back-b a{text-decoration:underline; text-underline-offset:3px;}
-  footer.site{margin-top:28px; font-size:11px; color:var(--ink2); line-height:1.6;}
-
-  /* v13: 線画アイコン（UIの意味表示だけ。塗りなし・線1.5px固定・角丸・墨色） */
-  .ic{display:inline-block; flex:none; width:1.15em; height:1.15em; vertical-align:-.2em;
-       fill:none; stroke:var(--ink); stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round;}
-  .ic path, .ic circle{vector-effect:non-scaling-stroke;}
-  .h{display:flex; align-items:center; gap:8px;}
-  .h .ic{width:24px; height:24px;}
-  .step-l{display:flex; align-items:center; gap:5px;}
-  .step-l .ic{width:15px; height:15px;}
-  .buy{display:flex; align-items:center; justify-content:center; gap:8px;}
-  .buy .ic{width:20px; height:20px;}
-  .back{display:inline-flex; align-items:center; gap:4px;}
-  .back .ic{width:16px; height:16px;}
-  .back-b a{display:inline-flex; align-items:center; gap:6px;}
-  .back-b .ic{width:18px; height:18px;}
-
-  /* v13: 口コミ（JS無効時は通常セクション、JS有効時はモーダル） */
-  .rv-open{display:flex; align-items:center; justify-content:center; gap:8px; width:100%; margin-top:16px;
-       padding:12px 16px; background:var(--paper2); color:var(--ink); border:1.5px solid var(--ink); border-radius:6px;
-       font:inherit; font-size:15.5px; font-weight:800; line-height:1.4; text-decoration:none; cursor:pointer;
-       transition:transform .16s var(--press), background-color .16s var(--press); -webkit-tap-highlight-color:transparent;}
-  .rv-open .ic{width:20px; height:20px;}
-  @media (hover:hover){ .rv-open:hover{background:#fff; transform:scale(.98);} }
-  .rv-open:active{transform:scale(.98);}
-  .rv-open:focus-visible, .rv-x:focus-visible{outline:3px solid var(--aka); outline-offset:3px;}
-  .rv-list{list-style:none;}
-  .rv{background:var(--paper2); border:1.5px solid var(--line); border-radius:6px; padding:14px 16px;}
-  .rv + .rv{margin-top:12px;}
-  .rv-star{color:var(--aka); font-size:14px; font-weight:800; letter-spacing:.06em; line-height:1.4;}
-  .rv-t{font-family:var(--mincho); font-weight:700; font-size:17px; line-height:1.5; margin-top:4px; overflow-wrap:anywhere;}
-  .rv-b{font-size:15px; line-height:1.8; margin-top:6px; overflow-wrap:anywhere;}
-  .rv-m{display:flex; flex-wrap:wrap; gap:0 12px; margin-top:8px; font-size:12.5px; color:var(--ink2);}
-  .rv-n{font-weight:700; overflow-wrap:anywhere;}
-  .rv-src{font-size:12px; color:var(--ink2); margin-top:14px; line-height:1.6;}
-
-  dialog.rv-dlg{margin:auto; padding:0; border:2px solid var(--ink); border-radius:8px; background:var(--paper); color:var(--ink);
-       width:min(640px, calc(100vw - 24px)); max-height:calc(100dvh - 32px); overflow:hidden;
-       box-shadow:0 10px 40px rgba(46,36,23,.25); opacity:0; transition:opacity .25s ease;}
-  dialog.rv-dlg.on{opacity:1;}
-  dialog.rv-dlg::backdrop{background:rgba(46,36,23,.5); opacity:0; transition:opacity .25s ease;}
-  dialog.rv-dlg.on::backdrop{opacity:1;}
-  .rv-in{display:flex; flex-direction:column; max-height:calc(100dvh - 36px);}
-  .rv-hd{display:flex; align-items:center; gap:8px; padding:12px 12px 12px 18px; border-bottom:1.5px solid var(--line);}
-  .rv-hd h2{font-family:var(--mincho); font-weight:700; font-size:18px; line-height:1.4; display:flex; align-items:center; gap:8px; min-width:0;}
-  .rv-hd h2 .ic{width:22px; height:22px;}
-  .rv-x{margin-left:auto; flex:none; width:44px; height:44px; display:flex; align-items:center; justify-content:center;
-       background:none; border:0; border-radius:50%; cursor:pointer; color:var(--ink);}
-  .rv-x .ic{width:24px; height:24px;}
-  @media (hover:hover){ .rv-x:hover{background:rgba(201,185,143,.3);} }
-  .rv-body{overflow-y:auto; overscroll-behavior:contain; padding:16px 16px 20px;}
-  html.rv-lock, html.rv-lock body{overflow:hidden;}
-  @media (prefers-reduced-motion: reduce){ dialog.rv-dlg, dialog.rv-dlg::backdrop, .rv-open{transition:none;} }
-
-  .motion [data-reveal]{visibility:hidden;}
-  @media (prefers-reduced-motion: reduce){ .buy{transition:none;} }
-
-  @media (min-width:760px){
-    :root{--pad:40px;}
-    header.site{height:58px;}
-    .brand{font-size:16px;}
-    .stamp-seal{width:40px; height:40px; font-size:11px;}
-    .head{padding-top:64px;}
-    .rank-n{font-size:72px;}
-    .price-tag{font-size:32px;}
-    .h{font-size:25px;}
-    .lead{font-size:18px;}
-    .step-t{font-size:21px;}
-    .buy{font-size:19px;}
-  }
-  /* v16: ジャンルタグ付きの順位 */
-  .rank{flex-wrap:wrap;}
-  .rank-k{overflow-wrap:anywhere;}
-  .g-tag{display:inline-block; margin-left:10px; font-family:var(--gothic); font-weight:800; font-size:12px; color:var(--aka-d);
-       background:var(--paper2); border:1.5px solid var(--aka-d); border-radius:999px; padding:1px 10px 2px; align-self:center;}
-  .st-n.long{font-size:20px; line-height:1.4; text-align:right;}
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.8 system-ui, sans-serif; }
+  a { color: var(--accent); text-underline-offset: .2em; }
+  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+  .site-header { border-bottom: 1px solid var(--line); }
+  .header-inner { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+  .header-inner a { font-weight: 700; }
+  .wrap { width: min(100% - 2.5rem, 68rem); margin-inline: auto; }
+  .detail .wrap { max-width: 43rem; }
+  h1, h2, h3, h4 { font-family: var(--mincho); line-height: 1.45; overflow-wrap: anywhere; }
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: .35em 0 .5em; }
+  h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
+  h3 { font-size: clamp(1.18rem, 2.5vw, 1.55rem); }
+  h4 { font-size: 1.15rem; margin: 0; }
+  .connection, .head { padding-block: clamp(2rem, 6vw, 4rem) 1.5rem; }
+  .connection p { max-width: 44rem; }
+  .portrait { border-radius: 50%; border: 1px solid var(--line); display: block; }
+  .shelf, .blk { padding-block: 1rem; border-top: 1px solid var(--line); }
+  .shelf > h2 { color: var(--accent); }
+  .scene { margin-block: 2rem; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: 1rem; }
+  .card { display: flex; flex-direction: column; min-width: 0; background: var(--card); border: 1px solid var(--line); padding: clamp(1rem, 3vw, 1.6rem); }
+  .card .meta { margin-top: auto; }
+  .meta, .disclosure, .caution, .site-footer { color: var(--muted); font-size: .875rem; }
+  .meta { margin-bottom: .85rem; }
+  .caution { border-left: 2px solid var(--line); padding-left: .75rem; margin-top: 0; }
+  .buy { align-self: flex-start; display: inline-block; background: var(--accent); color: var(--card); padding: .5rem 1rem; font-weight: 700; border-radius: .2rem; text-decoration: none; }
+  .buy:hover { text-decoration: underline; }
+  .site-footer { border-top: 1px solid var(--line); padding-block: 1rem 2rem; }
+  .site-footer strong { color: var(--ink); }
 </style>
 </head>
-<body>
-
-<header class="site">
-  <a class="brand" href="index.html">あおあしのBrain査定</a>
-  <span class="stamp-seal" aria-label="査定済">査定済</span>
-  <a class="back" href="index.html#list"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></svg>一覧へ戻る</a>
+<body class="detail">
+<header class="site-header">
+  <div class="wrap header-inner">
+    <p><a href="index.html">あおあしのBrain教材ナビ</a></p>
+    <p class="meta"><a href="index.html#list">一覧へ戻る</a></p>
+  </div>
 </header>
-
-<main class="wrap" data-detail="6" data-product-id="6" data-genre="instagram">
-  <section class="head">
-    <p class="rank" data-reveal><span class="rank-n">6</span><span class="rank-u">位</span><span class="rank-k">価格の高い順</span><span class="g-tag" data-field="genre">Instagram運用</span></p>
-    <h1 class="title" data-reveal data-field="title">インスタの<wbr>アカウント<wbr>設計から<wbr>収益化までの<wbr>全<wbr>ノウハウ</h1>
-    <p data-reveal><span class="price-tag" data-field="price"><span class="hole"></span>¥39,800</span></p>
-  </section>
-
+<main class="wrap" data-detail="6" data-product-id="6">
+  <div class="head">
+    <p class="disclosure">※アフィリエイトリンクを含みます</p>
+    <h1 data-field="title">インスタのアカウント設計から収益化までの全ノウハウ</h1>
+  </div>
   <section class="blk">
-    <h2 class="h" data-reveal><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg><span><span class="h-b">【</span>なんで選んだのか<span class="h-b">】</span></span></h2>
-    <p class="why" data-reveal data-field="note">仕事を続けながらインスタを副業にできるか考えているなら、似た状況の人がどんな感想を書いているか気になりますよね。掲載した中でレビューが最も多い2,313件で評価は4.8なので、¥39,800を出す前に感想を読み比べたい人の候補に入れました。</p>
-    <p class="basis" data-reveal>この査定は、Brain公式ページで公開されている数字を読んで出したもの。中身を使った感想ではない。</p>
-    <div class="cta" data-reveal><a class="buy b1" data-buy href="https://brain-market.com/u/yuki_99_s/a/b2ATMyATMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored"><span>Brainでこの教材を見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4.5h5.5V10M19.5 4.5L11 13"/><path d="M17 13.5v4a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4"/></svg></a></div>
+    <h2>【なんで選んだのか】</h2>
+    <p>インスタを始めたけど、アカウントの設計から分からない。</p>
+    <p>ターゲットとコンセプト、ライバル調査、プロフィール導線の設計、フィード投稿の設計を確認できる。投稿を増やす前に、誰に向けて何を発信するアカウントか整理したい人に合う。</p>
+    <p>すでにアカウント設計が固まり、収益化の個別施策だけを探している人には向いていない。</p>
+    <p>無料で確認できるのは第0章と1-1まで。それ以降の詳しい章立ては未確認。</p>
+    <p><a class="buy b1" data-buy href="https://brain-market.com/u/yuki_99_s/a/b2ATMyATMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored"><span>Brainでこの教材を見る</span></a></p>
   </section>
-
   <section class="blk">
-    <h2 class="h" data-reveal><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 6.5C10 5 7 4.6 3.5 5v13c3.5-.4 6.5 0 8.5 1.5 2-1.5 5-1.9 8.5-1.5V5C17 4.6 14 5 12 6.5z"/><path d="M12 6.5v13"/></svg><span class="h-b">【</span>これは何か<span class="h-b">】</span></h2>
-    <p class="lead" data-reveal>Instagram運用の教材。販売者は迫佑樹。</p>
-    <p class="why" data-reveal>目次と対象者はBrainの商品ページに載っている。ここでは価格・評価・レビュー件数の数字だけで査定している。</p>
+    <h2>【教材概要】</h2>
+    <p>販売者は迫佑樹。</p>
+    <p>販売ページでは6.9万字超の教材を「アカウント設計」「フォロワーを増やす方法」「収益化する方法」の3部として紹介している。無料部分の1-1にはプロフィール文、ハイライト、ストーリーズ設計などが含まれる。</p>
+    <p class="meta">参考　¥39,800・レビュー2,313件・評価4.8／5</p>
+    <p><a class="buy b2" data-buy href="https://brain-market.com/u/yuki_99_s/a/b2ATMyATMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored"><span>Brainでこの教材を見る</span></a></p>
   </section>
-
-  <section class="blk">
-    <h2 class="h" data-reveal><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3.5l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.8l-5.2 2.8 1-5.8-4.3-4.1 5.9-.9z"/></svg><span class="h-b">【</span>実績の数字<span class="h-b">】</span></h2>
-    <div class="stats" data-reveal><div class="st"><span class="st-k">レビュー</span><span class="st-n" data-field="reviews">2,313</span><span class="st-u">件</span><span class="st-src">Brain公式ページの表示</span></div><div class="st"><span class="st-k">評価</span><span class="st-n" data-field="rating">4.8</span><span class="st-u">／5</span><span class="st-src">Brain公式ページの表示</span></div><div class="st"><span class="st-k">価格</span><span class="st-n" data-field="price">¥39,800</span><span class="st-u"></span></div><div class="st"><span class="st-k">ジャンル</span><span class="st-n long" data-field="genre">Instagram運用</span><span class="st-u"></span></div><div class="st"><span class="st-k">販売者</span><span class="st-n" data-field="seller">迫佑樹</span><span class="st-u"></span></div></div>
-    <p class="src">数字はBrain商品ページの公表値（2026年11月24日確認）。当サイト運営者の実績ではない。</p>
-  </section>
-
-  <section class="blk last">
-    <div class="cta" data-reveal><a class="buy b2" data-buy href="https://brain-market.com/u/yuki_99_s/a/b2ATMyATMgoTZsNWa0JXY?from=bczNwcjNgojclNXd" target="_blank" rel="noopener sponsored"><span>Brainでこの教材を見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 4.5h5.5V10M19.5 4.5L11 13"/><path d="M17 13.5v4a2 2 0 0 1-2 2H6.5a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h4"/></svg></a></div>
-    <p class="disc"><span class="d1">※アフィリエイトリンクを含みます</span><br><span class="d2">俺の紹介で売れた実績は、まだ0件だ。</span></p>
-    <p class="back-b"><a href="index.html#list"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M19.5 12h-15M10.5 6l-6 6 6 6"/></svg><span>一覧へ戻る</span></a></p>
-    <footer class="site">運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません</footer>
-  </section>
+<footer class="site-footer">
+  <p><strong>俺の紹介で売れた実績は、まだ0件だ。</strong></p>
+  <p>価格・評価・レビュー件数はBrain各商品ページの表示（2026年11月24日確認）。</p>
+  <p>運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません</p>
+</footer>
 </main>
-
-<script>
-// v13 口コミ：JS有効時だけ、下部の口コミセクションをモーダル（dialog）に移す。JS無効ならセクションのまま読める
-(function(){
-  var sec = document.getElementById("reviews"), btn = document.querySelector(".rv-open");
-  if (!sec || !btn || typeof HTMLDialogElement !== "function") return;
-  var FADE = 250;
-  var dlg = document.createElement("dialog");
-  dlg.className = "rv-dlg"; dlg.setAttribute("aria-labelledby", "rv-ttl");
-  dlg.innerHTML = '<div class="rv-in"><div class="rv-hd"><h2 id="rv-ttl"></h2>' +
-    '<button type="button" class="rv-x" aria-label="閉じる"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div><div class="rv-body"></div></div>';
-  var h = sec.querySelector(".h");
-  dlg.querySelector("#rv-ttl").innerHTML = h.getAttribute("data-dlg-title");
-  var body = dlg.querySelector(".rv-body");
-  sec.querySelectorAll(".rv-list, .rv-src").forEach(function(el){ body.appendChild(el); });
-  sec.parentNode.removeChild(sec);
-  document.body.appendChild(dlg);
-  btn.setAttribute("aria-haspopup", "dialog");
-  var timer = null;
-  function open(e){
-    if (e) e.preventDefault();
-    clearTimeout(timer); dlg.classList.remove("on");
-    if (!dlg.open) dlg.showModal();
-    document.documentElement.classList.add("rv-lock");
-    body.scrollTop = 0;
-    requestAnimationFrame(function(){ requestAnimationFrame(function(){ dlg.classList.add("on"); }); });
-  }
-  function close(){
-    if (!dlg.open) return;
-    dlg.classList.remove("on");
-    clearTimeout(timer);
-    timer = setTimeout(function(){ dlg.close(); }, matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : FADE);
-  }
-  dlg.addEventListener("close", function(){ document.documentElement.classList.remove("rv-lock"); btn.focus({preventScroll: true}); });
-  btn.addEventListener("click", open);
-  dlg.querySelector(".rv-x").addEventListener("click", close);
-  dlg.addEventListener("cancel", function(e){ e.preventDefault(); close(); });          // Esc
-  dlg.addEventListener("click", function(e){ if (e.target === dlg) close(); });          // 背景（::backdrop）
-  window.__rv = {open: open, close: close, dlg: dlg};
-})();
-</script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
-<script>
-(function(){
-  var d = document.documentElement;
-  function unhide(){ clearTimeout(window.__motionFailsafe); d.classList.remove("motion"); }
-  if (!(window.gsap && window.ScrollTrigger) || window.__motionTimedOut) { unhide(); return; }
-  gsap.registerPlugin(ScrollTrigger);
-  var mm = gsap.matchMedia();
-  mm.add("(prefers-reduced-motion: no-preference)", function(){
-    // 見出し・本文：軽く下から出るだけ
-    gsap.utils.toArray("[data-reveal]:not(.step)").forEach(function(el){
-      gsap.from(el, {autoAlpha: 0, y: 14, duration: 0.5, ease: "power2.out",
-        scrollTrigger: {trigger: el, start: "top 90%", once: true}});
-    });
-    // STEP：スクロールで1つずつ。番号が先、本文が少し遅れて
-    gsap.utils.toArray(".step").forEach(function(el){
-      var tl = gsap.timeline({scrollTrigger: {trigger: el, start: "top 82%", once: true}});
-      tl.from(el.querySelector(".step-n"), {autoAlpha: 0, scale: 0.6, duration: 0.45, ease: "back.out(1.7)"})
-        .from(el.querySelector(".step-b"), {autoAlpha: 0, x: 18, duration: 0.45, ease: "power2.out"}, "-=0.2");
-    });
-    unhide();
-    // 印刷時は全部見せる
-    window.addEventListener("beforeprint", function(){ ScrollTrigger.getAll().forEach(function(t){ if (t.animation) t.animation.progress(1); }); });
-  });
-  unhide();
-})();
-</script>
 </body>
 </html>
