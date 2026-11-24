@@ -31,36 +31,57 @@
   h3 { font-size: clamp(1.18rem, 2.5vw, 1.55rem); }
   h4 { font-size: 1.15rem; margin: 0; }
   .scene-guide { padding-block: clamp(2rem, 6vw, 4rem) 1.5rem; text-align: center; }
+  .goma-track {
+    overflow: hidden;
+    padding-block: .5rem .85rem;
+    pointer-events: none;
+  }
+  .goma-guide {
+    position: relative;
+    left: 50%;
+    display: flex;
+    align-items: end;
+    gap: .65rem;
+    width: max-content;
+    max-width: 100%;
+    transform: translateX(-50%);
+  }
   .portrait {
     display: block;
-    width: clamp(5rem, 16vw, 8rem);
+    flex: none;
+    width: min(25vw, 5rem);
     height: auto;
-    margin-inline: auto;
     border: 1px solid var(--line);
     border-radius: 50%;
     transform-origin: center bottom;
-    animation: goma-wave 2.8s ease-in-out infinite;
   }
-  .speech {
-    position: relative;
-    width: fit-content;
-    margin: 1rem auto;
-    padding: .75rem 1rem;
+  .speech, .goma-arrival {
     border: 1px solid var(--line);
     border-radius: .9rem;
     background: var(--card);
   }
-  .speech::before {
+  .goma-arrival {
+    position: relative;
+    margin: 0;
+    padding: .25rem .65rem;
+    font-weight: 700;
+  }
+  .goma-arrival::after {
     content: "";
     position: absolute;
-    top: 0;
+    bottom: 0;
     left: 50%;
-    width: .75rem;
-    height: .75rem;
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
+    width: .55rem;
+    height: .55rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
     background: var(--card);
-    transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, 50%) rotate(45deg);
+  }
+  .speech {
+    width: fit-content;
+    margin: 1rem auto;
+    padding: .75rem 1rem;
   }
   .speech h1 { margin: 0; }
   .speech p { margin: .35rem 0 0; }
@@ -86,16 +107,27 @@
   .about-shelf { border-top: 1px solid var(--line); padding-block: 1rem 1.5rem; }
   .about-shelf h2 { font-size: 1.2rem; }
   .about-shelf p { max-width: 44rem; }
-  @keyframes goma-wave {
-    0%, 45%, 100% { transform: translateY(0) rotate(0); }
-    12%, 33% { transform: translateY(-.25rem) rotate(-7deg); }
-    23% { transform: translateY(-.4rem) rotate(7deg); }
+  @media (prefers-reduced-motion: no-preference) {
+    .goma-guide { animation: goma-walk 2.4s ease-in-out; }
+    .portrait { animation: goma-step .4s ease-in-out 6; }
+    .goma-arrival { animation: goma-arrive 2.4s steps(1, end); }
+  }
+  @keyframes goma-walk {
+    from { left: 0; transform: translateX(0); }
+  }
+  @keyframes goma-step {
+    25% { transform: translateY(-.25rem) rotate(-4deg); }
+    75% { transform: translateY(-.25rem) rotate(4deg); }
+  }
+  @keyframes goma-arrive {
+    from { visibility: hidden; }
+    to { visibility: visible; }
   }
   @keyframes scroll-bob {
     50% { transform: translateY(.25rem); }
   }
   @media (prefers-reduced-motion: reduce) {
-    .portrait, .scroll-cue span { animation: none; }
+    .scroll-cue span { animation: none; }
   }
   .shelf, .blk { padding-block: 1rem; border-top: 1px solid var(--line); }
   .shelf > h2 { color: var(--accent); }
@@ -121,10 +153,15 @@
 </header>
 <main class="wrap" id="top">
   <section class="scene-guide" aria-labelledby="intro">
-    <img class="portrait" src="aoashi-icon-goma.png" width="1080" height="1080" alt="ゴマ">
     <div class="speech">
       <h1 id="intro">どこで詰まってる？</h1>
       <p>いまの詰まりから選べるように置いてある</p>
+    </div>
+    <div class="goma-track">
+      <div class="goma-guide">
+        <img class="portrait" src="aoashi-icon-goma.png" width="1080" height="1080" alt="ゴマ">
+        <p class="goma-arrival">ここだよ！</p>
+      </div>
     </div>
     <nav aria-label="場面から選ぶ">
       <ul class="scene-links" role="list">
