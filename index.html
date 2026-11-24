@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>あおあしのBrain査定｜買うなら、まずこれ。</title>
-<meta name="description" content="Brain教材5本を査定し、1本ずつ見せる。数字はBrain各商品ページの公表値。当サイトはアフィリエイト広告を含みます。">
+<title>あおあしのBrain査定｜高単価・本気の教材だけを厳選</title>
+<meta name="description" content="Brainの高単価教材から、レビュー件数と評価で7本だけを厳選し、価格の高い順に1本ずつ見せる。数字はBrain各商品ページの公表値（2026年11月24日確認）。当サイトはアフィリエイト広告を含みます。">
 <link rel="icon" href="aoashi-icon-goma.png">
 <script>
   // v11: 初期状態で隠すのは「JSが動き、reduced-motion でない」ときだけ。
@@ -52,9 +52,11 @@
   /* シーン0：ヒーロー */
   .hero{flex-direction:column; justify-content:center; align-items:flex-start;}
   .hero-l{font-family:var(--mincho); font-weight:700; line-height:1.18; letter-spacing:-.01em;
-       font-size:clamp(40px, 11.5vw, 112px);}
+       font-size:clamp(34px, 9.4vw, 104px);}
   .hero-l .ln{display:block;}
   .hero-l.l2{color:var(--aka); margin-top:.5em;}
+  .hero-lead{font-size:15px; line-height:1.8; color:var(--ink2); margin-top:28px; max-width:34em;}
+  .hero-lead .pr2{display:block; font-size:12.5px; font-weight:700; margin-top:6px;}
   .cue{position:absolute; left:50%; bottom:28px; width:22px; height:34px; margin-left:-11px; color:var(--ink2);}
   .cue svg{display:block; width:100%; height:100%;}
 
@@ -69,6 +71,11 @@
   .prod.r .poster{text-align:right;}
   .pick{display:inline-block; font-family:var(--mincho); font-weight:700; font-size:15px; color:#fff;
        background:var(--aka); padding:3px 12px 4px; letter-spacing:.12em; margin-bottom:14px;}
+  /* v16: ジャンルタグ（全カードに付ける） */
+  .g-tag{display:inline-block; font-weight:800; font-size:13px; color:var(--aka-d); background:var(--paper2);
+       border:1.5px solid var(--aka-d); border-radius:999px; padding:2px 12px 3px; margin-bottom:14px; letter-spacing:.04em;}
+  .i-g{display:inline-block; font-family:var(--gothic); font-weight:700; font-size:11px; color:var(--aka-d);
+       border:1px solid var(--aka-d); border-radius:999px; padding:0 7px; margin-right:6px; vertical-align:2px; white-space:nowrap;}
   .p-title{font-family:var(--mincho); font-weight:700; line-height:1.25; letter-spacing:-.01em;
        font-size:clamp(32px, 9vw, 68px); word-break:keep-all; text-wrap:balance; overflow-wrap:anywhere;}
   .p-title.long{font-size:clamp(25px, 6.6vw, 50px);}
@@ -92,7 +99,8 @@
   .bar{display:block; height:10px; margin-top:12px; background:rgba(201,185,143,.3); overflow:hidden;}
   .bar-fill{display:block; height:100%; width:var(--w); background:var(--aka); transform-origin:0 50%;}
   .prod.r .bar-fill{margin-left:auto; transform-origin:100% 50%;}
-  .hitokoto{font-size:16px; color:var(--ink2); margin-top:20px;}
+  .hitokoto{font-size:16px; color:var(--ink2); margin-top:20px; line-height:1.6;}
+  .hitokoto .rk{font-weight:800; color:var(--ink); margin-right:6px;}
 
   .buy{display:inline-block; text-align:center; background:var(--ki); color:var(--ink);
        text-decoration:none; font-weight:800; font-size:18px; padding:14px 34px; margin-top:16px;
@@ -124,7 +132,7 @@
   .error{background:var(--paper2); border:1.5px dashed var(--ink2); padding:16px; color:var(--ink2); font-size:14px;}
 
   /* JS が GSAP を起動するまでの一瞬だけ隠す（.motion は head の JS が付け、失敗時は外れる） */
-  .motion .hero-l, .motion .cue, .motion [data-step], .motion .close-in > *{visibility:hidden;}
+  .motion .hero-l, .motion .hero-lead, .motion .cue, .motion [data-step], .motion .close-in > *{visibility:hidden;}
 
   /* v13: 線画アイコン */
   .ic{display:inline-block; flex:none; width:1.1em; height:1.1em; fill:none; stroke:var(--ink); stroke-width:1.5;
@@ -147,6 +155,7 @@
     .stat .k{font-size:17px;}
     .stat .u{font-size:22px;}
     .hitokoto{font-size:18px;}
+    .hero-lead{font-size:17px;}
     .buy{font-size:19px; padding:15px 46px;}
     .close h2{font-size:26px;}
     .idx a{grid-template-columns:2.2em 1fr auto auto auto; padding:13px 4px; gap:0 18px;}
@@ -168,27 +177,19 @@
 <main id="top">
   <!-- シーン0〜最終シーンは products.json から生成した静的HTML（JS無効・CDN不通でも通常スクロールで読める）。
        JS 有効時は products.json を読み直し、data-sig が一致しなければ JSON から描き直す。 -->
-  <div id="scenes" data-sig="6hp77g"><!--SCENES:START--><section class="scene hero" data-scene="0" aria-label="はじめに"><p class="hero-l l1"><span class="ln">Brain教材、</span><span class="ln">5本を査定した。</span></p><p class="hero-l l2"><span class="ln">買うなら、</span><span class="ln">まずこれ。</span></p><span class="cue" aria-hidden="true"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v28M3 22l8 8 8-8"/></svg></span></section><section class="scene prod l" data-scene="1" aria-label="1位"><span class="big-rank" aria-hidden="true" data-step="0">1</span><div class="poster"><p class="pick" data-step="1">まずこれ</p><h2 class="p-title" data-step="1"><span class="sr">1位 </span>ゼロから<wbr>始める<wbr>Threads×note</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥41,800</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>216</span><span class="u">件</span></span><span class="stat second"><span class="k">販売部数</span><span class="n" data-count>260</span><span class="u">部突破</span></span><span class="bar" aria-hidden="true" data-reviews="216"><span class="bar-fill" style="--w:100.000%"></span></span></div><div data-step="4"><p class="hitokoto">Threadsとnoteで売る仕組み</p><a class="buy" href="detail-1.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod r" data-scene="2" aria-label="2位"><span class="big-rank" aria-hidden="true" data-step="0">2</span><div class="poster"><h2 class="p-title long" data-step="1"><span class="sr">2位 </span>Claude <wbr>Code<wbr>で<wbr>秘書<wbr>・<wbr>営業<wbr>・<wbr>制作<wbr>・<wbr>経理を<wbr>仕組み<wbr>化！<wbr>AI<wbr>社員活用完全実践<wbr>マニュアル</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥6,980</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>17</span><span class="u">件</span></span><span class="stat second"><span class="k">残り</span><span class="n" data-count>1</span><span class="u">部（全51部）</span></span><span class="bar" aria-hidden="true" data-reviews="17"><span class="bar-fill" style="--w:7.870%"></span></span></div><div data-step="4"><p class="hitokoto">Claude Codeに業務を任せる仕組み</p><a class="buy" href="detail-2.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod l" data-scene="3" aria-label="3位"><span class="big-rank" aria-hidden="true" data-step="0">3</span><div class="poster"><h2 class="p-title" data-step="1"><span class="sr">3位 </span>Threads<wbr>自動投稿<wbr>ツール</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥29,800</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>86</span><span class="u">件</span></span><span class="bar" aria-hidden="true" data-reviews="86"><span class="bar-fill" style="--w:39.815%"></span></span></div><div data-step="4"><p class="hitokoto">Threadsの投稿作業を自動化する</p><a class="buy" href="detail-3.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod r" data-scene="4" aria-label="4位"><span class="big-rank" aria-hidden="true" data-step="0">4</span><div class="poster"><h2 class="p-title long" data-step="1"><span class="sr">4位 </span>AI×経理：領収書<wbr>・<wbr>請求書の<wbr>手入力を<wbr>AI<wbr>に<wbr>任せる<wbr>方法</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥2,980</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>0</span><span class="u">件</span></span><span class="bar" aria-hidden="true" data-reviews="0"><span class="bar-fill" style="--w:0.000%"></span></span></div><div data-step="4"><p class="hitokoto">領収書・請求書の転記をAIに任せる</p><a class="buy" href="detail-4.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod l" data-scene="5" aria-label="5位"><span class="big-rank" aria-hidden="true" data-step="0">5</span><div class="poster"><h2 class="p-title long" data-step="1"><span class="sr">5位 </span>Excel<wbr>管理<wbr>テンプレ：請求<wbr>・<wbr>収支<wbr>・<wbr>確定申告</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥4,980</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>0</span><span class="u">件</span></span><span class="bar" aria-hidden="true" data-reviews="0"><span class="bar-fill" style="--w:0.000%"></span></span></div><div data-step="4"><p class="hitokoto">請求・収支・確定申告をExcel1ファイルで管理</p><a class="buy" href="detail-5.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene close" id="list" data-scene="end" aria-label="5本の一覧"><div class="close-in"><h2>5本の索引</h2><ol class="idx"><li><a class="row" href="detail-1.html"><span class="i-r">1</span><span class="i-t">ゼロから<wbr>始める<wbr>Threads×note</span><span class="i-p">¥41,800</span><span class="i-s">レビュー216件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-2.html"><span class="i-r">2</span><span class="i-t">Claude <wbr>Code<wbr>で<wbr>秘書<wbr>・<wbr>営業<wbr>・<wbr>制作<wbr>・<wbr>経理を<wbr>仕組み<wbr>化！<wbr>AI<wbr>社員活用完全実践<wbr>マニュアル</span><span class="i-p">¥6,980</span><span class="i-s">レビュー17件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-3.html"><span class="i-r">3</span><span class="i-t">Threads<wbr>自動投稿<wbr>ツール</span><span class="i-p">¥29,800</span><span class="i-s">レビュー86件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-4.html"><span class="i-r">4</span><span class="i-t">AI×経理：領収書<wbr>・<wbr>請求書の<wbr>手入力を<wbr>AI<wbr>に<wbr>任せる<wbr>方法</span><span class="i-p">¥2,980</span><span class="i-s">レビュー0件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-5.html"><span class="i-r">5</span><span class="i-t">Excel<wbr>管理<wbr>テンプレ：請求<wbr>・<wbr>収支<wbr>・<wbr>確定申告</span><span class="i-p">¥4,980</span><span class="i-s">レビュー0件</span><span class="i-go">詳しく見る →</span></a></li></ol><p class="disc"><span class="d1">アフィリエイト広告を含む</span><br><span class="d2">俺の紹介で売れた実績は、まだ0件だ。</span></p><p class="src">数字はBrain各商品ページの公表値（Threads×noteは2026年11月13日、ほかの4本は2026年11月23日確認）。</p><footer class="site">運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません</footer></div></section><!--SCENES:END--></div>
+  <div id="scenes" data-sig="1ozb3em"><!--SCENES:START--><section class="scene hero" data-scene="0" aria-label="はじめに"><p class="hero-l l1"><span class="ln">高単価・本気の</span><span class="ln">教材だけを厳選。</span></p><p class="hero-l l2"><span class="ln">Brain教材、</span><span class="ln">7本を査定した。</span></p><p class="hero-lead">¥35,000〜¥69,800の教材から、レビュー件数と評価の数字で選んだ。価格の高い順に1本ずつ見せる。<span class="pr2">※アフィリエイトリンクを含みます</span></p><span class="cue" aria-hidden="true"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v28M3 22l8 8 8-8"/></svg></span></section><section class="scene prod l" data-scene="1" aria-label="1位"><span class="big-rank" aria-hidden="true" data-step="0">1</span><div class="poster"><p class="g-tag" data-step="1" data-genre="instagram">Instagram運用</p><h2 class="p-title" data-step="1"><span class="sr">1位 </span>ストーリーズの<wbr>教科書</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥69,800</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>399</span><span class="u">件</span></span><span class="stat second"><span class="k">評価</span><span class="n">5.0</span><span class="u">／5</span></span><span class="bar" aria-hidden="true" data-reviews="399"><span class="bar-fill" style="--w:17.250%"></span></span></div><div data-step="4"><p class="hitokoto"><span class="rk">選定理由</span>レビュー399件・評価5.0。評価5.0の4本のうち、レビューが最も多い。</p><a class="buy" href="detail-1.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod r" data-scene="2" aria-label="2位"><span class="big-rank" aria-hidden="true" data-step="0">2</span><div class="poster"><p class="g-tag" data-step="1" data-genre="uranai">占い</p><h2 class="p-title" data-step="1"><span class="sr">2位 </span>インスタ<wbr>占いの<wbr>全て</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥49,980</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>233</span><span class="u">件</span></span><span class="stat second"><span class="k">評価</span><span class="n">5.0</span><span class="u">／5</span></span><span class="bar" aria-hidden="true" data-reviews="233"><span class="bar-fill" style="--w:10.073%"></span></span></div><div data-step="4"><p class="hitokoto"><span class="rk">選定理由</span>レビュー233件・評価5.0。占いの2本はどちらも評価5.0で、そのうちレビューが多い方。</p><a class="buy" href="detail-2.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod l" data-scene="3" aria-label="3位"><span class="big-rank" aria-hidden="true" data-step="0">3</span><div class="poster"><p class="g-tag" data-step="1" data-genre="instagram">Instagram運用</p><h2 class="p-title" data-step="1"><span class="sr">3位 </span>Instagram<wbr>運用の<wbr>教科書</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥49,800</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>1,325</span><span class="u">件</span></span><span class="stat second"><span class="k">評価</span><span class="n">4.9</span><span class="u">／5</span></span><span class="bar" aria-hidden="true" data-reviews="1325"><span class="bar-fill" style="--w:57.285%"></span></span></div><div data-step="4"><p class="hitokoto"><span class="rk">選定理由</span>レビュー1,325件・評価4.9。7本で2番目にレビューが多い。</p><a class="buy" href="detail-3.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod r" data-scene="4" aria-label="4位"><span class="big-rank" aria-hidden="true" data-step="0">4</span><div class="poster"><p class="g-tag" data-step="1" data-genre="instagram">Instagram運用</p><h2 class="p-title" data-step="1"><span class="sr">4位 </span>新<wbr>・インスタ<wbr>運用の<wbr>教科書</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥49,800</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>299</span><span class="u">件</span></span><span class="stat second"><span class="k">評価</span><span class="n">4.9</span><span class="u">／5</span></span><span class="bar" aria-hidden="true" data-reviews="299"><span class="bar-fill" style="--w:12.927%"></span></span></div><div data-step="4"><p class="hitokoto"><span class="rk">選定理由</span>レビュー299件・評価4.9。インスタ運用の4本では「Instagram運用の教科書」と並ぶ2番目の評価。</p><a class="buy" href="detail-4.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod l" data-scene="5" aria-label="5位"><span class="big-rank" aria-hidden="true" data-step="0">5</span><div class="poster"><p class="g-tag" data-step="1" data-genre="threads-note">Threads×note</p><h2 class="p-title" data-step="1"><span class="sr">5位 </span>ゼロから<wbr>始める<wbr>Threads×note</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥41,800</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>216</span><span class="u">件</span></span><span class="stat second"><span class="k">評価</span><span class="n">5.0</span><span class="u">／5</span></span><span class="bar" aria-hidden="true" data-reviews="216"><span class="bar-fill" style="--w:9.339%"></span></span></div><div data-step="4"><p class="hitokoto"><span class="rk">選定理由</span>レビュー216件・評価5.0。7本で唯一のThreads×note教材。</p><a class="buy" href="detail-5.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod r" data-scene="6" aria-label="6位"><span class="big-rank" aria-hidden="true" data-step="0">6</span><div class="poster"><p class="g-tag" data-step="1" data-genre="instagram">Instagram運用</p><h2 class="p-title long" data-step="1"><span class="sr">6位 </span>インスタの<wbr>アカウント<wbr>設計から<wbr>収益化までの<wbr>全<wbr>ノウハウ</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥39,800</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>2,313</span><span class="u">件</span></span><span class="stat second"><span class="k">評価</span><span class="n">4.8</span><span class="u">／5</span></span><span class="bar" aria-hidden="true" data-reviews="2313"><span class="bar-fill" style="--w:100.000%"></span></span></div><div data-step="4"><p class="hitokoto"><span class="rk">選定理由</span>レビュー2,313件・評価4.8。7本で最もレビューが多い。</p><a class="buy" href="detail-6.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene prod l" data-scene="7" aria-label="7位"><span class="big-rank" aria-hidden="true" data-step="0">7</span><div class="poster"><p class="g-tag" data-step="1" data-genre="uranai">占い</p><h2 class="p-title" data-step="1"><span class="sr">7位 </span>シャドウ<wbr>AI<wbr>タロット</h2><div data-step="2"><span class="price-tag"><span class="hole"></span>¥35,000</span></div><div class="stats" data-step="3"><span class="stat"><span class="k">レビュー</span><span class="n" data-count>137</span><span class="u">件</span></span><span class="stat second"><span class="k">評価</span><span class="n">5.0</span><span class="u">／5</span></span><span class="bar" aria-hidden="true" data-reviews="137"><span class="bar-fill" style="--w:5.923%"></span></span></div><div data-step="4"><p class="hitokoto"><span class="rk">選定理由</span>レビュー137件・評価5.0。評価5.0の4本のうちの1本。</p><a class="buy" href="detail-7.html"><span>この教材を詳しく見る</span><svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg></a></div></div></section><section class="scene close" id="list" data-scene="end" aria-label="7本の一覧"><div class="close-in"><h2>7本の索引</h2><ol class="idx"><li><a class="row" href="detail-1.html"><span class="i-r">1</span><span class="i-t"><span class="i-g">Instagram運用</span>ストーリーズの<wbr>教科書</span><span class="i-p">¥69,800</span><span class="i-s">評価5.0・レビュー399件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-2.html"><span class="i-r">2</span><span class="i-t"><span class="i-g">占い</span>インスタ<wbr>占いの<wbr>全て</span><span class="i-p">¥49,980</span><span class="i-s">評価5.0・レビュー233件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-3.html"><span class="i-r">3</span><span class="i-t"><span class="i-g">Instagram運用</span>Instagram<wbr>運用の<wbr>教科書</span><span class="i-p">¥49,800</span><span class="i-s">評価4.9・レビュー1,325件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-4.html"><span class="i-r">4</span><span class="i-t"><span class="i-g">Instagram運用</span>新<wbr>・インスタ<wbr>運用の<wbr>教科書</span><span class="i-p">¥49,800</span><span class="i-s">評価4.9・レビュー299件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-5.html"><span class="i-r">5</span><span class="i-t"><span class="i-g">Threads×note</span>ゼロから<wbr>始める<wbr>Threads×note</span><span class="i-p">¥41,800</span><span class="i-s">評価5.0・レビュー216件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-6.html"><span class="i-r">6</span><span class="i-t"><span class="i-g">Instagram運用</span>インスタの<wbr>アカウント<wbr>設計から<wbr>収益化までの<wbr>全<wbr>ノウハウ</span><span class="i-p">¥39,800</span><span class="i-s">評価4.8・レビュー2,313件</span><span class="i-go">詳しく見る →</span></a></li><li><a class="row" href="detail-7.html"><span class="i-r">7</span><span class="i-t"><span class="i-g">占い</span>シャドウ<wbr>AI<wbr>タロット</span><span class="i-p">¥35,000</span><span class="i-s">評価5.0・レビュー137件</span><span class="i-go">詳しく見る →</span></a></li></ol><p class="disc"><span class="d1">※アフィリエイトリンクを含みます</span><br><span class="d2">俺の紹介で売れた実績は、まだ0件だ。</span></p><p class="src">数字はBrain各商品ページの公表値（2026年11月24日確認）。</p><footer class="site">運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません</footer></div></section><!--SCENES:END--></div>
 </main>
 
 <script id="render-lib">
 // 描画ロジック（DOM 非依存）。静的HTMLの生成とブラウザでの再描画の両方がこれを使う。
 (function(root){
-  // ひとこと（products.json に無い表示文。id で対応）
-  var HITOKOTO = {
-    1: "Threadsとnoteで売る仕組み",
-    2: "Claude Codeに業務を任せる仕組み",
-    3: "Threadsの投稿作業を自動化する",
-    4: "領収書・請求書の転記をAIに任せる",
-    5: "請求・収支・確定申告をExcel1ファイルで管理"
-  };
-  // v14: Threads×note の数字は 2026-11-13 確認のまま。差し替えた4本は 2026-11-23 確認
-  var CHECKED = "Threads×noteは2026年11月13日、ほかの4本は2026年11月23日確認";
+  // v16: 数字は 2026-11-24 実測（7本とも同じ日）
+  var CHECKED = "2026年11月24日確認";
   // v13: 線画アイコン（進む）。塗りなし・線1.5px・角丸・墨色
   var ICON_NEXT = '<svg class="ic" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4.5 12h15M13.5 6l6 6-6 6"/></svg>';
   // v12: トップは入口。ボタンと索引は各教材の詳細ページへ（Brain への直接リンクは詳細ページだけに置く）。
-  // v14: 詳細ページの番号は products.json の id と同じ（detail-N.html = id N）。
-  var DETAIL = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5};
+  // v16: 詳細ページの番号は products.json の id と同じ（detail-N.html = id N、N=1〜7）。
+  var DETAIL = {1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7};
   function esc(s){
     return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
       return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
@@ -228,13 +229,14 @@
     var m = String(s).match(/^(.*?)([\d,]+)(部)(.*)$/);
     return m ? {k: m[1], n: m[2], u: m[3] + m[4]} : null;
   }
-  function statHtml(k, n, u, cls){
+  function statHtml(k, n, u, cls, noCount){
     return '<span class="stat' + (cls ? ' ' + cls : '') + '">' + (k ? '<span class="k">' + esc(k) + '</span>' : '') +
-      '<span class="n" data-count>' + esc(n) + '</span><span class="u">' + esc(u) + '</span></span>';
+      '<span class="n"' + (noCount ? '' : ' data-count') + '>' + esc(n) + '</span><span class="u">' + esc(u) + '</span></span>';
   }
-  // v14: 表示順は products.json の id 順（1→5）
+  function rating(r){ return Number(r).toFixed(1); }
+  // v16: 表示順は価格の高い順（同額は id 順）
   function sorted(data){
-    var ps = (data.products || []).slice().sort(function(a, b){ return a.id - b.id; });
+    var ps = (data.products || []).slice().sort(function(a, b){ return b.price - a.price || a.id - b.id; });
     if (!ps.length) throw new Error("商品データなし");
     return ps;
   }
@@ -252,6 +254,8 @@
       bar = '<span class="bar" aria-hidden="true" data-reviews="' + p.reviews + '">' +
             '<span class="bar-fill" style="--w:' + w.toFixed(3) + '%"></span></span>';
     }
+    // v16: 評価（小数なのでカウントアップしない）
+    if (p.rating != null) { stats += statHtml("評価", rating(p.rating), "／5", first ? "" : "second", true); first = false; }
     if (p.salesNote) {
       var s = splitSales(p.salesNote);
       if (s) { stats += statHtml(s.k, s.n, s.u, first ? "" : "second"); first = false; }
@@ -262,21 +266,21 @@
     return '<section class="scene prod ' + side + '" data-scene="' + rank + '" aria-label="' + rank + '位">' +
       '<span class="big-rank" aria-hidden="true" data-step="0">' + rank + '</span>' +
       '<div class="poster">' +
-        (rank === 1 ? '<p class="pick" data-step="1">まずこれ</p>' : '') +
+        '<p class="g-tag" data-step="1" data-genre="' + esc(p.category) + '">' + esc(p.genre) + '</p>' +
         '<h2 class="p-title' + (String(p.title).length > 20 ? ' long' : '') + '" data-step="1">' +
           '<span class="sr">' + rank + '位 </span>' + phrase(p.title) + '</h2>' +
         '<div data-step="2"><span class="price-tag"><span class="hole"></span>¥' + num(p.price) + '</span></div>' +
         '<div class="stats" data-step="3">' + stats + bar + '</div>' +
         '<div data-step="4">' +
-          (HITOKOTO[p.id] ? '<p class="hitokoto">' + esc(HITOKOTO[p.id]) + '</p>' : '') +
+          (p.note ? '<p class="hitokoto"><span class="rk">選定理由</span>' + esc(p.note) + '</p>' : '') +
           link(p, "buy", "<span>この教材を詳しく見る</span>" + ICON_NEXT) +
         '</div>' +
       '</div></section>';
   }
   function indexRow(p, rank){
-    var s = p.reviews != null ? "レビュー" + num(p.reviews) + "件" : (p.salesNote || "");
+    var s = (p.rating != null ? "評価" + rating(p.rating) + "・" : "") + (p.reviews != null ? "レビュー" + num(p.reviews) + "件" : (p.salesNote || ""));
     return '<li>' + link(p, "row",
-      '<span class="i-r">' + rank + '</span><span class="i-t">' + phrase(p.title) + '</span>' +
+      '<span class="i-r">' + rank + '</span><span class="i-t"><span class="i-g">' + esc(p.genre) + '</span>' + phrase(p.title) + '</span>' +
       '<span class="i-p">¥' + num(p.price) + '</span><span class="i-s">' + esc(s) + '</span>' +
       '<span class="i-go">詳しく見る →</span>') + '</li>';
   }
@@ -284,15 +288,17 @@
     var ps = sorted(data);
     var maxReviews = ps.reduce(function(m, p){ return p.reviews != null && p.reviews > m ? p.reviews : m; }, 0);
     var hero = '<section class="scene hero" data-scene="0" aria-label="はじめに">' +
-      '<p class="hero-l l1"><span class="ln">Brain教材、</span><span class="ln">' + count(ps.length) + '本を査定した。</span></p>' +
-      '<p class="hero-l l2"><span class="ln">買うなら、</span><span class="ln">まずこれ。</span></p>' +
+      '<p class="hero-l l1"><span class="ln">高単価・本気の</span><span class="ln">教材だけを厳選。</span></p>' +
+      '<p class="hero-l l2"><span class="ln">Brain教材、</span><span class="ln">' + count(ps.length) + '本を査定した。</span></p>' +
+      '<p class="hero-lead">¥' + num(ps[ps.length - 1].price) + '〜¥' + num(ps[0].price) + 'の教材から、レビュー件数と評価の数字で選んだ。価格の高い順に1本ずつ見せる。' +
+        '<span class="pr2">※アフィリエイトリンクを含みます</span></p>' +
       '<span class="cue" aria-hidden="true"><svg viewBox="0 0 22 34" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2v28M3 22l8 8 8-8"/></svg></span>' +
       '</section>';
-    var close = '<section class="scene close" id="list" data-scene="end" aria-label="5本の一覧">' +
+    var close = '<section class="scene close" id="list" data-scene="end" aria-label="' + count(ps.length) + '本の一覧">' +
       '<div class="close-in">' +
         '<h2>' + count(ps.length) + '本の索引</h2>' +
         '<ol class="idx">' + ps.map(function(p, i){ return indexRow(p, i + 1); }).join("") + '</ol>' +
-        '<p class="disc"><span class="d1">アフィリエイト広告を含む</span><br><span class="d2">俺の紹介で売れた実績は、まだ0件だ。</span></p>' +
+        '<p class="disc"><span class="d1">※アフィリエイトリンクを含みます</span><br><span class="d2">俺の紹介で売れた実績は、まだ0件だ。</span></p>' +
         '<p class="src">数字はBrain各商品ページの公表値（' + CHECKED + '）。</p>' +
         '<footer class="site">運営：あおあし｜Brain公式サイトではありません｜収益を保証するものではありません</footer>' +
       '</div></section>';
@@ -395,19 +401,20 @@
       var hero = root.querySelector(".hero");
       var lines = hero.querySelectorAll(".ln");
       var cue = hero.querySelector(".cue");
-      gsap.set(hero.querySelectorAll(".hero-l"), {autoAlpha: 1});
+      gsap.set(hero.querySelectorAll(".hero-l, .hero-lead"), {autoAlpha: 1});
       var heroTl = gsap.timeline({defaults: {ease: EASE}});
       heroTl.from([lines[0], lines[1]], {autoAlpha: 0, y: 26, duration: 0.6, stagger: 0.1}, 0)
             .from([lines[2], lines[3]], {autoAlpha: 0, y: 26, duration: 0.6, stagger: 0.1}, 0.55)
+            .from(hero.querySelector(".hero-lead"), {autoAlpha: 0, y: 16, duration: 0.5}, 0.9)
             .from(cue, {autoAlpha: 0, y: -8, duration: 0.4}, 1.0);
       if (opts.skipHero) heroTl.progress(1);
       // 矢印だけの常駐の小さな動き（2.4 秒周期）
       var bob = gsap.to(cue.querySelector("svg"), {y: 6, duration: 1.2, ease: "sine.inOut", yoyo: true, repeat: -1});
       // ヒーローは離れるときに上へ少しずれて薄くなる（パララックス）
-      gsap.to(hero.querySelectorAll(".hero-l"), {yPercent: -18, autoAlpha: 0.15, ease: "none",
+      gsap.to(hero.querySelectorAll(".hero-l, .hero-lead"), {yPercent: -18, autoAlpha: 0.15, ease: "none",
         scrollTrigger: {trigger: hero, start: "top top", end: "bottom top", scrub: true}});
 
-      // --- シーン1〜5：ピン留め＋段階的な組み上げ
+      // --- シーン1〜7：ピン留め＋段階的な組み上げ
       root.querySelectorAll(".prod").forEach(function(sec){
         var tl = sceneTimeline(sec, counters);
         var state = {step: -1, tl: tl, sec: sec};
