@@ -8,44 +8,121 @@
 <link rel="icon" href="aoashi-icon-goma.png">
 <style>
   :root {
-    --paper: #f4ecd9;
-    --card: #fffdf4;
-    --ink: #2e2417;
-    --muted: #6b5b3e;
-    --line: #c9b98f;
-    --accent: #8f271e;
-    --mincho: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif CJK JP", serif;
+    color-scheme: dark;
+    --paper: #08090a;
+    --card: #0f1011;
+    --raised: #141516;
+    --ink: #f7f8f8;
+    --body: #d0d6e0;
+    --muted: #8a8f98;
+    --line: #23252a;
+    --edge: #ffffff0d;
+    --edge-strong: #ffffff14;
+    --accent: #828fff;
+    --button: #e5e5e6;
+    --mono: ui-monospace, "SFMono-Regular", Consolas, monospace;
   }
+
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.8 system-ui, sans-serif; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--body);
+    font: 400 16px/1.65 system-ui, "Noto Sans CJK JP", sans-serif;
+    overflow-wrap: anywhere;
+  }
+
   a { color: var(--accent); text-underline-offset: .2em; }
-  a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-  .site-header { border-bottom: 1px solid var(--line); }
-  .header-inner { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
-  .header-inner a { font-weight: 700; }
-  .wrap { width: min(100% - 2.5rem, 68rem); margin-inline: auto; }
-  .detail .wrap { max-width: 43rem; }
-  h1, h2, h3, h4 { font-family: var(--mincho); line-height: 1.45; overflow-wrap: anywhere; }
-  h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: .35em 0 .5em; }
-  h2 { font-size: clamp(1.4rem, 3vw, 2rem); }
-  h3 { font-size: clamp(1.18rem, 2.5vw, 1.55rem); }
-  h4 { font-size: 1.15rem; margin: 0; }
-  .connection, .head { padding-block: clamp(2rem, 6vw, 4rem) 1.5rem; }
-  .connection p { max-width: 44rem; }
-  .portrait { border-radius: 50%; border: 1px solid var(--line); display: block; }
-  .shelf, .blk { padding-block: 1rem; border-top: 1px solid var(--line); }
-  .shelf > h2 { color: var(--accent); }
-  .scene { margin-block: 2rem; }
-  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: 1rem; }
-  .card { display: flex; flex-direction: column; min-width: 0; background: var(--card); border: 1px solid var(--line); padding: clamp(1rem, 3vw, 1.6rem); }
-  .card .meta { margin-top: auto; }
-  .meta, .disclosure, .caution, .site-footer { color: var(--muted); font-size: .875rem; }
-  .meta { margin-bottom: .85rem; }
-  .caution { border-left: 2px solid var(--line); padding-left: .75rem; margin-top: 0; }
-  .buy { align-self: flex-start; display: inline-block; background: var(--accent); color: var(--card); padding: .5rem 1rem; font-weight: 700; border-radius: .2rem; text-decoration: none; }
-  .buy:hover { text-decoration: underline; }
-  .site-footer { border-top: 1px solid var(--line); padding-block: 1rem 2rem; }
+  a:hover { color: var(--ink); }
+  a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+
+  .wrap { width: min(100% - 2.5rem, 70rem); margin-inline: auto; }
+  .site-header { border-bottom: 1px solid var(--edge-strong); }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px 24px;
+    min-height: 72px;
+    padding-block: 8px;
+  }
+  .header-inner p { margin: 0; }
+  .header-inner a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .header-inner a:hover { color: var(--accent); }
+
+  h1, h2, h3, h4 {
+    margin: 0;
+    color: var(--ink);
+    font-weight: 600;
+    line-height: 1.28;
+    letter-spacing: -.022em;
+  }
+  h1 { font-size: clamp(2rem, 5.25vw, 4rem); }
+  h2 { font-size: clamp(1.65rem, 3.4vw, 3rem); }
+  h3 { font-size: clamp(1rem, 1.7vw, 1.25rem); }
+  h4 { font-size: 1.0625rem; }
+
+  .meta, .disclosure {
+    color: var(--muted);
+    font: 400 12px/1.6 var(--mono);
+    text-transform: uppercase;
+  }
+  .buy {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 8px 16px;
+    border-radius: 9999px;
+    background: var(--button);
+    color: var(--paper);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 160ms ease;
+  }
+  .buy:hover { background-color: #fff; color: var(--paper); }
+
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding-block: 24px 48px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .site-footer p { margin: 0 0 8px; }
   .site-footer strong { color: var(--ink); }
+
+  @media (max-width: 480px) {
+    .header-inner { flex-wrap: wrap; gap: 0 12px; min-height: 64px; }
+  }
+
+  .detail main.wrap { max-width: 48rem; }
+  .detail .header-inner .meta a { font: 500 13px/1.6 system-ui, sans-serif; }
+  .head { padding-block: clamp(40px, 7vw, 96px) clamp(32px, 5vw, 64px); }
+  .head .disclosure { margin: 0 0 16px; }
+  .head h1 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
+
+  .blk {
+    padding: clamp(16px, 4vw, 32px);
+    border: 1px solid var(--edge);
+    border-radius: 8px;
+    background: var(--card);
+  }
+  .blk + .blk { margin-top: 16px; }
+  .blk h2 { font-size: clamp(1.25rem, 2.3vw, 1.5rem); }
+  .blk p { margin: 16px 0 0; }
+  .blk .meta { border-top: 1px solid var(--edge-strong); padding-top: 16px; }
+  .detail .site-footer { margin-top: 40px; }
 </style>
 </head>
 <body class="detail">
