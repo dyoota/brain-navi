@@ -295,6 +295,97 @@
   @media (prefers-reduced-motion: reduce) {
     .scroll-cue span { animation: none; }
   }
+
+  .scene-guide {
+    margin-block: 24px 40px;
+    padding-inline: clamp(12px, 4vw, 56px);
+    border: 1px solid #393872;
+    border-radius: 24px;
+    background:
+      radial-gradient(ellipse at 50% 0%, #302860, transparent 72%),
+      linear-gradient(145deg, #171731, #10101d 70%);
+  }
+  .speech h1 {
+    font-size: clamp(2.5rem, 8vw, 6.5rem);
+    font-weight: 800;
+    letter-spacing: -.055em;
+  }
+  .speech h1 span { color: #bab3ff; }
+  .speech p { color: var(--body); }
+  .goma-track {
+    --goma-size: clamp(6rem, 19vw, 10rem);
+    max-width: 50rem;
+    margin-inline: auto;
+    background: radial-gradient(ellipse at 50% 86%, #7770de45, transparent 58%);
+  }
+  .scroll-cue { color: #bab3ff; }
+
+  .shelf { --shelf-accent: #c3b7ff; --shelf-fill: #271c47; }
+  .shelf-b { --shelf-accent: #90d9fc; --shelf-fill: #132f41; }
+  .shelf-c { --shelf-accent: #ffc5aa; --shelf-fill: #422821; }
+  .shelf-banner {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+    gap: clamp(8px, 3vw, 36px);
+    overflow: hidden;
+    padding: clamp(16px, 4.5vw, 52px);
+    border: 1px solid color-mix(in srgb, var(--shelf-accent) 30%, transparent);
+    border-radius: 20px;
+    background:
+      radial-gradient(ellipse at 93% 100%, color-mix(in srgb, var(--shelf-accent) 28%, transparent), transparent 45%),
+      linear-gradient(128deg, var(--shelf-fill), #121318 88%);
+    scroll-margin-top: 24px;
+  }
+  .shelf-banner h2 { font-size: clamp(.8125rem, 2vw, 1.2rem); }
+  .shelf-hook {
+    margin: 12px 0 0;
+    color: var(--ink);
+    font-size: clamp(1.5rem, 5.7vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.12;
+    letter-spacing: -.045em;
+  }
+  .shelf-hook span { display: inline-block; }
+  .shelf-hook span:last-child { color: var(--shelf-accent); }
+  .shelf-banner img {
+    display: block;
+    width: clamp(64px, 16vw, 174px);
+    height: auto;
+  }
+
+  .reader-thought {
+    margin-block: 26px 32px;
+    padding-inline-start: clamp(10px, 2.5vw, 24px);
+    border-inline-start: 2px solid var(--shelf-accent);
+  }
+  .reader-thought blockquote {
+    width: fit-content;
+    margin: 0;
+    padding: 9px 14px;
+    border-radius: 4px 13px 13px;
+    background: var(--shelf-fill);
+    color: var(--shelf-accent);
+    font-weight: 700;
+  }
+  .reader-thought p { margin: 10px 0 0; }
+
+  .cards { gap: 12px; }
+  .cards:has(.card + .card) { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+  .card { border-radius: 12px; }
+  .card-featured {
+    border-color: color-mix(in srgb, var(--shelf-accent) 28%, transparent);
+    background: linear-gradient(145deg, var(--shelf-fill), var(--card) 72%);
+  }
+  .card-featured h4 { font-size: clamp(1.2rem, 2.3vw, 1.65rem); }
+  .card-featured .buy { background: var(--shelf-accent); }
+  .card-featured .buy:hover { background: #fff; }
+
+  @media (max-width: 600px) {
+    .scene-guide { margin-block: 16px 28px; }
+    .speech h1 span { display: block; }
+    .cards:has(.card + .card) { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -307,7 +398,7 @@
 <main class="wrap" id="top">
   <section class="scene-guide" aria-labelledby="intro">
     <div class="speech">
-      <h1 id="intro">どこで詰まってる？</h1>
+      <h1 id="intro">どこで<span>詰まってる？</span></h1>
       <p>いまの詰まりから選べるように置いてある</p>
     </div>
     <div class="goma-track">
@@ -326,12 +417,22 @@
     <a class="scroll-cue" href="#shelf-a" aria-label="教材一覧へ"><span aria-hidden="true">↓</span></a>
   </section>
   <div id="list">
-  <section class="shelf" aria-labelledby="shelf-a">
-    <h2 id="shelf-a">A. AIとnoteの詰まり</h2>
+  <section class="shelf shelf-a" aria-labelledby="shelf-a-title">
+    <div class="shelf-banner" id="shelf-a">
+      <div>
+        <h2 id="shelf-a-title">A. AIとnoteの詰まり</h2>
+        <p class="shelf-hook"><span>ツールは知ってる。</span> <span>記事はまだ0本。</span></p>
+      </div>
+      <img src="aoashi-icon-goma-transparent.png" alt="" width="140" height="178">
+    </div>
+    <div class="reader-thought">
+      <blockquote>「画面を開いても、最初の操作で止まりそう。」</blockquote>
+      <p>AntigravityとClaude Codeは、使いたい方の始め方から動画で追える教材を並べた。</p>
+    </div>
     <section class="scene" aria-labelledby="scene-9">
       <h3 id="scene-9">AIエージェントの名前は聞くけど、難しそうで後回しにしている</h3>
       <div class="cards">
-        <article class="card" data-product-id="9">
+        <article class="card card-featured" data-product-id="9">
           <h4>note×Antigravity全自動マネタイズ</h4>
           <p>Antigravityの始め方、リサーチ環境の構築、企画・構成の設計、本文執筆の自動化を動画で追える。まずAntigravityでnote制作の流れを組みたい人に合う。</p>
           <p class="caution">Antigravityでnoteの制作工程を組めている人には不要。全編動画。</p>
@@ -347,6 +448,10 @@
         </article>
       </div>
     </section>
+    <div class="reader-thought">
+      <blockquote>「また教材だけ増えて、何も作らずに終わりそう。」</blockquote>
+      <p>まず1本作って振り返る手順が欲しいなら、制作と検証まで載っている教材が候補になる。</p>
+    </div>
     <section class="scene" aria-labelledby="scene-10">
       <h3 id="scene-10">ノウハウを買ってはフォルダで眠らせる。買ったのに稼げないが続く</h3>
       <div class="cards">
@@ -384,12 +489,22 @@
       </div>
     </section>
   </section>
-  <section class="shelf" aria-labelledby="shelf-b">
-    <h2 id="shelf-b">B. 発信を収益に変える詰まり</h2>
+  <section class="shelf shelf-b" aria-labelledby="shelf-b-title">
+    <div class="shelf-banner" id="shelf-b">
+      <div>
+        <h2 id="shelf-b-title">B. 発信を収益に変える詰まり</h2>
+        <p class="shelf-hook"><span>投稿はできた。</span> <span>購入までが遠い。</span></p>
+      </div>
+      <img src="aoashi-icon-goma-transparent.png" alt="" width="140" height="178">
+    </div>
+    <div class="reader-thought">
+      <blockquote>「投稿は増えた。どう売上につなぐ？」</blockquote>
+      <p>Threadsとnoteの間で流れが切れているなら、購入までの導線を見直せる教材がある。</p>
+    </div>
     <section class="scene" aria-labelledby="scene-5">
       <h3 id="scene-5">Threadsもnoteも始めたのに、売れる流れが作れていない</h3>
       <div class="cards">
-        <article class="card" data-product-id="5">
+        <article class="card card-featured" data-product-id="5">
           <h4>ゼロから始めるThreads×note</h4>
           <p>note構成テンプレート、Threads投稿テンプレート30選、導線設計マップ、反応が薄いときの直し方がある。投稿からnoteの購入まで、どこで流れが途切れるかを見直したい人に合う。</p>
           <p class="caution">すでにnoteが安定して売れている人や、小技だけを探している人には不要。</p>
@@ -411,8 +526,18 @@
       </div>
     </section>
   </section>
-  <section class="shelf" aria-labelledby="shelf-c">
-    <h2 id="shelf-c">C. 占いの詰まり</h2>
+  <section class="shelf shelf-c" aria-labelledby="shelf-c-title">
+    <div class="shelf-banner" id="shelf-c">
+      <div>
+        <h2 id="shelf-c-title">C. 占いの詰まり</h2>
+        <p class="shelf-hook"><span>集客で消耗。</span> <span>鑑定に時間がかかる。</span></p>
+      </div>
+      <img src="aoashi-icon-goma-transparent.png" alt="" width="140" height="178">
+    </div>
+    <div class="reader-thought">
+      <blockquote>「集客もしながら、鑑定文を書く時間まで取れるかな。」</blockquote>
+      <p>鑑定文に時間がかかるなら、下書きをAIに任せて自分で仕上げを確認する教材が候補になる。</p>
+    </div>
     <p>占いは俺の専門じゃない。中身の記載だけで判定した。</p>
     <section class="scene" aria-labelledby="scene-2">
       <h3 id="scene-2">ココナラで安く買い叩かれて疲れている</h3>
@@ -429,7 +554,7 @@
     <section class="scene" aria-labelledby="scene-7">
       <h3 id="scene-7">鑑定の勉強に時間が取れない。鑑定そのものに時間がかかる</h3>
       <div class="cards">
-        <article class="card" data-product-id="7">
+        <article class="card card-featured" data-product-id="7">
           <h4>シャドウAIタロット鑑定自動化パッケージ</h4>
           <p>AIタロット鑑定ツール、メール鑑定マニュアル、手順書がある。鑑定文の下書きにかかる時間を減らし、仕上げの確認に時間を使いたい人に合う。</p>
           <p class="caution">鑑定文の確認までAIに任せたい人には不向き。最後は人の目で精査する。</p>
