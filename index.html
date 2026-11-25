@@ -323,6 +323,7 @@
   .shelf { --shelf-accent: #c3b7ff; --shelf-fill: #271c47; }
   .shelf-b { --shelf-accent: #90d9fc; --shelf-fill: #132f41; }
   .shelf-c { --shelf-accent: #ffc5aa; --shelf-fill: #422821; }
+  .shelf-d { --shelf-accent: #9de3b8; --shelf-fill: #19362b; }
   .shelf-banner {
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
@@ -348,6 +349,8 @@
   }
   .shelf-hook span { display: inline-block; }
   .shelf-hook span:last-child { color: var(--shelf-accent); }
+  .shelf-d .shelf-hook { font-size: clamp(1.5rem, 4.8vw, 3.75rem); }
+  .shelf-d .shelf-hook span { display: block; text-wrap: balance; }
   .shelf-banner img {
     display: block;
     width: clamp(64px, 16vw, 174px);
@@ -409,14 +412,64 @@
     </div>
     <nav aria-label="場面から選ぶ">
       <ul class="scene-links" role="list">
+        <li><a href="#shelf-d">D. 事務と経理の詰まり</a></li>
         <li><a href="#shelf-a">A. AIとnoteの詰まり</a></li>
         <li><a href="#shelf-b">B. 発信を収益に変える詰まり</a></li>
         <li><a href="#shelf-c">C. 占いの詰まり</a></li>
       </ul>
     </nav>
-    <a class="scroll-cue" href="#shelf-a" aria-label="教材一覧へ"><span aria-hidden="true">↓</span></a>
+    <a class="scroll-cue" href="#shelf-d" aria-label="教材一覧へ"><span aria-hidden="true">↓</span></a>
   </section>
   <div id="list">
+  <section class="shelf shelf-d" aria-labelledby="shelf-d-title">
+    <div class="shelf-banner" id="shelf-d">
+      <div>
+        <h2 id="shelf-d-title">D. 事務と経理の詰まり</h2>
+        <p class="shelf-hook"><span>小口現金が合わない。</span> <span>請求書の転記が終わらない。</span></p>
+      </div>
+      <img src="aoashi-icon-goma-transparent.png" alt="" width="140" height="178">
+    </div>
+    <div class="reader-thought">
+      <blockquote>「月末のたびに、レシートの山と合わない残高。」</blockquote>
+      <p>台帳と実査の形が決まっているものから並べた。</p>
+    </div>
+    <section class="scene" aria-labelledby="scene-13">
+      <h3 id="scene-13">申請した経費が支払われたか追えない。小口現金の残高が合わない</h3>
+      <div class="cards">
+        <article class="card" data-product-id="13">
+          <h4>申請・承認・支払いの状態と小口現金の実査まで1冊で回るExcel</h4>
+          <p>経費精算の台帳（申請中／承認済／差戻し／支払済）、小口現金の出納帳と金種表での実査、月次集計、締めのチェックリスト10項目まで入った、マクロなしのExcelブック。</p>
+          <p class="caution">会計ソフトの代わりではない。消費税の計算はしないと販売ページに書いてある。</p>
+          <p class="meta">参考　¥4,980・レビュー0件（2026-11-26時点）</p>
+          <a class="buy" href="detail-13.html" aria-label="申請・承認・支払いの状態と小口現金の実査まで1冊で回るExcel：なんで選んだの？">なんで選んだの？</a>
+        </article>
+      </div>
+    </section>
+    <section class="scene" aria-labelledby="scene-14">
+      <h3 id="scene-14">領収書と請求書の転記に追われて、税区分や科目で毎回止まる</h3>
+      <div class="cards">
+        <article class="card" data-product-id="14">
+          <h4>AI×経理：領収書・請求書の手入力を「読む・表にする」までAIに任せる方法</h4>
+          <p>AIに読ませる項目、勘定科目・税区分の候補ルール、推測で埋めずに止める条件を決めた、自分用の指示ファイルの作り方。月次点検リスト20項目つき。</p>
+          <p class="caution">科目や税区分の決定、申告までをAIに任せる内容ではない。</p>
+          <p class="meta">参考　¥2,980・レビュー0件（2026-11-26時点）</p>
+          <a class="buy" href="detail-14.html" aria-label="AI×経理：領収書・請求書の手入力を「読む・表にする」までAIに任せる方法：なんで選んだの？">なんで選んだの？</a>
+        </article>
+      </div>
+    </section>
+    <section class="scene" aria-labelledby="scene-15">
+      <h3 id="scene-15">月末にレシートの山が残って、転記で二重に入れてしまう</h3>
+      <div class="cards">
+        <article class="card" data-product-id="15">
+          <h4>レシートも請求書も、フォルダに入れるだけ。AIが読んでスプレッドシートに書くGAS</h4>
+          <p>Googleドライブのフォルダに入れたレシート・請求書をGemini APIで読み取り、スプレッドシートへ転記するテンプレート。インボイス番号の抽出、二重登録の防止、月別集計つき。プログラミングは不要。</p>
+          <p class="caution">販売ページの対象はフリーランス・個人事業主と書かれている。会社のルールで外部の道具が使えるかは、先に確認がいる。</p>
+          <p class="meta">参考　¥980・レビュー0件（2026-11-26時点）</p>
+          <a class="buy" href="detail-15.html" aria-label="レシートも請求書も、フォルダに入れるだけ。AIが読んでスプレッドシートに書くGAS：なんで選んだの？">なんで選んだの？</a>
+        </article>
+      </div>
+    </section>
+  </section>
   <section class="shelf shelf-a" aria-labelledby="shelf-a-title">
     <div class="shelf-banner" id="shelf-a">
       <div>

@@ -156,8 +156,56 @@
       "section": "C. 占いの詰まり",
       "scene": "鑑定の勉強に時間が取れない。鑑定そのものに時間がかかる",
       "caution": "鑑定文の確認までAIに任せたい人には不向き。最後は人の目で精査する。"
+    },
+    {
+      "id": 13,
+      "title": "申請・承認・支払いの状態と小口現金の実査まで1冊で回るExcel",
+      "seller": "小林秀章",
+      "price": 4980,
+      "rating": null,
+      "reviews": 0,
+      "genre": "事務・経理",
+      "category": "office-accounting",
+      "url": "https://brain-market.com/u/shuyo_group/a/b5kDM4cjMgoTZsNWa0JXY?from=bczNwcjNgojclNXd",
+      "note": "経費精算の台帳（申請中／承認済／差戻し／支払済）、小口現金の出納帳と金種表での実査、月次集計、締めのチェックリスト10項目まで入った、マクロなしのExcelブック。",
+      "status": "on_sale",
+      "section": "D. 事務と経理の詰まり",
+      "scene": "申請した経費が支払われたか追えない。小口現金の残高が合わない",
+      "caution": "会計ソフトの代わりではない。消費税の計算はしないと販売ページに書いてある。"
+    },
+    {
+      "id": 14,
+      "title": "AI×経理：領収書・請求書の手入力を「読む・表にする」までAIに任せる方法",
+      "seller": "たく",
+      "price": 2980,
+      "rating": null,
+      "reviews": 0,
+      "genre": "事務・経理",
+      "category": "office-accounting",
+      "url": "https://brain-market.com/u/tasty_puma3132/a/byYjN3cjMgoTZsNWa0JXY?from=bczNwcjNgojclNXd",
+      "note": "AIに読ませる項目、勘定科目・税区分の候補ルール、推測で埋めずに止める条件を決めた、自分用の指示ファイルの作り方。月次点検リスト20項目つき。",
+      "status": "on_sale",
+      "section": "D. 事務と経理の詰まり",
+      "scene": "領収書と請求書の転記に追われて、税区分や科目で毎回止まる",
+      "caution": "科目や税区分の決定、申告までをAIに任せる内容ではない。"
+    },
+    {
+      "id": 15,
+      "title": "レシートも請求書も、フォルダに入れるだけ。AIが読んでスプレッドシートに書くGAS",
+      "seller": "れいあ",
+      "price": 980,
+      "rating": null,
+      "reviews": 0,
+      "genre": "事務・経理",
+      "category": "office-accounting",
+      "url": "https://brain-market.com/u/leiaworks/a/b3gDM4cjMgoTZsNWa0JXY?from=bczNwcjNgojclNXd",
+      "note": "Googleドライブのフォルダに入れたレシート・請求書をGemini APIで読み取り、スプレッドシートへ転記するテンプレート。インボイス番号の抽出、二重登録の防止、月別集計つき。プログラミングは不要。",
+      "status": "on_sale",
+      "section": "D. 事務と経理の詰まり",
+      "scene": "月末にレシートの山が残って、転記で二重に入れてしまう",
+      "caution": "販売ページの対象はフリーランス・個人事業主と書かれている。会社のルールで外部の道具が使えるかは、先に確認がいる。"
     }
   ],
   "site": "Brain教材ナビ",
-  "updated": "2026-11-24"
+  "updated": "2026-11-26"
 }
