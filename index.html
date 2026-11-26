@@ -259,6 +259,29 @@
   .about-shelf h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
   .about-shelf p { max-width: 44rem; }
 
+  .purchase-flow {
+    padding-block: clamp(40px, 6vw, 80px);
+    border-top: 1px solid var(--line);
+  }
+  .purchase-flow h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+  .purchase-flow p { max-width: 44rem; }
+  .purchase-flow ol {
+    display: grid;
+    gap: 8px;
+    margin: 16px 0;
+    padding: 0;
+    list-style: decimal inside;
+  }
+  .purchase-flow li {
+    padding: clamp(16px, 3vw, 24px);
+    border: 1px solid var(--edge);
+    border-radius: 8px;
+    background: var(--card);
+    font-size: 15px;
+  }
+  .purchase-flow li h3 { display: inline; }
+  .purchase-flow li p { margin: 8px 0 0; }
+
   @media (max-width: 600px) {
     .scene-links { display: grid; }
     .scene-guide { padding-bottom: 24px; }
@@ -623,6 +646,24 @@
     <p>あおあし。建設業の会社員で、事務職として企画を担当している。その席から始めたAI副業の数字や失敗を、過程ごと公開してきた。その延長で、いま詰まっている場面から教材を探せる棚を作った。</p>
     <p>紹介する教材は未購入で、購入者向けの本文も未読。Brainの販売ページに公開されている説明を読み、場面の詰まりに合うかで選んだ。</p>
     <p><strong>俺の紹介で売れた実績は、まだ0件だ。</strong></p>
+  </section>
+  <section class="purchase-flow" aria-labelledby="purchase-flow">
+    <h2 id="purchase-flow">買うときは、この3つだけです。</h2>
+    <ol>
+      <li>
+        <h3>詰まりから選ぶ</h3>
+        <p>棚で場面を選んで、カードの「なんで選んだの？」で選定理由を読む。</p>
+      </li>
+      <li>
+        <h3>Brainの販売ページで買う</h3>
+        <p>ボタンの先はBrainの販売ページです。価格はそこで最終確認して、決済もBrain側で行います。このサイトでカード情報は扱いません。</p>
+      </li>
+      <li>
+        <h3>購入後はBrainで読む</h3>
+        <p>買った教材はBrainの購入済みページで読む・見る形です。特典の受け取り条件は教材ごとに違うので、販売ページで確認してください。</p>
+      </li>
+    </ol>
+    <p>このサイトは紹介までです。販売と決済はBrainが行います。</p>
   </section>
 <footer class="site-footer">
   <p class="disclosure">※アフィリエイトリンクを含みます</p>
